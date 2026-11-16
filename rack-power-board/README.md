@@ -11,10 +11,12 @@ Mean Well LOP-300-54 and provides:
 | 5 V OUT | J8 | F8 ATM 5 A on the 12 V feed; Pololu current limit | 6 A, **shared with J9** |
 | 5 V AUX | J9 (4-pin Molex 8981, left edge) | same as J8 | pinout **+5V, GND, GND, +5V** |
 
-* **Board:** 134 × 81 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
+* **Board:** 134 × 78.5 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
   corners, with a 4.5 mm copper keep-out around each. It fits the 140 × 150 × 30 mm space.
-* **Connectors:** J1–J8 are Phoenix MSTBA 2,5/2-G-5,08 pluggable headers (5.08 mm, 12 A). The
-  plugs enter from the long board edge. Pin 1 (left, marked `+`) is positive. J9 is a
+* **Connectors:** J1–J8 are straight JST VH 2-pin headers (B2P-VH, 3.96 mm pitch, 10 A per
+  contact) along the long board edge. The crimp plugs (VHR-2N) go in from above. Pin 1 (left,
+  marked `+`) is positive. A mated VH plug stands roughly 17 mm above the board, so check the
+  wire bend room under the lid with your standoff height. J9 is a
   right-angle 4-pin "disk drive" Molex header on the left edge, with its plug entering from
   the left.
 * **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
@@ -37,17 +39,17 @@ unplated (NPTH).
 |---|---|---|---|---|---|
 | H1 | board mount | 4.00 | 4.00 | 3.2 mm (M3) | 9 mm Ø copper-free area on both sides |
 | H2 | board mount | 130.00 | 4.00 | 3.2 mm (M3) | same |
-| H3 | board mount | 4.00 | 76.50 | 3.2 mm (M3) | same |
-| H4 | board mount | 130.00 | 76.50 | 3.2 mm (M3) | same |
+| H3 | board mount | 4.00 | 74.00 | 3.2 mm (M3) | same |
+| H4 | board mount | 130.00 | 74.00 | 3.2 mm (M3) | same |
 | H5 | Pololu standoff | 105.53 | 22.52 | 2.2 mm (M2) | |
 | H6 | Pololu standoff | 120.77 | 22.52 | 2.2 mm (M2) | |
 | H7 | Pololu standoff | 105.53 | 58.08 | 2.2 mm (M2) | |
 | H8 | Pololu standoff | 120.77 | 58.08 | 2.2 mm (M2) | |
 
-* **Board outline:** 134.0 × 81.0 mm.
-* **M3 pattern:** 126.0 × 72.5 mm centre-to-centre, inset 4 mm from the top, left and
-  right edges and 4.5 mm from the connector edge. Use M3 standoffs or printed bosses of at
-  least 5 mm in the case, with screw heads or washers up to 9 mm Ø.
+* **Board outline:** 134.0 × 78.5 mm.
+* **M3 pattern:** 126.0 × 70.0 mm centre-to-centre, inset 4 mm from the top, left and
+  right edges and 4.5 mm from the connector edge. Use printed bosses in the case with M3
+  heat-set inserts, at least 5 mm tall, with screw heads or washers up to 9 mm Ø.
 * **M2 pattern (Pololu):** 15.24 × 35.56 mm, matching the D24V90F5's own holes. Use 10 mm
   M2 standoffs.
 
@@ -75,16 +77,16 @@ unplated (NPTH).
 
 ## Bill of materials
 
-For manufacturer part numbers and ordering links (DigiKey Ireland and Amazon.ie), see **[BOM.md](BOM.md)**.
+For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.md](BOM.md)**.
 
 | Ref | Qty | Part | Notes |
 |---|---|---|---|
 | U1 | 1 | Flex **PKB4313DPI** (300 W) or Delta **E48SC12025NRFH**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W | about €42 at DigiKey EU; often backordered. 5-pin and 8-pin bricks both fit (sense pins are tied locally). |
 | U2 | 1 | Pololu **D24V90F5** (#2866) + 4× M2 × 10 mm standoffs and screws | about US$37 direct |
-| J1–J8 | 8 | Phoenix **MSTBA 2,5/2-G-5,08** (1757242) header | |
+| J1–J8 | 8 | JST **B2P-VH** 2-pin header, 3.96 mm, straight | on hand |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight **or** right-angle | 1.7 mm pin holes. The footprint also has two plated 1.7 mm tab holes (GND) for the right-angle version: one pitch beyond each end pin, one pitch towards the board edge. They stay empty when a straight header is fitted. |
-| (J9 plug) | 1 | 4-pin 8981 / AMP Mate-N-Lok receptacle (e.g. TE 1-480424-0 + contacts) | the standard PC "Molex" plug |
-| (plugs) | 8 | Phoenix **MSTB 2,5/2-ST-5,08** (1757019) plug | screw plug |
+| (J9 plug) | 1 | 4-pin 8981 / Mate-N-Lok plug + cable | on hand |
+| (plugs) | 8 | JST **VHR-2N** housing + SVH crimp contacts | on hand |
 | F1–F3 | 3 | Schurter **0031.8201** 5×20 PCB fuse holder (open) | add the 0853.0551 cover if you want touch protection |
 | F1 fuse | 1 | 5×20 T **8 A** 250 V (Littelfuse 218 series) | |
 | F2, F3 fuse | 2 | 5×20 T **2.5 A** 250 V (Littelfuse 218 series) | |
@@ -99,7 +101,7 @@ For manufacturer part numbers and ordering links (DigiKey Ireland and Amazon.ie)
 | R1 | 1 | 47 kΩ 1206 | 54 V LED (~1 mA, 60 mW) |
 | R2 | 1 | 4.7 kΩ 1206 | 12 V LED |
 | R3 | 1 | 1 kΩ 1206 | 5 V LED |
-| — | 4 | M3 standoffs ≥ 5 mm | the case's tallest parts reach about 26 mm with 5 mm standoffs |
+| — | 4 | Printed M3 bosses + M3 heat-set inserts (case), M2 × 10 mm standoffs (Pololu) | on hand |
 
 ## Power budget
 
