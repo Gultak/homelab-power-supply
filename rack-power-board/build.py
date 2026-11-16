@@ -174,7 +174,7 @@ U1 = custom_fp("U1", "DOSA_EighthBrick_THT", brick_pads,
 for num, nm in ((1, "+54V"), (2, "RC"), (3, "GND"), (4, "GND"), (5, "GND"), (7, "+12V"), (8, "+12V")):
     setnet(U1, num, nm)
 text("54-12V 1/8 BRICK", BX, BY - 3, 1.5, bold=True)
-text("PKB4313D / E48SC12025", BX, BY, 1.0)
+text("DVE0125 / PKB4313D / E48SC12025", BX, BY, 1.0)
 text("pin1", BX - 21.5, BY - 7.62, 0.9)
 
 # --- input caps (54V)
