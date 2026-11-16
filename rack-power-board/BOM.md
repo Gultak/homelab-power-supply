@@ -1,8 +1,8 @@
 # Bill of materials: rack power board
 
 Almost everything comes from **DigiKey Ireland** (digikey.ie: EUR prices, ships to Ireland,
-free delivery over the order threshold). The Pololu module comes from **EXP Tech**
-(Germany, EU), so there are no customs charges and no shipping from the US. Standoffs come
+free delivery over the order threshold). The Pololu module comes from **Opencircuit**
+(Netherlands, EU), so there are no customs charges and no shipping from the US. Standoffs come
 from **Amazon.ie**.
 
 * **Direct links** (marked 🔗) open the exact DigiKey product page. They were checked in
@@ -15,7 +15,7 @@ from **Amazon.ie**.
 | Ref | Qty | Part | Manufacturer / MPN | Notes | Link | Alt. link |
 |---|---|---|---|---|---|---|
 | U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Flex **PKB4313DPI** | about €42; often backordered. 5-pin and 8-pin DOSA bricks both fit. Set JP1 to match the RC logic (see README). | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) | [🔎 Delta E48SC12025NRFH](https://www.digikey.ie/en/products/result?keywords=E48SC12025NRFH) |
-| U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. EXP Tech: about €26 ex VAT + €15 delivery to Ireland (about €47 total). Opencircuit: about €50.50 incl. VAT + shipping. Fallback: DigiKey Marketplace (ships from the USA). | [EXP Tech](https://exp-tech.de/en/products/pololu-5v-9a-step-down-voltage-regulator-d24v90f5) | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) |
+| U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. Opencircuit: about €50.50 incl. VAT + shipping, stocked in an external warehouse, delivered in 5–7 days. Fallback: DigiKey Marketplace (Pololu ships from its US stock; import charges may apply). EXP Tech (DE) is cheaper but was backorder-only when checked. | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) | [🔎 DigiKey (Marketplace)](https://www.digikey.ie/en/products/result?keywords=Pololu%202866) |
 | J1–J8 | 8 | PCB header, 2-pos, 5.08 mm, horizontal | Phoenix Contact **MSTBA 2,5/2-G-5,08** (1757242) | 12 A per contact | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=1757242) | |
 | (J1–J8 plugs) | 8 | Pluggable screw terminal plug, 2-pos, 5.08 mm | Phoenix Contact **MSTB 2,5/2-ST-5,08** (1757019) | Mates with J1–J8 | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=1757019) | |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight or right-angle | — | **On hand.** The footprint has tab holes for the right-angle version. | — | |
@@ -55,5 +55,5 @@ from **Amazon.ie**.
   Panasonic 16SEPG470M (C5, C6) this way, but both were in stock when checked. Any
   equivalent fits: C1/C2 need 68 µF ≥ 100 V, Ø10 mm, 5 mm pitch, ≤ 20 mm tall; C5/C6 need
   470 µF ≥ 16 V polymer, Ø8 mm, 3.5 mm pitch.
-* **Pololu supply:** Pololu lists the D24V90F5 as *rationed*, so check stock before ordering. EXP Tech only had a few in stock when checked. Both EXP Tech and Opencircuit ship from inside the EU. Botland's shops either ship only domestically (Poland, Germany) or sell internationally to business customers only (botland.store).
+* **Pololu supply:** Pololu lists the D24V90F5 as *rationed*, so check stock before ordering. EXP Tech (Germany) was backorder-only when checked; Opencircuit ships from inside the EU. Botland's shops either ship only domestically (Poland, Germany) or sell internationally to business customers only (botland.store).
 * **Check before ordering:** the brick footprint and the J9 tab holes (see README).
