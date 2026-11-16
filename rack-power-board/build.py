@@ -238,14 +238,18 @@ for i, (x, y) in enumerate(((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)))
     place("MountingHole", "MountingHole_3.2mm_M3", "H%d" % (1 + i), x, y, 0, "M3").Reference().SetVisible(False)
 
 # --- J9: 4-pin Molex 8981 "disk drive" header, right angle, plug enters from the left edge
-MX, MY = 6.0, 30.0
+MX, MY = 8.0, 28.0
 J9 = custom_fp("J9", "Molex_8981_1x04_P5.08mm_Horizontal",
-               [(i + 1, MX, MY + 5.08 * i, 3.0, 1.7) for i in range(4)],
-               outline=(0.4, MY - 3.4, MX + 6.0, MY + 15.24 + 3.4), silk_label=(MX + 3, MY - 5))
+               [(i + 1, MX, MY + 5.08 * i, 3.0, 1.7) for i in range(4)]
+               # mounting tabs of the right-angle variant: one pitch beyond each end pin,
+               # one pitch towards the board edge (unused when a straight header is fitted)
+               + [("MP", MX - 5.08, MY - 5.08, 3.0, 1.7), ("MP", MX - 5.08, MY + 15.24 + 5.08, 3.0, 1.7)],
+               outline=(0.4, MY - 6.6, MX + 4.5, MY + 15.24 + 6.6), silk_label=(MX + 5, MY - 5))
 for i, nm in enumerate(("+5V", "GND", "GND", "+5V")):
     setnet(J9, i + 1, nm)
-    text(("+5V", "GND", "GND", "+5V")[i], MX + 6.0, MY + 5.08 * i, 1.0)
-text("5V AUX", MX + 3, MY - 7.0, 1.1, bold=True)
+    text(("+5V", "GND", "GND", "+5V")[i], MX + 7.0, MY + 5.08 * i, 1.0)
+setnet(J9, "MP", "GND")
+text("5V AUX", MX + 1, MY - 8.8, 1.1, bold=True)
 
 # ======================= ROUTING =======================
 def near(m, num, target_x=None):
@@ -296,9 +300,9 @@ for c in (C7, C8):
 # 5V bus to J9 on the bottom layer: P3 -> right edge -> top edge -> down to J9
 BC = pcbnew.B_Cu
 track([(118.5, 76.0), (126.0, 76.0), (126.0, 12.0), (121.0, 12.0), (121.0, 2.2),
-       (21.25, 2.2), (21.25, 18.0), (10.0, 18.0), (10.0, MY + 15.24)], "+5V", 3.0, BC)
-track([(10.0, MY), (MX, MY)], "+5V", 3.0, BC)
-track([(10.0, MY + 15.24), (MX, MY + 15.24)], "+5V", 3.0, BC)
+       (21.25, 2.2), (21.25, 18.0), (12.0, 18.0), (12.0, MY + 15.24)], "+5V", 3.0, BC)
+track([(12.0, MY), (MX, MY)], "+5V", 3.0, BC)
+track([(12.0, MY + 15.24), (MX, MY + 15.24)], "+5V", 3.0, BC)
 # extra stitching vias for ground planes near connectors (help current spread on 2 layers)
 # (connector pin2 pads are through-hole, so they already join bottom plane)
 
@@ -364,9 +368,9 @@ for ref, lab in (("J1", "8A"), ("J2", "2.5A"), ("J3", "2.5A")):
 for ref in ("J4", "J5", "J6", "J7"):
     text("5A", JX[ref] + 5.6, 68.5, 1.0, rot=90)
 text("5A", 104.6, 6.5, 1.0)
-text("JP1: bridge = brick ON", 22.5, 35.5, 0.9)
-text("for NEG-logic RC", 22.5, 37.0, 0.9)
-text("54V", 16.5, 44.0, 0.9); text("12V", 71.5, 46.0, 0.9); text("5V", 128.5, 64.5, 0.9)
+text("JP1: bridge = brick ON", 26.0, 45.0, 0.9)
+text("for NEG-logic RC", 26.0, 46.5, 0.9)
+text("54V", 31.5, 41.0, 0.9); text("12V", 71.5, 46.0, 0.9); text("5V", 128.5, 64.5, 0.9)
 
 #FILL
 b.Save(OUT)

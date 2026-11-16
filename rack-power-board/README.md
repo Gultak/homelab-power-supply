@@ -56,7 +56,7 @@ Mean Well LOP-300-54 and provides:
 | U1 | 1 | Flex **PKB4313DPI** (300 W) or Delta **E48SC12025NRFH**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W | about €42 at DigiKey EU; often backordered. 5-pin and 8-pin bricks both fit (sense pins are tied locally). |
 | U2 | 1 | Pololu **D24V90F5** (#2866) + 4× M2 × 10 mm standoffs and screws | about US$37 direct |
 | J1–J8 | 8 | Phoenix **MSTBA 2,5/2-G-5,08** (1757242) header | |
-| J9 | 1 | Molex **8981** 4-pin right-angle PCB header, e.g. 15-24-4441 | 5.08 mm, 1.7 mm holes. Clip any PCB locator peg (no hole is provided). |
+| J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight **or** right-angle | 1.7 mm pin holes. The footprint also has two plated 1.7 mm tab holes (GND) for the right-angle version: one pitch beyond each end pin, one pitch towards the board edge. They stay empty when a straight header is fitted. |
 | (J9 plug) | 1 | 4-pin 8981 / AMP Mate-N-Lok receptacle (e.g. TE 1-480424-0 + contacts) | the standard PC "Molex" plug |
 | (plugs) | 8 | Phoenix **MSTB 2,5/2-ST-5,08** (1757019) plug | screw plug |
 | F1–F3 | 3 | Schurter **0031.8201** 5×20 PCB fuse holder (open) | add the 0853.0551 cover if you want touch protection |
@@ -90,9 +90,7 @@ goes over, the LOP's overload protection trips first, and F1 (8 A) protects the 
    it to confirm.
 2. **Pololu wiring:** the Pololu has no fixed footprint because its pin positions aren't
    published. Check its VIN/GND/VOUT labels and wire it to P1–P4.
-3. **J9 footprint:** it is built from the 5.08 mm pitch and a generic right-angle body. Check
-   pin-row-to-edge distance and hole size against the header you buy. The body may
-   overhang the left edge, which is fine.
+3. **J9 footprint:** the right-angle tab holes come from measurements of your own headers. A straight header with its plug fitted may be too tall for the 30 mm case.
 4. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
    0031.8201, Keystone 3568). Compare them against the parts you actually buy.
 
