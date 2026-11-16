@@ -22,7 +22,7 @@ DigiKey Marketplace (Pololu ships it from the USA). Connectors, cables, standoff
 | F1–F3 | 3 | 5×20 mm PCB fuse holder, open | Schurter **0031.8201** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0031.8201) | |
 | (F1–F3 covers) | 3 | Cover for 0031.8201 (optional) | Schurter **0853.0551** | Touch protection on the 54 V fuses | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0853.0551) | |
 | F1 fuse | 1 | Fuse 5×20 mm, 8 A time-lag, 250 V | Littelfuse **0218008.MXP** | 54 V input | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0218008-MXP/777606) | |
-| F2, F3 fuse | 2 | Fuse 5×20 mm, 2.5 A time-lag, 250 V | Littelfuse **02182.50MXP** | 54 V outputs | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=02182.50MXP) | |
+| F2, F3 fuse | 2 | Fuse 5×20 mm, 2.5 A time-lag, 250 V | Littelfuse **021802.5MXP** | 54 V outputs | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/021802-5MXP/777614) | [🔎 021502.5MXP (ceramic, DC-rated)](https://www.digikey.ie/en/products/result?keywords=021502.5MXP) |
 | F4–F8 | 5 | Mini blade (ATM) fuse holder, PCB | Keystone **3568** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=Keystone%203568) | |
 | F4–F8 fuse | 5 | Mini blade (ATM) fuse, 5 A, 32 V | Littelfuse **0297005.WXNV** | Swap in 3 A (0297003.WXNV) for smaller loads | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0297005-WXNV/146583) | |
 | C1, C2 | 2 | 68 µF 100 V electrolytic, Ø10 × 20 mm, 5 mm pitch | Nichicon **UPW2A680MPD** | Low impedance, 105 °C / 5000 h | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/nichicon/UPW2A680MPD/589716) | |
@@ -43,7 +43,7 @@ DigiKey Marketplace (Pololu ships it from the USA). Connectors, cables, standoff
 | Part | MPN | Qty | Link |
 |---|---|---|---|
 | 5×20 mm 8 A T | Littelfuse 0218008.MXP | 2 | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0218008-MXP/777606) |
-| 5×20 mm 2.5 A T | Littelfuse 02182.50MXP | 2 | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=02182.50MXP) |
+| 5×20 mm 2.5 A T | Littelfuse 021802.5MXP | 2 | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/021802-5MXP/777614) |
 | ATM 5 A | Littelfuse 0297005.WXNV | 5 | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0297005-WXNV/146583) |
 | ATM 3 A (optional, smaller 12 V loads) | Littelfuse 0297003.WXNV | 5 | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0297003.WXNV) |
 
