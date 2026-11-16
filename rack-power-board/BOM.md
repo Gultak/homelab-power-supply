@@ -2,7 +2,7 @@
 
 Almost everything comes from **DigiKey Ireland** (digikey.ie: EUR prices, ships to Ireland,
 free delivery over the order threshold). The Pololu module is also ordered from DigiKey, via
-DigiKey Marketplace (Pololu ships it from the USA). Connectors, cables, standoffs and inserts marked *on hand* are already in stock.
+DigiKey Marketplace (Pololu ships it from the USA). The 12 V brick comes from **Mouser** (mouser.ie: free delivery over €50, duties included), because the Flex brick is backordered at DigiKey. Connectors, cables, standoffs and inserts marked *on hand* are already in stock.
 
 * **Direct links** (marked 🔗) open the exact DigiKey product page. They were checked in
   November 2026.
@@ -13,7 +13,7 @@ DigiKey Marketplace (Pololu ships it from the USA). Connectors, cables, standoff
 
 | Ref | Qty | Part | Manufacturer / MPN | Notes | Link | Alt. link |
 |---|---|---|---|---|---|---|
-| U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Flex **PKB4313DPI** | about €42; often backordered. 5-pin and 8-pin DOSA bricks both fit. Set JP1 to match the RC logic (see README). | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) | [🔎 Delta E48SC12025NRFH](https://www.digikey.ie/en/products/result?keywords=E48SC12025NRFH) |
+| U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Delta **E48SC12025NRFH** | From **Mouser** (about €55–58; free delivery over €50, duties included). DOSA footprint and pinout, 12.7 mm tall. The "N" means negative on/off logic: **bridge JP1** (confirm with the datasheet). Check its pins against the 8-hole footprint before soldering. The Flex PKB4313DPI (about €42) also fits, but is backordered at DigiKey until June 2027. | [🔎 Mouser](https://www.mouser.ie/c/?q=E48SC12025NRFH) | [🔗 Flex PKB4313DPI (DigiKey, backorder)](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) |
 | U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. Sold through DigiKey Marketplace (shipped by Pololu from the USA); covered by DigiKey's free delivery over €50 (checked in the cart, Nov 2026). EU alternative: Opencircuit, about €50.50 + €15.95 delivery to Ireland (free above €250). | [🔎 DigiKey (Marketplace)](https://www.digikey.ie/en/products/result?keywords=Pololu%202866) | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) |
 | J1–J8 | 8 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand.** 10 A per contact | — | |
 | (J1–J8 plugs) | 8 | Crimp housing, 2-pos, 3.96 mm + contacts | JST **VHR-2N** + SVH contacts | **On hand.** Use 0.75–1.25 mm² wire (AWG 18–16) for the 5 A / 6 A outputs | — | |
