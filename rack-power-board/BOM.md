@@ -2,7 +2,7 @@
 
 Almost everything comes from **DigiKey Ireland** (digikey.ie: EUR prices, ships to Ireland,
 free delivery over the order threshold). The Pololu module is also ordered from DigiKey, via
-DigiKey Marketplace (Pololu ships it from the USA). Standoffs come from **Amazon.ie**.
+DigiKey Marketplace (Pololu ships it from the USA). Connectors, cables, standoffs and inserts marked *on hand* are already in stock.
 
 * **Direct links** (marked 🔗) open the exact DigiKey product page. They were checked in
   November 2026.
@@ -15,11 +15,10 @@ DigiKey Marketplace (Pololu ships it from the USA). Standoffs come from **Amazon
 |---|---|---|---|---|---|---|
 | U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Flex **PKB4313DPI** | about €42; often backordered. 5-pin and 8-pin DOSA bricks both fit. Set JP1 to match the RC logic (see README). | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) | [🔎 Delta E48SC12025NRFH](https://www.digikey.ie/en/products/result?keywords=E48SC12025NRFH) |
 | U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. Sold through DigiKey Marketplace (shipped by Pololu from the USA); covered by DigiKey's free delivery over €50 (checked in the cart, Nov 2026). EU alternative: Opencircuit, about €50.50 + €15.95 delivery to Ireland (free above €250). | [🔎 DigiKey (Marketplace)](https://www.digikey.ie/en/products/result?keywords=Pololu%202866) | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) |
-| J1–J8 | 8 | PCB header, 2-pos, 5.08 mm, horizontal | Phoenix Contact **MSTBA 2,5/2-G-5,08** (1757242) | 12 A per contact | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=1757242) | |
-| (J1–J8 plugs) | 8 | Pluggable screw terminal plug, 2-pos, 5.08 mm | Phoenix Contact **MSTB 2,5/2-ST-5,08** (1757019) | Mates with J1–J8 | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=1757019) | |
+| J1–J8 | 8 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand.** 10 A per contact | — | |
+| (J1–J8 plugs) | 8 | Crimp housing, 2-pos, 3.96 mm + contacts | JST **VHR-2N** + SVH contacts | **On hand.** Use 0.75–1.25 mm² wire (AWG 18–16) for the 5 A / 6 A outputs | — | |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight or right-angle | — | **On hand.** The footprint has tab holes for the right-angle version. | — | |
-| (J9 plug) | 1 | 4-pos Mate-N-Lok plug housing (the standard PC "Molex" plug) | TE **1-480424-0** | Only needed if you make your own cable | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=1-480424-0) | |
-| (J9 contacts) | 4 | Mate-N-Lok socket contact, 20–14 AWG, tin | TE **60619-4** | For the housing above | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=60619-4) | |
+| (J9 plug) | 1 | 4-pos Mate-N-Lok plug + cable | — | **On hand** | — | |
 | F1–F3 | 3 | 5×20 mm PCB fuse holder, open | Schurter **0031.8201** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0031.8201) | |
 | (F1–F3 covers) | 3 | Cover for 0031.8201 (optional) | Schurter **0853.0551** | Touch protection on the 54 V fuses | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0853.0551) | |
 | F1 fuse | 1 | Fuse 5×20 mm, 8 A time-lag, 250 V | Littelfuse **0218008.MXP** | 54 V input | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0218008-MXP/777606) | |
@@ -35,9 +34,9 @@ DigiKey Marketplace (Pololu ships it from the USA). Standoffs come from **Amazon
 | R1 | 1 | 47 kΩ 1 %, 1206 | Yageo **RC1206FR-0747KL** | 54 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-0747KL) | |
 | R2 | 1 | 4.7 kΩ 1 %, 1206 | Yageo **RC1206FR-074K7L** | 12 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-074K7L) | |
 | R3 | 1 | 1 kΩ 1 %, 1206 | Yageo **RC1206FR-071KL** | 5 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-071KL) | |
-| — | 4 | M3 standoff, ≥ 5 mm (board to case) + screws | any | Or printed bosses in the case | [Amazon.ie](https://www.amazon.ie/s?k=M3+brass+standoff+kit) | |
-| — | 4 | M2 standoff, 10 mm (Pololu) + screws | any | | [Amazon.ie](https://www.amazon.ie/s?k=M2+brass+standoff+kit) | |
-| PCB | 1 | 134 × 81 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
+| — | 4 | M3 mounting (board to case) | printed bosses + M3 heat-set inserts | **On hand** | — | |
+| — | 4 | M2 standoff, 10 mm (Pololu) + screws | — | **On hand** | — | |
+| PCB | 1 | 134 × 78.5 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
 
 ## Spare fuses (recommended)
 

@@ -7,7 +7,7 @@ import os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board.kicad_pcb")
 LIB = "/usr/share/kicad/footprints/"
 OX, OY = 30.0, 30.0          # sheet offset
-W, H = 134.0, 81.0           # board size (mm)
+W, H = 134.0, 78.5           # board size (mm)
 
 b = pcbnew.BOARD()
 b.SetCopperLayerCount(2)
@@ -127,7 +127,7 @@ def custom_fp(ref, value, padlist, outline=None, silk_label=None, crtyd=True):
 
 # ======================= PLACEMENT =======================
 # --- connectors: Phoenix MSTBA 5.08mm horizontal, opening facing the board edge (y=H)
-JY = H - 10.3
+JY = H - 5.8            # JST VH: body edge 0.5 mm inside the board edge
 JX = {"J1": 12, "J2": 26, "J3": 40, "J4": 56, "J5": 70, "J6": 84, "J7": 98, "J8": 116}
 JNET = {"J1": ("VIN_RAW", "GND"), "J2": ("OUT54_1", "GND"), "J3": ("OUT54_2", "GND"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
@@ -137,8 +137,8 @@ JVAL = {"J1": "54V IN", "J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J
         "J6": "12V OUT3", "J7": "12V OUT4", "J8": "5V OUT"}
 J = {}
 for ref, x in JX.items():
-    m = place("Connector_Phoenix_MSTB", "PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",
-              ref, x, JY, 0, "MSTBA 2,5/2-G-5,08")
+    m = place("Connector_JST", "JST_VH_B2P-VH_1x02_P3.96mm_Vertical",
+              ref, x, JY, 0, "JST B2P-VH")
     setnet(m, 1, JNET[ref][0]); setnet(m, 2, JNET[ref][1])
     m.Reference().SetVisible(False)
     J[ref] = m
@@ -357,10 +357,11 @@ for (hx, hy) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)):
 
 # ======================= SILKSCREEN =======================
 for ref, x in JX.items():
-    text(JSHORT[ref], x + 6.6, H - 14.6, 1.0, bold=True)
-    text("+", x, H - 13.3, 1.0, layer=pcbnew.B_SilkS, bold=True)
-    text("-", x + 5.08, H - 13.3, 1.0, layer=pcbnew.B_SilkS, bold=True)
-    text(JVAL[ref], x + 2.54, H - 6.0, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text(JSHORT[ref], x + 6.9, JY - 6.0, 1.0, bold=True)
+    text("+", x - 2.4, JY, 1.0, bold=True)
+    text("+", x - 2.4, JY, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text("-", x + 3.96 + 2.4, JY, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text(JVAL[ref], x + 1.98, JY + 3.6, 1.0, layer=pcbnew.B_SilkS, bold=True)
 B = pcbnew.B_SilkS
 text("RACK POWER BOARD", 72, 39.5, 2.5, layer=B, bold=True)
 text("54V -> 54V x2 / 12V x4 / 5V", 72, 43, 1.6, layer=B)
