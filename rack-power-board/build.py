@@ -7,7 +7,7 @@ import os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board.kicad_pcb")
 LIB = "/usr/share/kicad/footprints/"
 OX, OY = 30.0, 30.0          # sheet offset
-W, H = 134.0, 95.0           # board size (mm)
+W, H = 134.0, 81.0           # board size (mm)
 
 b = pcbnew.BOARD()
 b.SetCopperLayerCount(2)
@@ -132,6 +132,7 @@ JX = {"J1": 12, "J2": 26, "J3": 40, "J4": 56, "J5": 70, "J6": 84, "J7": 98, "J8"
 JNET = {"J1": ("VIN_RAW", "GND"), "J2": ("OUT54_1", "GND"), "J3": ("OUT54_2", "GND"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
         "J7": ("OUT12_4", "GND"), "J8": ("+5V", "GND")}
+JSHORT = {"J1": "54V IN", "J2": "54V 1", "J3": "54V 2", "J4": "12V 1", "J5": "12V 2", "J6": "12V 3", "J7": "12V 4", "J8": "5V"}
 JVAL = {"J1": "54V IN", "J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J5": "12V OUT2",
         "J6": "12V OUT3", "J7": "12V OUT4", "J8": "5V OUT"}
 J = {}
@@ -146,7 +147,7 @@ for ref, x in JX.items():
 F = {}
 for ref, jref, low in (("F1", "J1", "VIN_RAW"), ("F2", "J2", "OUT54_1"), ("F3", "J3", "OUT54_2")):
     x = JX[jref]
-    m = place("Fuse", "Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open", ref, x, 52, 270,
+    m = place("Fuse", "Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open", ref, x, 42.5, 270,
               "5x20 T 8A" if ref == "F1" else "5x20 T 2.5A")
     # pad1 at rotation origin (52), pad2 at 52+22.5
     setnet(m, 1, "+54V"); setnet(m, 2, low)
@@ -155,11 +156,11 @@ for ref, jref, low in (("F1", "J1", "VIN_RAW"), ("F2", "J2", "OUT54_1"), ("F3", 
 # --- 12V fuses (Keystone 3568 mini-blade holders, vertical)
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     x = JX[jref]
-    m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", ref, x, 63.5, 270, "ATM 5A")
+    m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", ref, x, 53.3, 270, "ATM 5A")
     setnet(m, 1, "+12V"); setnet(m, 2, "OUT12_" + jref[1:] if False else JNET[jref][0])
     F[ref] = m
 # Pololu feed fuse, horizontal
-m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", "F8", 99.5, 6.5, 0, "ATM 5A")
+m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", "F8", 99.5, 8.0, 0, "ATM 5A")
 setnet(m, 1, "+12V"); setnet(m, 2, "12V_PL"); F["F8"] = m
 
 # --- Eighth-brick DC-DC (DOSA), centre (64, 26)
@@ -177,8 +178,8 @@ text("PKB4313D / E48SC12025", BX, BY, 1.0)
 text("pin1", BX - 21.5, BY - 7.62, 0.9)
 
 # --- input caps (54V)
-C1 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C1", 12.5, 8.5, 0, "68uF 100V")
-C2 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C2", 25.0, 8.5, 0, "68uF 100V")
+C1 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C1", 18.0, 8.5, 0, "68uF 100V")
+C2 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C2", 31.0, 8.5, 0, "68uF 100V")
 for c in (C1, C2):
     setnet(c, 1, "+54V"); setnet(c, 2, "GND")
 C3 = place("Capacitor_SMD", "C_1210_3225Metric", "C3", 30.0, 19.5, 0, "2.2uF 100V X7R")
@@ -186,7 +187,7 @@ C4 = place("Capacitor_SMD", "C_1210_3225Metric", "C4", 30.0, 24.0, 0, "2.2uF 100
 for c in (C3, C4):
     setnet(c, 1, "+54V"); setnet(c, 2, "GND")
 # TVS
-D1 = place("Diode_SMD", "D_SMB", "D1", 20.0, 30.0, 0, "SMBJ58A")
+D1 = place("Diode_SMD", "D_SMB", "D1", 22.5, 30.0, 0, "SMBJ58A")
 setnet(D1, 1, "+54V"); setnet(D1, 2, "GND")
 # RC jumper (pin2 -> pin3)
 JP1 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP1", 31.5, 30.5, 90, "RC_NEG")
@@ -203,7 +204,7 @@ for c in (C7, C8):
     setnet(c, 1, "+12V"); setnet(c, 2, "GND")
 
 # --- Pololu D24V90F5 (on M2 standoffs), vertical, x 103..123.3, y 30..70.6
-PX0, PY0 = 103.0, 30.0
+PX0, PY0 = 103.0, 20.0
 pcx, pcy = PX0 + 10.15, PY0 + 20.3
 for i, (dx, dy) in enumerate(((-7.62, -17.78), (7.62, -17.78), (-7.62, 17.78), (7.62, 17.78))):
     place("MountingHole", "MountingHole_2.2mm_M2", "H%d" % (5 + i), pcx + dx, pcy + dy, 0, "M2 standoff")
@@ -214,23 +215,24 @@ text("D24V90F5", pcx + 2, pcy - 1, 1.0, rot=90)
 text("on M2 x10mm", pcx + 4, pcy - 1, 0.9, rot=90)
 # wire pads for the Pololu (1.0 mm2 wires)
 WP = 3.6; WD = 1.8
-P1 = custom_fp("P1", "WIREPAD", [(1, 109.92, 24.5, WP, WD)], silk_label=(109.92, 21.7))
-P2 = custom_fp("P2", "WIREPAD", [(1, 116.5, 24.5, WP, WD)], silk_label=(116.5, 21.7))
-P3 = custom_fp("P3", "WIREPAD", [(1, 118.5, 76.0, WP, WD)], silk_label=(121.8, 76.0))
-P4 = custom_fp("P4", "WIREPAD", [(1, 110.5, 76.0, WP, WD)], silk_label=(107.2, 76.0))
+P1 = custom_fp("P1", "WIREPAD", [(1, 109.92, 17.0, WP, WD)], silk_label=(109.92, 14.4))
+P2 = custom_fp("P2", "WIREPAD", [(1, 116.5, 17.0, WP, WD)], silk_label=(116.5, 14.4))
+P3 = custom_fp("P3", "WIREPAD", [(1, 118.5, 64.0, WP, WD)], silk_label=(121.8, 64.0))
+P4 = custom_fp("P4", "WIREPAD", [(1, 110.5, 64.0, WP, WD)], silk_label=(107.2, 64.0))
 setnet(P1, 1, "12V_PL"); setnet(P2, 1, "GND"); setnet(P3, 1, "+5V"); setnet(P4, 1, "GND")
-text("VIN", 109.92, 27.6, 1.0); text("GND", 116.5, 27.6, 1.0)
-text("VOUT", 118.5, 73.2, 1.0); text("GND", 110.5, 73.2, 1.0)
+text("VIN", 105.4, 17.0, 1.0); text("GND", 121.0, 17.0, 1.0)
+for _p in (P1, P2, P3, P4): _p.Reference().SetVisible(False)
+text("VOUT", 123.3, 64.0, 1.0); text("GND", 106.6, 64.0, 1.0)
 
 # --- LEDs
-R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 19.5, 41.0, 0, "47k")
-D2 = place("LED_SMD", "LED_0805_2012Metric", "D2", 25.0, 41.0, 180, "LED 54V")
+R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 17.0, 35.5, 0, "47k")
+D2 = place("LED_SMD", "LED_0805_2012Metric", "D2", 22.5, 35.5, 180, "LED 54V")
 setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 2, "LED54"); setnet(D2, 1, "GND")
 R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 60.0, 46.0, 0, "4.7k")
 D3 = place("LED_SMD", "LED_0805_2012Metric", "D3", 65.5, 46.0, 180, "LED 12V")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 2, "LED12"); setnet(D3, 1, "GND")
-R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 128.5, 74.0, 90, "1k")
-D4 = place("LED_SMD", "LED_0805_2012Metric", "D4", 128.5, 68.5, 270, "LED 5V")
+R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 129.5, 41.5, 90, "1k")
+D4 = place("LED_SMD", "LED_0805_2012Metric", "D4", 129.5, 36.0, 270, "LED 5V")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 2, "LED5"); setnet(D4, 1, "GND")
 
 # --- M3 mounting holes
@@ -238,7 +240,7 @@ for i, (x, y) in enumerate(((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)))
     place("MountingHole", "MountingHole_3.2mm_M3", "H%d" % (1 + i), x, y, 0, "M3").Reference().SetVisible(False)
 
 # --- J9: 4-pin Molex 8981 "disk drive" header, right angle, plug enters from the left edge
-MX, MY = 8.0, 28.0
+MX, MY = 8.0, 16.5
 J9 = custom_fp("J9", "Molex_8981_1x04_P5.08mm_Horizontal",
                [(i + 1, MX, MY + 5.08 * i, 3.0, 1.7) for i in range(4)]
                # mounting tabs of the right-angle variant: one pitch beyond each end pin,
@@ -247,9 +249,9 @@ J9 = custom_fp("J9", "Molex_8981_1x04_P5.08mm_Horizontal",
                outline=(0.4, MY - 6.6, MX + 4.5, MY + 15.24 + 6.6), silk_label=(MX + 5, MY - 5))
 for i, nm in enumerate(("+5V", "GND", "GND", "+5V")):
     setnet(J9, i + 1, nm)
-    text(("+5V", "GND", "GND", "+5V")[i], MX + 7.0, MY + 5.08 * i, 1.0)
+    text(("+5V", "GND", "GND", "+5V")[i], MX + 8.0, MY + 5.08 * i, 1.0)
 setnet(J9, "MP", "GND")
-text("5V AUX", MX + 1, MY - 8.8, 1.1, bold=True)
+text("5V AUX", MX + 5.6, MY + 7.6, 1.1, rot=90, bold=True)
 
 # ======================= ROUTING =======================
 def near(m, num, target_x=None):
@@ -272,11 +274,11 @@ for fref in ("F4", "F5", "F6", "F7", "F8"):
         track(ps, F[fref].FindPadByNumber(str(num)).GetNetname(), 2.0)
 # F8 -> P1
 a = near(F["F8"], 2, 109.92)
-track([a, (109.92, a[1]), (109.92, 24.5)], "12V_PL", 2.0)
+track([a, (109.92, a[1]), (109.92, 17.0)], "12V_PL", 2.0)
 # P3 (+5V) -> J8 pin1, and to R3
 c = padpos(J["J8"], 1)
-track([(118.5, 76.0), (118.5, 79.0), (c[0], 80.5), c], "+5V", 3.0)
-track([(118.5, 76.0), padpos(R3, 1)], "+5V", 0.6)
+track([(118.5, 64.0), (118.5, 66.0), (c[0], 68.5), c], "+5V", 3.0)
+q = padpos(R3, 1); track([q, (126.0, q[1])], "+5V", 0.6); via(126.0, q[1], "+5V")
 # LED nets
 track([padpos(R1, 2), padpos(D2, 2)], "LED54", 0.4)
 track([padpos(R2, 2), padpos(D3, 2)], "LED12", 0.4)
@@ -299,8 +301,8 @@ for c in (C7, C8):
 
 # 5V bus to J9 on the bottom layer: P3 -> right edge -> top edge -> down to J9
 BC = pcbnew.B_Cu
-track([(118.5, 76.0), (126.0, 76.0), (126.0, 12.0), (121.0, 12.0), (121.0, 2.2),
-       (21.25, 2.2), (21.25, 18.0), (12.0, 18.0), (12.0, MY + 15.24)], "+5V", 3.0, BC)
+track([(118.5, 64.0), (126.0, 64.0), (126.0, 12.0), (121.0, 12.0), (121.0, 2.2),
+       (27.0, 2.2), (27.0, 14.0), (12.0, 14.0), (12.0, MY + 15.24)], "+5V", 3.0, BC)
 track([(12.0, MY), (MX, MY)], "+5V", 3.0, BC)
 track([(12.0, MY + 15.24), (MX, MY + 15.24)], "+5V", 3.0, BC)
 # extra stitching vias for ground planes near connectors (help current spread on 2 layers)
@@ -324,9 +326,9 @@ def zone(netname, layer, poly, prio=0, name=None):
 
 e = 0.6
 # top: +54V region (left)
-zone("+54V", pcbnew.F_Cu, [(e, e), (45.5, e), (45.5, 57.5), (e, 57.5)])
+zone("+54V", pcbnew.F_Cu, [(e, e), (45.5, e), (45.5, 50.0), (e, 50.0)])
 # top: +12V region (middle/right), notched around the Pololu
-zone("+12V", pcbnew.F_Cu, [(48.0, e), (104.0, e), (104.0, 14.5), (101.8, 14.5), (101.8, 67.0), (48.0, 67.0)])
+zone("+12V", pcbnew.F_Cu, [(48.0, e), (104.0, e), (104.0, 14.0), (101.8, 14.0), (101.8, 58.0), (48.0, 58.0)])
 # bottom: one common GND pour
 zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (e, H - e)])
 
@@ -355,22 +357,24 @@ for (hx, hy) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)):
 
 # ======================= SILKSCREEN =======================
 for ref, x in JX.items():
-    text(JVAL[ref], x + 2.54, H - 15.3, 1.1, bold=True)
-    text("+", x, H - 13.6, 1.2, bold=True); text("-", x + 5.08, H - 13.6, 1.2, bold=True)
+    text(JSHORT[ref], x + 6.6, H - 14.6, 1.0, bold=True)
+    text("+", x, H - 13.3, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text("-", x + 5.08, H - 13.3, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text(JVAL[ref], x + 2.54, H - 6.0, 1.0, layer=pcbnew.B_SilkS, bold=True)
 B = pcbnew.B_SilkS
-text("RACK POWER BOARD", 72, 49, 2.5, layer=B, bold=True)
-text("54V -> 54V x2 / 12V x4 / 5V", 72, 53, 1.6, layer=B)
-text("2 layers, 2oz Cu, 1.6mm", 72, 56, 1.2, layer=B)
-text("F1 8A T, F2/F3 2.5A T (5x20, 250V)", 72, 58.5, 1.2, layer=B)
-text("F4-F8 ATM mini blade 5A", 72, 61, 1.2, layer=B)
+text("RACK POWER BOARD", 72, 39.5, 2.5, layer=B, bold=True)
+text("54V -> 54V x2 / 12V x4 / 5V", 72, 43, 1.6, layer=B)
+text("2 layers, 2oz Cu, 1.6mm", 72, 45.6, 1.2, layer=B)
+text("F1 8A T, F2/F3 2.5A T (5x20, 250V)", 72, 47.8, 1.2, layer=B)
+text("F4-F8 ATM mini blade 5A", 72, 50, 1.2, layer=B)
 for ref, lab in (("J1", "8A"), ("J2", "2.5A"), ("J3", "2.5A")):
-    text(lab, JX[ref] - 4.2, 64.0, 1.0, rot=90)
+    text(lab, JX[ref] - 4.2, 54.0, 1.0, rot=90)
 for ref in ("J4", "J5", "J6", "J7"):
-    text("5A", JX[ref] + 5.6, 68.5, 1.0, rot=90)
-text("5A", 104.6, 6.5, 1.0)
-text("JP1: bridge = brick ON", 26.0, 45.0, 0.9)
-text("for NEG-logic RC", 26.0, 46.5, 0.9)
-text("54V", 31.5, 41.0, 0.9); text("12V", 71.5, 46.0, 0.9); text("5V", 128.5, 64.5, 0.9)
+    text("5A", JX[ref] + 5.6, 58.3, 1.0, rot=90)
+text("5A", 95.0, 12.8, 1.0)
+text("JP1: bridge = brick ON", BX, BY + 5.0, 0.9)
+text("for NEG-logic RC", BX, BY + 6.5, 0.9)
+text("54V", 28.2, 35.5, 0.9); text("12V", 71.5, 46.0, 0.9); text("5V", 132.2, 38.8, 0.9, rot=90)
 
 #FILL
 b.Save(OUT)

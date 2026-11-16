@@ -11,7 +11,7 @@ Mean Well LOP-300-54 and provides:
 | 5 V OUT | J8 | F8 ATM 5 A on the 12 V feed; Pololu current limit | 6 A, **shared with J9** |
 | 5 V AUX | J9 (4-pin Molex 8981, left edge) | same as J8 | pinout **+5V, GND, GND, +5V** |
 
-* **Board:** 134 × 95 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
+* **Board:** 134 × 81 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
   corners, with a 4.5 mm copper keep-out around each. It fits the 140 × 150 × 30 mm space.
 * **Connectors:** J1–J8 are Phoenix MSTBA 2,5/2-G-5,08 pluggable headers (5.08 mm, 12 A). The
   plugs enter from the long board edge. Pin 1 (left, marked `+`) is positive. J9 is a
@@ -38,7 +38,7 @@ Mean Well LOP-300-54 and provides:
   together, so the brick's input/output isolation is deliberately not used. J9's ground pins
   sit on the 54 V side of the board, which needs a single ground there.
 * **5 V to J9:** a 3 mm bottom-layer track from P3, along the right and top edges and down to
-  J9 (about 27 cm, roughly 0.15 V drop at 6 A).
+  J9 (about 25 cm, roughly 0.15 V drop at 6 A).
 * **Fused outputs:** each output runs on a 3 mm track from its fuse to its connector.
 * **Pad connections:** power pads join the pours solidly, with no thermal reliefs. Use a
   hot iron (≥ 60 W) for J*, F* and U1.
