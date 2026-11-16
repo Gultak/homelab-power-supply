@@ -26,7 +26,7 @@ DigiKey Marketplace (Pololu ships it from the USA). The 12 V brick comes from **
 | F4–F8 | 5 | Mini blade (ATM) fuse holder, PCB | Keystone **3568** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=Keystone%203568) | |
 | F4–F8 fuse | 5 | Mini blade (ATM) fuse, 5 A, 32 V | Littelfuse **0297005.WXNV** | Swap in 3 A (0297003.WXNV) for smaller loads | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/littelfuse-inc/0297005-WXNV/146583) | |
 | C1, C2 | 2 | 68 µF 100 V electrolytic, Ø10 × 20 mm, 5 mm pitch | Nichicon **UPW2A680MPD** | Low impedance, 105 °C / 5000 h | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/nichicon/UPW2A680MPD/589716) | |
-| C3, C4 | 2 | 2.2 µF 100 V X7R, 1210 | Murata **GRM32ER72A225KA35L** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=GRM32ER72A225KA35L) | |
+| C3, C4 | 2 | 2.2 µF 100 V X7R, 1210 | KEMET **C1210C225K1RACTU** | Replaces Murata GRM32ER72A225KA35L (backordered until 22 Dec); same value, voltage, dielectric and size | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/kemet/C1210C225K1RACTU/1950671) | |
 | C5, C6 | 2 | 470 µF 16 V aluminium polymer, Ø8 × 9 mm, 3.5 mm pitch | Panasonic **16SEPG470M** | 8 mΩ ESR | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/panasonic-industry/16SEPG470M/8020032) | [🔗 Chemi-Con APSG160ELL471MH08J](https://www.digikey.ie/en/products/detail/chemi-con/APSG160ELL471MH08J/21805635) |
 | C7, C8 | 2 | 22 µF 25 V X5R, 1210 | Murata **GRM32ER61E226KE15L** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=GRM32ER61E226KE15L) | |
 | D1 | 1 | TVS diode 58 V, SMB | Littelfuse **SMBJ58A** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=SMBJ58A%20Littelfuse) | |
