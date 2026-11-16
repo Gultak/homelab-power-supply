@@ -27,6 +27,30 @@ Mean Well LOP-300-54 and provides:
   board. It is wired with 1 mm² leads to pads P1 (VIN), P2 (GND), P3 (VOUT) and P4 (GND),
   using its own 5 mm terminal blocks.
 
+## Mounting holes
+
+Coordinates are in mm from the board's **top-left corner**, as seen from the component
+side, with the connector edge at the bottom. X runs right and Y runs down. All holes are
+unplated (NPTH).
+
+| Hole | Purpose | X | Y | Drill | Notes |
+|---|---|---|---|---|---|
+| H1 | board mount | 4.00 | 4.00 | 3.2 mm (M3) | 9 mm Ø copper-free area on both sides |
+| H2 | board mount | 130.00 | 4.00 | 3.2 mm (M3) | same |
+| H3 | board mount | 4.00 | 76.50 | 3.2 mm (M3) | same |
+| H4 | board mount | 130.00 | 76.50 | 3.2 mm (M3) | same |
+| H5 | Pololu standoff | 105.53 | 22.52 | 2.2 mm (M2) | |
+| H6 | Pololu standoff | 120.77 | 22.52 | 2.2 mm (M2) | |
+| H7 | Pololu standoff | 105.53 | 58.08 | 2.2 mm (M2) | |
+| H8 | Pololu standoff | 120.77 | 58.08 | 2.2 mm (M2) | |
+
+* **Board outline:** 134.0 × 81.0 mm.
+* **M3 pattern:** 126.0 × 72.5 mm centre-to-centre, inset 4 mm from the top, left and
+  right edges and 4.5 mm from the connector edge. Use M3 standoffs or printed bosses of at
+  least 5 mm in the case, with screw heads or washers up to 9 mm Ø.
+* **M2 pattern (Pololu):** 15.24 × 35.56 mm, matching the D24V90F5's own holes. Use 10 mm
+  M2 standoffs.
+
 ![top](docs/top.png)
 ![bottom (mirrored)](docs/bottom.png)
 
