@@ -129,7 +129,7 @@ def custom_fp(ref, value, padlist, outline=None, silk_label=None, crtyd=True):
 # --- connectors: Phoenix MSTBA 5.08mm horizontal, opening facing the board edge (y=H)
 JY = H - 10.3
 JX = {"J1": 12, "J2": 26, "J3": 40, "J4": 56, "J5": 70, "J6": 84, "J7": 98, "J8": 116}
-JNET = {"J1": ("VIN_RAW", "GND54"), "J2": ("OUT54_1", "GND54"), "J3": ("OUT54_2", "GND54"),
+JNET = {"J1": ("VIN_RAW", "GND"), "J2": ("OUT54_1", "GND"), "J3": ("OUT54_2", "GND"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
         "J7": ("OUT12_4", "GND"), "J8": ("+5V", "GND")}
 JVAL = {"J1": "54V IN", "J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J5": "12V OUT2",
@@ -170,7 +170,7 @@ brick_pads = [
     (7, BX + 25.4, BY - 3.81, 2.6, 1.5), (8, BX + 25.4, BY - 7.62, 3.6, 2.1)]
 U1 = custom_fp("U1", "DOSA_EighthBrick_THT", brick_pads,
                outline=(BX - 29.2, BY - 11.45, BX + 29.2, BY + 11.45), silk_label=(BX, BY - 9))
-for num, nm in ((1, "+54V"), (2, "RC"), (3, "GND54"), (4, "GND"), (5, "GND"), (7, "+12V"), (8, "+12V")):
+for num, nm in ((1, "+54V"), (2, "RC"), (3, "GND"), (4, "GND"), (5, "GND"), (7, "+12V"), (8, "+12V")):
     setnet(U1, num, nm)
 text("54-12V 1/8 BRICK", BX, BY - 3, 1.5, bold=True)
 text("PKB4313D / E48SC12025", BX, BY, 1.0)
@@ -180,17 +180,17 @@ text("pin1", BX - 21.5, BY - 7.62, 0.9)
 C1 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C1", 12.5, 8.5, 0, "68uF 100V")
 C2 = place("Capacitor_THT", "CP_Radial_D10.0mm_P5.00mm", "C2", 25.0, 8.5, 0, "68uF 100V")
 for c in (C1, C2):
-    setnet(c, 1, "+54V"); setnet(c, 2, "GND54")
+    setnet(c, 1, "+54V"); setnet(c, 2, "GND")
 C3 = place("Capacitor_SMD", "C_1210_3225Metric", "C3", 30.0, 19.5, 0, "2.2uF 100V X7R")
 C4 = place("Capacitor_SMD", "C_1210_3225Metric", "C4", 30.0, 24.0, 0, "2.2uF 100V X7R")
 for c in (C3, C4):
-    setnet(c, 1, "+54V"); setnet(c, 2, "GND54")
+    setnet(c, 1, "+54V"); setnet(c, 2, "GND")
 # TVS
-D1 = place("Diode_SMD", "D_SMB", "D1", 12.0, 30.0, 0, "SMBJ58A")
-setnet(D1, 1, "+54V"); setnet(D1, 2, "GND54")
+D1 = place("Diode_SMD", "D_SMB", "D1", 20.0, 30.0, 0, "SMBJ58A")
+setnet(D1, 1, "+54V"); setnet(D1, 2, "GND")
 # RC jumper (pin2 -> pin3)
 JP1 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP1", 31.5, 30.5, 90, "RC_NEG")
-setnet(JP1, 1, "RC"); setnet(JP1, 2, "GND54")
+setnet(JP1, 1, "RC"); setnet(JP1, 2, "GND")
 
 # --- output caps (12V)
 C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 70.0, 7.5, 0, "470uF 16V polymer")
@@ -225,7 +225,7 @@ text("VOUT", 118.5, 73.2, 1.0); text("GND", 110.5, 73.2, 1.0)
 # --- LEDs
 R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 19.5, 41.0, 0, "47k")
 D2 = place("LED_SMD", "LED_0805_2012Metric", "D2", 25.0, 41.0, 180, "LED 54V")
-setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 2, "LED54"); setnet(D2, 1, "GND54")
+setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 2, "LED54"); setnet(D2, 1, "GND")
 R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 60.0, 46.0, 0, "4.7k")
 D3 = place("LED_SMD", "LED_0805_2012Metric", "D3", 65.5, 46.0, 180, "LED 12V")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 2, "LED12"); setnet(D3, 1, "GND")
@@ -233,14 +233,19 @@ R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 128.5, 74.0, 90, "1k")
 D4 = place("LED_SMD", "LED_0805_2012Metric", "D4", 128.5, 68.5, 270, "LED 5V")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 2, "LED5"); setnet(D4, 1, "GND")
 
-# --- ground tie jumper (bottom side, bridging the split at x=46..48)
-JP2 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP2", 47.0, 45.0, 0,
-            "GND_TIE", layer_back=True)
-setnet(JP2, 1, "GND54"); setnet(JP2, 2, "GND")
-
 # --- M3 mounting holes
 for i, (x, y) in enumerate(((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))):
     place("MountingHole", "MountingHole_3.2mm_M3", "H%d" % (1 + i), x, y, 0, "M3").Reference().SetVisible(False)
+
+# --- J9: 4-pin Molex 8981 "disk drive" header, right angle, plug enters from the left edge
+MX, MY = 6.0, 30.0
+J9 = custom_fp("J9", "Molex_8981_1x04_P5.08mm_Horizontal",
+               [(i + 1, MX, MY + 5.08 * i, 3.0, 1.7) for i in range(4)],
+               outline=(0.4, MY - 3.4, MX + 6.0, MY + 15.24 + 3.4), silk_label=(MX + 3, MY - 5))
+for i, nm in enumerate(("+5V", "GND", "GND", "+5V")):
+    setnet(J9, i + 1, nm)
+    text(("+5V", "GND", "GND", "+5V")[i], MX + 6.0, MY + 5.08 * i, 1.0)
+text("5V AUX", MX + 3, MY - 7.0, 1.1, bold=True)
 
 # ======================= ROUTING =======================
 def near(m, num, target_x=None):
@@ -278,16 +283,22 @@ def away_via(m, num, other, nm, dist=1.9, w=0.5, d=0.8, dr=0.4):
     v = (q[0] + dx / L * dist, q[1] + dy / L * dist)
     track([q, v], nm, w); via(v[0], v[1], nm, d, dr)
 # LED cathodes -> vias to bottom ground planes
-away_via(D2, 1, 2, "GND54"); away_via(D3, 1, 2, "GND"); away_via(D4, 1, 2, "GND")
+away_via(D2, 1, 2, "GND"); away_via(D3, 1, 2, "GND"); away_via(D4, 1, 2, "GND")
 # RC jumper
 track([padpos(U1, 2), (33.5, BY), (33.5, padpos(JP1, 1)[1]), padpos(JP1, 1)], "RC", 0.5)
-away_via(JP1, 2, 1, "GND54", 1.9, 0.6)
+away_via(JP1, 2, 1, "GND", 1.9, 0.6)
 # ceramic cap GND vias
-for c, nm in ((C3, "GND54"), (C4, "GND54"), (D1, "GND54")):
+for c, nm in ((C3, "GND"), (C4, "GND"), (D1, "GND")):
     q = padpos(c, 2); track([q, (q[0] + 1.6, q[1])], nm, 0.8); via(q[0] + 1.6, q[1], nm, 1.0, 0.5)
 for c in (C7, C8):
     away_via(c, 2, 1, "GND", 2.0, 0.8, 1.0, 0.5)
 
+# 5V bus to J9 on the bottom layer: P3 -> right edge -> top edge -> down to J9
+BC = pcbnew.B_Cu
+track([(118.5, 76.0), (126.0, 76.0), (126.0, 12.0), (121.0, 12.0), (121.0, 2.2),
+       (21.25, 2.2), (21.25, 18.0), (10.0, 18.0), (10.0, MY + 15.24)], "+5V", 3.0, BC)
+track([(10.0, MY), (MX, MY)], "+5V", 3.0, BC)
+track([(10.0, MY + 15.24), (MX, MY + 15.24)], "+5V", 3.0, BC)
 # extra stitching vias for ground planes near connectors (help current spread on 2 layers)
 # (connector pin2 pads are through-hole, so they already join bottom plane)
 
@@ -312,9 +323,8 @@ e = 0.6
 zone("+54V", pcbnew.F_Cu, [(e, e), (45.5, e), (45.5, 57.5), (e, 57.5)])
 # top: +12V region (middle/right), notched around the Pololu
 zone("+12V", pcbnew.F_Cu, [(48.0, e), (104.0, e), (104.0, 14.5), (101.8, 14.5), (101.8, 67.0), (48.0, 67.0)])
-# bottom: GND54 (left) and GND (right), split 46..48
-zone("GND54", pcbnew.B_Cu, [(e, e), (46.4, e), (46.4, H - e), (e, H - e)])
-zone("GND", pcbnew.B_Cu, [(47.6, e), (W - e, e), (W - e, H - e), (47.6, H - e)])
+# bottom: one common GND pour
+zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (e, H - e)])
 
 # keep-out: no top copper under the open-frame brick body (between the pin rows)
 ko = pcbnew.ZONE(b)
@@ -356,7 +366,6 @@ for ref in ("J4", "J5", "J6", "J7"):
 text("5A", 104.6, 6.5, 1.0)
 text("JP1: bridge = brick ON", 22.5, 35.5, 0.9)
 text("for NEG-logic RC", 22.5, 37.0, 0.9)
-text("JP2: bridge to tie 54V- to GND", 47, 41.5, 0.9, layer=pcbnew.B_SilkS)
 text("54V", 16.5, 44.0, 0.9); text("12V", 71.5, 46.0, 0.9); text("5V", 128.5, 64.5, 0.9)
 
 #FILL

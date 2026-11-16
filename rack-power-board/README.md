@@ -8,12 +8,18 @@ Mean Well LOP-300-54 and provides:
 | 54 V IN | J1 | F1 5×20 T 8 A + SMBJ58A TVS | from LOP-300-54 |
 | 54 V OUT 1 / 2 | J2, J3 | F2, F3 5×20 T 2.5 A | 2 A each |
 | 12 V OUT 1–4 | J4–J7 | F4–F7 ATM mini blade (5 A, or 3 A per load) | 3–5 A each |
-| 5 V OUT | J8 | F8 ATM 5 A on the 12 V feed; Pololu current limit | 6 A |
+| 5 V OUT | J8 | F8 ATM 5 A on the 12 V feed; Pololu current limit | 6 A, **shared with J9** |
+| 5 V AUX | J9 (4-pin Molex 8981, left edge) | same as J8 | pinout **+5V, GND, GND, +5V** |
 
 * **Board:** 134 × 95 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
   corners, with a 4.5 mm copper keep-out around each. It fits the 140 × 150 × 30 mm space.
-* **Connectors:** all Phoenix MSTBA 2,5/2-G-5,08 pluggable headers (5.08 mm, 12 A). The plugs
-  enter from the long board edge. Pin 1 (left, marked `+`) is positive.
+* **Connectors:** J1–J8 are Phoenix MSTBA 2,5/2-G-5,08 pluggable headers (5.08 mm, 12 A). The
+  plugs enter from the long board edge. Pin 1 (left, marked `+`) is positive. J9 is a
+  right-angle 4-pin "disk drive" Molex header on the left edge, with its plug entering from
+  the left.
+* **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
+  GND, +5V). Never plug a PC PSU's peripheral cable into it, or that supply's 12 V gets fed
+  into the 5 V rail.
 * **12 V:** a DOSA eighth-brick isolated converter (36–75 V in, 12 V / 25 A, about 95 %
   efficient). It runs at roughly half load, so the case fans are enough cooling and no
   heatsink is needed.
@@ -28,8 +34,11 @@ Mean Well LOP-300-54 and provides:
 
 * **Top layer:** a +54 V pour on the left and a +12 V pour in the middle. There is no top
   copper under the open-frame brick body.
-* **Bottom layer:** the GND54 (54 V return) pour on the left and the GND (12 V / 5 V return)
-  pour on the right, split by a 1.2 mm gap.
+* **Bottom layer:** one common GND pour. The 54 V return and the 12 V/5 V return are tied
+  together, so the brick's input/output isolation is deliberately not used. J9's ground pins
+  sit on the 54 V side of the board, which needs a single ground there.
+* **5 V to J9:** a 3 mm bottom-layer track from P3, along the right and top edges and down to
+  J9 (about 27 cm, roughly 0.15 V drop at 6 A).
 * **Fused outputs:** each output runs on a 3 mm track from its fuse to its connector.
 * **Pad connections:** power pads join the pours solidly, with no thermal reliefs. Use a
   hot iron (≥ 60 W) for J*, F* and U1.
@@ -39,7 +48,6 @@ Mean Well LOP-300-54 and provides:
 | Jumper | Default | Meaning |
 |---|---|---|
 | **JP1** (top, beside U1 pin 2) | open | Bridge it for a **negative-logic** brick (RC pulled to −In = ON, e.g. Delta …N…). Leave it open for a **positive-logic** brick (RC open = ON). Check your part's datasheet. Flex says the standard PKB4000D product is negative logic, and a "P" ordering suffix gives positive logic. |
-| **JP2** (bottom, on the pour split) | open | Bridge it to tie 54 V − to the 12 V/5 V GND, i.e. one common ground. This is recommended unless you want the 12 V/5 V side floating (isolated). |
 
 ## Bill of materials
 
@@ -48,6 +56,8 @@ Mean Well LOP-300-54 and provides:
 | U1 | 1 | Flex **PKB4313DPI** (300 W) or Delta **E48SC12025NRFH**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W | about €42 at DigiKey EU; often backordered. 5-pin and 8-pin bricks both fit (sense pins are tied locally). |
 | U2 | 1 | Pololu **D24V90F5** (#2866) + 4× M2 × 10 mm standoffs and screws | about US$37 direct |
 | J1–J8 | 8 | Phoenix **MSTBA 2,5/2-G-5,08** (1757242) header | |
+| J9 | 1 | Molex **8981** 4-pin right-angle PCB header, e.g. 15-24-4441 | 5.08 mm, 1.7 mm holes. Clip any PCB locator peg (no hole is provided). |
+| (J9 plug) | 1 | 4-pin 8981 / AMP Mate-N-Lok receptacle (e.g. TE 1-480424-0 + contacts) | the standard PC "Molex" plug |
 | (plugs) | 8 | Phoenix **MSTB 2,5/2-ST-5,08** (1757019) plug | screw plug |
 | F1–F3 | 3 | Schurter **0031.8201** 5×20 PCB fuse holder (open) | add the 0853.0551 cover if you want touch protection |
 | F1 fuse | 1 | 5×20 T **8 A** 250 V (Littelfuse 218 series) | |
@@ -80,7 +90,10 @@ goes over, the LOP's overload protection trips first, and F1 (8 A) protects the 
    it to confirm.
 2. **Pololu wiring:** the Pololu has no fixed footprint because its pin positions aren't
    published. Check its VIN/GND/VOUT labels and wire it to P1–P4.
-3. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
+3. **J9 footprint:** it is built from the 5.08 mm pitch and a generic right-angle body. Check
+   pin-row-to-edge distance and hole size against the header you buy. The body may
+   overhang the left edge, which is fine.
+4. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
    0031.8201, Keystone 3568). Compare them against the parts you actually buy.
 
 ## Files
