@@ -51,6 +51,8 @@ Mean Well LOP-300-54 and provides:
 
 ## Bill of materials
 
+For manufacturer part numbers and ordering links (DigiKey Ireland and Amazon.ie), see **[BOM.md](BOM.md)**.
+
 | Ref | Qty | Part | Notes |
 |---|---|---|---|
 | U1 | 1 | Flex **PKB4313DPI** (300 W) or Delta **E48SC12025NRFH**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W | about €42 at DigiKey EU; often backordered. 5-pin and 8-pin bricks both fit (sense pins are tied locally). |
