@@ -61,8 +61,8 @@ unplated (NPTH).
 * **M2 pattern (Pololu):** 15.24 × 35.56 mm, matching the D24V90F5's own holes. Use 10 mm
   M2 standoffs.
 
-![top](docs/top.png)
-![bottom (mirrored)](docs/bottom.png)
+![top](docs/top-r2.png)
+![bottom (mirrored)](docs/bottom-r2.png)
 
 ## Layout and copper
 

@@ -43,8 +43,8 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   GND (GND54 for D2). Use plain LEDs without a built-in resistor. A header with a Dupont
   housing on it is about 14 mm tall; a mated VH plug about 17 mm.
 
-![top](docs/top.png)
-![bottom (mirrored)](docs/bottom.png)
+![top](docs/top-r2.png)
+![bottom (mirrored)](docs/bottom-r2.png)
 
 ## Mounting holes
 
