@@ -1,349 +1,225 @@
 ** Drc report for /home/claude/homelab-power-supply/rack-power-board-v2/rack-power-board-v2.kicad_pcb **
-** Created on 2026-11-17 11:06:53 **
+** Created on 2026-11-17 13:25:03 **
 
-** Found 98 DRC violations **
+** Found 65 DRC violations **
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(70.2300 mm, 97.8600 mm): Line on F.Silkscreen
-    @(71.1000 mm, 97.6000 mm): PCB Text '12V 2' on F.Silkscreen
+    @(89.8000 mm, 80.5000 mm): Reference 'D3'
+    @(89.7700 mm, 79.8300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(82.0300 mm, 97.8600 mm): Line on F.Silkscreen
-    @(82.9000 mm, 97.6000 mm): PCB Text '12V 3' on F.Silkscreen
+    @(89.8000 mm, 80.5000 mm): Reference 'D3'
+    @(89.7700 mm, 79.8300 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(59.3000 mm, 97.6000 mm): PCB Text '12V 1' on F.Silkscreen
-    @(58.4300 mm, 97.8600 mm): Line on F.Silkscreen
+    @(103.0000 mm, 40.0000 mm): PCB Text '+54V' on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(61.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(60.7400 mm, 103.9000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 43.9600 mm): PCB Text '+54V' on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(61.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(60.7400 mm, 104.5000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 47.9200 mm): PCB Text '+54V' on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(61.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(61.3400 mm, 104.2000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 51.8800 mm): PCB Text 'GND' on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(61.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(61.5400 mm, 109.1100 mm): Line on F.Silkscreen
+    @(92.5400 mm, 42.1700 mm): Reference 'F8'
+    @(92.5000 mm, 43.2000 mm): PCB Text '5A' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(72.5400 mm, 103.9000 mm): Line on F.Silkscreen
-    @(73.0000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
+    @(103.0000 mm, 55.8400 mm): PCB Text 'GND' on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(73.0000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(72.5400 mm, 104.5000 mm): Line on F.Silkscreen
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
+    @(103.0000 mm, 59.8000 mm): PCB Text 'GND' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(73.0000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(73.1400 mm, 104.2000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 65.0000 mm): PCB Text '+12V' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(73.0000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(73.3400 mm, 109.1100 mm): Line on F.Silkscreen
+    @(103.0000 mm, 68.9600 mm): PCB Text '+12V' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(79.0000 mm, 61.0000 mm): PCB Text '12V' on F.Silkscreen
-    @(78.4700 mm, 62.3300 mm): Line on F.Silkscreen
+    @(103.0000 mm, 72.9200 mm): PCB Text '+12V' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(84.3400 mm, 103.9000 mm): Line on F.Silkscreen
-    @(84.8000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
+    @(103.0000 mm, 84.8000 mm): PCB Text 'GND' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(84.8000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(84.3400 mm, 104.5000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 80.8400 mm): PCB Text 'GND' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(84.8000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(84.9400 mm, 104.2000 mm): Line on F.Silkscreen
+    @(101.8403 mm, 91.1850 mm): Line on F.Silkscreen
+    @(101.7700 mm, 99.5600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(84.8000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(85.1400 mm, 109.1100 mm): Line on F.Silkscreen
+    @(103.0000 mm, 76.8800 mm): PCB Text 'GND' on F.Silkscreen
+    @(102.4900 mm, 86.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(49.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(48.9400 mm, 103.9000 mm): Line on F.Silkscreen
+    @(37.0000 mm, 79.4000 mm): PCB Text '5V' on F.Silkscreen
+    @(35.6700 mm, 78.8700 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(49.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(48.9400 mm, 104.5000 mm): Line on F.Silkscreen
+    @(56.9000 mm, 68.2000 mm): PCB Text '54V' on F.Silkscreen
+    @(54.8700 mm, 68.6700 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(49.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(49.5400 mm, 104.2000 mm): Line on F.Silkscreen
+    @(74.6800 mm, 104.2000 mm): PCB Text '-' on B.Silkscreen
+    @(75.6200 mm, 104.2000 mm): PCB Text '+' on B.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(49.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(49.7400 mm, 109.1100 mm): Line on F.Silkscreen
+    @(46.1600 mm, 104.2000 mm): PCB Text '-' on B.Silkscreen
+    @(46.8200 mm, 104.2000 mm): PCB Text '+' on B.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(47.5000 mm, 97.6000 mm): PCB Text '5V' on F.Silkscreen
-    @(46.6300 mm, 97.8600 mm): Line on F.Silkscreen
+    @(65.4800 mm, 104.2000 mm): PCB Text '-' on B.Silkscreen
+    @(66.3200 mm, 104.2000 mm): PCB Text '+' on B.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(37.7271 mm, 86.9100 mm): Line on F.Silkscreen
-    @(35.5400 mm, 87.1700 mm): Reference 'D4'
+    @(83.9800 mm, 104.2000 mm): PCB Text '-' on B.Silkscreen
+    @(84.9200 mm, 104.2000 mm): PCB Text '+' on B.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(37.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(37.1400 mm, 103.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(37.1400 mm, 104.5000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(37.7400 mm, 104.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(37.9400 mm, 109.1100 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.0000 mm, 87.8200 mm): Reference 'R3'
-    @(35.5400 mm, 87.1700 mm): Reference 'D4'
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(119.7400 mm, 103.9000 mm): Line on F.Silkscreen
-    @(120.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(120.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(119.7400 mm, 104.5000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(120.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(120.3400 mm, 104.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(120.2000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(120.5400 mm, 109.1100 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(108.7400 mm, 109.1100 mm): Line on F.Silkscreen
-    @(108.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(118.3000 mm, 97.6000 mm): PCB Text '54V 1' on F.Silkscreen
-    @(117.6900 mm, 73.8900 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(105.8900 mm, 73.8900 mm): Line on F.Silkscreen
-    @(106.5000 mm, 97.6000 mm): PCB Text '54V IN' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(128.2000 mm, 51.8800 mm): PCB Text 'GND' on F.Silkscreen
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(128.2000 mm, 47.9200 mm): PCB Text '+12V' on F.Silkscreen
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(128.2000 mm, 43.9600 mm): PCB Text '+12V' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(128.2000 mm, 59.8000 mm): PCB Text 'GND' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(128.2000 mm, 55.8400 mm): PCB Text 'GND' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(127.8900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(128.2000 mm, 40.0000 mm): PCB Text '+12V' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(108.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(107.9400 mm, 103.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(108.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(107.9400 mm, 104.5000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(108.4000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(108.5400 mm, 104.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(106.5000 mm, 97.6000 mm): PCB Text '54V IN' on F.Silkscreen
-    @(105.8900 mm, 96.6100 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(96.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(96.1400 mm, 103.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(96.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(96.1400 mm, 104.5000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(96.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(96.7400 mm, 104.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(96.6000 mm, 104.2000 mm): PCB Text '+' on F.Silkscreen
-    @(96.9400 mm, 109.1100 mm): Line on F.Silkscreen
+    @(93.2800 mm, 104.2000 mm): PCB Text '-' on B.Silkscreen
+    @(94.1200 mm, 104.2000 mm): PCB Text '+' on B.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(79.0000 mm, 61.0000 mm): PCB Text '12V' on F.Silkscreen
+    @(67.7500 mm, 85.0000 mm): PCB Text 'JP2: bridge to tie GND54 to GND' on B.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(71.1000 mm, 97.6000 mm): PCB Text '12V 2' on F.Silkscreen
+    @(38.6800 mm, 42.5000 mm): Line on F.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
-    @(59.3000 mm, 97.6000 mm): PCB Text '12V 1' on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(82.9000 mm, 97.6000 mm): PCB Text '12V 3' on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(37.0000 mm, 67.6000 mm): PCB Text '5V AUX' on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(72.2700 mm, 61.0000 mm): Reference 'D3'
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(86.8600 mm, 62.1700 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(103.0600 mm, 62.1700 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(30.4000 mm, 53.4000 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(42.5000 mm, 81.8400 mm): Line on F.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(35.5400 mm, 87.1700 mm): Reference 'D4'
+    @(67.1200 mm, 30.4000 mm): Line on F.Silkscreen
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(87.2000 mm, 84.8000 mm): Footprint F7
+    @(49.5000 mm, 70.0000 mm): Footprint R1
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(40.0000 mm, 104.2000 mm): Footprint J8
+    @(81.5000 mm, 86.5000 mm): Footprint F5
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(118.0000 mm, 55.0000 mm): Footprint C6
+    @(53.6000 mm, 70.0000 mm): Footprint D2
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(74.6000 mm, 61.0000 mm): Footprint D3
+    @(72.5000 mm, 78.5000 mm): Footprint C6
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(75.4000 mm, 84.8000 mm): Footprint F6
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(87.2000 mm, 104.2000 mm): Footprint J7
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(118.0000 mm, 43.0000 mm): Footprint C5
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(95.5000 mm, 80.5000 mm): Footprint D2
+    @(49.0200 mm, 104.2000 mm): Footprint J2
 [lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
     Local override; Severity: warning
     @(0.0000 mm, 0.0000 mm): Footprint P2
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(132.8000 mm, 40.0000 mm): Footprint J10
-[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
-    Local override; Severity: warning
-    @(0.0000 mm, 0.0000 mm): Footprint P4
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(83.0800 mm, 49.7700 mm): Footprint H8
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(95.5000 mm, 75.5000 mm): Footprint R1
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(51.8000 mm, 84.8000 mm): Footprint F4
-[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
-    Local override; Severity: warning
-    @(0.0000 mm, 0.0000 mm): Footprint P1
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(90.0000 mm, 57.0000 mm): Footprint F8
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(47.5200 mm, 34.5300 mm): Footprint H5
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(134.6000 mm, 105.5000 mm): Footprint H4
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(134.6000 mm, 34.0000 mm): Footprint H2
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(75.4000 mm, 104.2000 mm): Footprint J6
-[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
-    Local override; Severity: warning
-    @(0.0000 mm, 0.0000 mm): Footprint J9
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(34.0000 mm, 105.5000 mm): Footprint H3
+    @(107.4000 mm, 65.0000 mm): Footprint J10
 [lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
     Local override; Severity: warning
     @(0.0000 mm, 0.0000 mm): Footprint P3
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(122.6000 mm, 74.0000 mm): Footprint F3
+    @(100.0000 mm, 86.5000 mm): Footprint F7
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(70.0000 mm, 61.0000 mm): Footprint R2
+    @(88.5000 mm, 78.5000 mm): Footprint D3
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(110.8000 mm, 74.0000 mm): Footprint F2
+    @(96.3200 mm, 104.2000 mm): Footprint J7
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(37.0000 mm, 75.0000 mm): Footprint D4
+[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
+    Local override; Severity: warning
+    @(0.0000 mm, 0.0000 mm): Footprint J9
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(59.3200 mm, 104.2000 mm): Footprint J3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(40.0000 mm, 104.2000 mm): Footprint J8
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(68.5200 mm, 104.2000 mm): Footprint J4
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(90.8000 mm, 86.5000 mm): Footprint F6
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(40.5200 mm, 61.2700 mm): Footprint H7
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(61.3000 mm, 75.5000 mm): Footprint F3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(40.5200 mm, 46.0300 mm): Footprint H5
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(37.0000 mm, 70.0000 mm): Footprint R3
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
     @(34.0000 mm, 34.0000 mm): Footprint H1
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(63.6000 mm, 104.2000 mm): Footprint J5
+    @(107.4000 mm, 40.0000 mm): Footprint J1
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(37.0000 mm, 86.0000 mm): Footprint R3
+    @(77.8200 mm, 104.2000 mm): Footprint J5
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(122.6000 mm, 104.2000 mm): Footprint J3
+    @(51.0000 mm, 75.5000 mm): Footprint F2
+[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
+    Local override; Severity: warning
+    @(0.0000 mm, 0.0000 mm): Footprint P4
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(63.6000 mm, 84.8000 mm): Footprint F5
+    @(104.5000 mm, 93.5000 mm): Footprint C5
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(47.5200 mm, 49.7700 mm): Footprint H7
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(110.8000 mm, 104.2000 mm): Footprint J2
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(35.5400 mm, 89.5000 mm): Footprint D4
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(99.0000 mm, 104.2000 mm): Footprint J1
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(51.8000 mm, 104.2000 mm): Footprint J4
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(83.0800 mm, 34.5300 mm): Footprint H6
+    @(34.0000 mm, 105.5000 mm): Footprint H3
 [lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
     Local override; Severity: warning
     @(0.0000 mm, 0.0000 mm): Footprint U2
+[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
+    Local override; Severity: warning
+    @(0.0000 mm, 0.0000 mm): Footprint P1
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(92.7500 mm, 86.0000 mm): Footprint JP2
+    @(76.0800 mm, 61.2700 mm): Footprint H8
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(72.2000 mm, 86.5000 mm): Footprint F4
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(87.1200 mm, 104.2000 mm): Footprint J6
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(97.5000 mm, 39.5000 mm): Footprint F8
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(84.0000 mm, 78.5000 mm): Footprint R2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(109.2000 mm, 34.0000 mm): Footprint H2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(76.0800 mm, 46.0300 mm): Footprint H6
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(109.2000 mm, 105.5000 mm): Footprint H4
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(67.7500 mm, 80.0000 mm): Footprint JP2
 
 ** Found 0 unconnected pads **
 

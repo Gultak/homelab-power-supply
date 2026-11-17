@@ -7,16 +7,16 @@ Same sourcing as [v1](../rack-power-board/BOM.md): almost everything from **Digi
 * **Direct links** (🔗) open the exact DigiKey product page (checked November 2026).
 * **Search links** (🔎) run a DigiKey keyword search for the exact manufacturer part number.
 * Quantities are for one board. Spare fuses are listed separately.
-* The 12 V supply itself (Mean Well LOP-200-12 or LOP-300-12) is not listed here.
+* The supplies themselves (LOP-300-54 and LOP-200-12 / LOP-300-12) are not listed here.
 
 | Ref | Qty | Part | Manufacturer / MPN | Notes | Link | Alt. link |
 |---|---|---|---|---|---|---|
 | U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Same as v1. Mount on 4× M2 × 10 mm standoffs. Opencircuit: about €50.50 incl. VAT + €15.95 delivery to Ireland. | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) | [Pololu direct](https://www.pololu.com/product/2866) |
-| J10 | 1 | PCB header, 6-pos, 3.96 mm, straight | JST **B6P-VH** | 12 V input, 10 A per contact | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=B6P-VH) | |
-| (J10 plug) | 1 | Crimp housing, 6-pos, 3.96 mm | JST **VHR-6N** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=VHR-6N) | |
-| (J10 contacts) | 6 (+2 spare) | Crimp contact, AWG 18–16 | JST **SVH-41T-P1.1** | Use 1.25 mm² (AWG 16) wire | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=SVH-41T-P1.1) | |
-| J1–J8 | 8 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand** | — | |
-| (J1–J8 plugs) | 8 | Crimp housing, 2-pos + contacts | JST **VHR-2N** + SVH contacts | **On hand** | — | |
+| J1, J10 | 2 | PCB header, 6-pos, 3.96 mm, straight | JST **B6P-VH** | 54 V and 12 V inputs, 10 A per contact | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=B6P-VH) | |
+| (J1, J10 plugs) | 2 | Crimp housing, 6-pos, 3.96 mm | JST **VHR-6N** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=VHR-6N) | |
+| (J1, J10 contacts) | 12 (+4 spare) | Crimp contact, AWG 18–16 | JST **SVH-41T-P1.1** | Use 1.25 mm² (AWG 16) wire | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=SVH-41T-P1.1) | |
+| J2–J8 | 7 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand** (8 on hand, one spare) | — | |
+| (J2–J8 plugs) | 7 | Crimp housing, 2-pos + contacts | JST **VHR-2N** + SVH contacts | **On hand** | — | |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight or right-angle | — | **On hand.** Tab holes for the right-angle version. | — | |
 | (J9 plug) | 1 | 4-pos Mate-N-Lok plug + cable | — | **On hand** | — | |
 | F2, F3 | 2 | 5×20 mm PCB fuse holder, open | Schurter **0031.8201** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0031.8201) | |
@@ -33,7 +33,7 @@ Same sourcing as [v1](../rack-power-board/BOM.md): almost everything from **Digi
 | JP2 | — | Solder jumper (on the PCB) | — | Open by default; bridge to tie GND54 to GND | — | |
 | — | 4 | M3 mounting (board to case) | printed bosses + M3 heat-set inserts | **On hand** | — | |
 | — | 4 | M2 standoff, 10 mm (Pololu) + screws | — | **On hand** | — | |
-| PCB | 1 | 108.6 × 80 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-v2-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
+| PCB | 1 | 83.2 × 80 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-v2-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
 
 **Not needed on v2** (compared with v1): U1 (12 V brick), C1–C4, C7, C8, D1 (TVS), F1 and
 its 8 A fuse, JP1.
