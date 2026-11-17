@@ -81,7 +81,7 @@ For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.m
 
 | Ref | Qty | Part | Notes |
 |---|---|---|---|
-| U1 | 1 | Delta **E48SC12025NRFH** (from Mouser), or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W, e.g. Flex PKB4313DPI | The Delta is negative logic, so bridge JP1. 5-pin and 8-pin bricks both fit (sense pins are tied locally). See [BOM.md](BOM.md). |
+| U1 | 1 | Murata **DVE0125V2NBC**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W (e.g. Flex PKB4313DPI, Delta E48SC12025NRFH) | The Murata is negative logic, so bridge JP1. 5-pin and 8-pin bricks both fit (sense pins are tied locally). See [BOM.md](BOM.md). |
 | U2 | 1 | Pololu **D24V90F5** (#2866) + 4× M2 × 10 mm standoffs and screws | about US$37 direct |
 | J1–J8 | 8 | JST **B2P-VH** 2-pin header, 3.96 mm, straight | on hand |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight **or** right-angle | 1.7 mm pin holes. The footprint also has two plated 1.7 mm tab holes (GND) for the right-angle version: one pitch beyond each end pin, one pitch towards the board edge. They stay empty when a straight header is fitted. |

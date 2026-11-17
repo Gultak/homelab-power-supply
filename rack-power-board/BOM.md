@@ -1,8 +1,8 @@
 # Bill of materials: rack power board
 
 Almost everything comes from **DigiKey Ireland** (digikey.ie: EUR prices, ships to Ireland,
-free delivery over the order threshold). The Pololu module is also ordered from DigiKey, via
-DigiKey Marketplace (Pololu ships it from the USA). The 12 V brick comes from **Mouser** (mouser.ie: free delivery over €50, duties included), because the Flex brick is backordered at DigiKey. Connectors, cables, standoffs and inserts marked *on hand* are already in stock.
+free delivery over the order threshold). The Pololu module comes from **Opencircuit** (Netherlands,
+EU), because DigiKey's Marketplace listing for it can't be ordered to Ireland. Connectors, cables, standoffs and inserts marked *on hand* are already in stock.
 
 * **Direct links** (marked 🔗) open the exact DigiKey product page. They were checked in
   November 2026.
@@ -13,8 +13,8 @@ DigiKey Marketplace (Pololu ships it from the USA). The 12 V brick comes from **
 
 | Ref | Qty | Part | Manufacturer / MPN | Notes | Link | Alt. link |
 |---|---|---|---|---|---|---|
-| U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Delta **E48SC12025NRFH** | From **Mouser** (about €55–58; free delivery over €50, duties included). DOSA footprint and pinout, 12.7 mm tall. The "N" means negative on/off logic: **bridge JP1** (confirm with the datasheet). Check its pins against the 8-hole footprint before soldering. The Flex PKB4313DPI (about €42) also fits, but is backordered at DigiKey until June 2027. | [🔎 Mouser](https://www.mouser.ie/c/?q=E48SC12025NRFH) | [🔗 Flex PKB4313DPI (DigiKey, backorder)](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) |
-| U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. Sold through DigiKey Marketplace (shipped by Pololu from the USA); covered by DigiKey's free delivery over €50 (checked in the cart, Nov 2026). EU alternative: Opencircuit, about €50.50 + €15.95 delivery to Ireland (free above €250). | [🔎 DigiKey (Marketplace)](https://www.digikey.ie/en/products/result?keywords=Pololu%202866) | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) |
+| U1 | 1 | DC-DC 1/8 brick, 36–75 V → 12 V / 25 A, 300 W | Murata **DVE0125V2NBC** | About €61 ex VAT, in stock at DigiKey (non-cancelable/non-returnable). Industry-standard 5-pin eighth brick (no PMBus, no sense/trim): pin rows 2.000" apart, outer pins 0.600" apart, matching the footprint. Baseplate, 13.2 mm tall. Pin functions match by position (checked against the Murata top view): 1 +Vin, 2 RC, 4 −Vin, 16 +Vout, 5 −Vout correspond to board pins 1, 2, 3, 8, 4. "N" = negative on/off logic: **bridge JP1**. Alternatives (backordered Nov 2026): Flex PKB4313DPI (DigiKey, about €42), Delta E48SC12025NRFH (Mouser). | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/murata-power-solutions-inc/DVE0125V2NBC/5980025) | [🔗 Flex PKB4313DPI (DigiKey)](https://www.digikey.ie/en/products/detail/flex-power-modules/PKB4313DPI/10287605) |
+| U2 | 1 | 5 V / 9 A step-down module | Pololu **D24V90F5** (#2866) | Mount on 4× M2 × 10 mm standoffs (see below). Comes with terminal blocks. Opencircuit: about €50.50 incl. VAT + €15.95 delivery to Ireland (about €66 total), ships from the EU. Pololu direct: US$36.82 + US$24.95 shipping + Irish VAT and customs handling (about €70–78). | [Opencircuit](https://opencircuit.shop/product/pololu-5v-9a-step-down-voltage-regulator) | [Pololu direct](https://www.pololu.com/product/2866) |
 | J1–J8 | 8 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand.** 10 A per contact | — | |
 | (J1–J8 plugs) | 8 | Crimp housing, 2-pos, 3.96 mm + contacts | JST **VHR-2N** + SVH contacts | **On hand.** Use 0.75–1.25 mm² wire (AWG 18–16) for the 5 A / 6 A outputs | — | |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight or right-angle | — | **On hand.** The footprint has tab holes for the right-angle version. | — | |
@@ -53,5 +53,5 @@ DigiKey Marketplace (Pololu ships it from the USA). The 12 V brick comes from **
   Panasonic 16SEPG470M (C5, C6) this way, but both were in stock when checked. Any
   equivalent fits: C1/C2 need 68 µF ≥ 100 V, Ø10 mm, 5 mm pitch, ≤ 20 mm tall; C5/C6 need
   470 µF ≥ 16 V polymer, Ø8 mm, 3.5 mm pitch.
-* **Pololu supply:** Pololu lists the D24V90F5 as *rationed*, so check stock before ordering. EU sellers checked: EXP Tech (Germany) was backorder-only, and Opencircuit (Netherlands) charges €15.95 delivery to Ireland. That makes DigiKey the cheapest overall. Botland's shops either ship only domestically (Poland, Germany) or sell internationally to business customers only (botland.store).
+* **Pololu supply:** Pololu lists the D24V90F5 as *rationed*, so check stock before ordering. DigiKey's Marketplace listing (shipped by Pololu from the USA) can't be ordered to Ireland. Other EU sellers checked: EXP Tech (Germany) was backorder-only. Botland sells internationally only to business customers (botland.store); its Polish and German shops ship only domestically.
 * **Check before ordering:** the brick footprint and the J9 tab holes (see README).
