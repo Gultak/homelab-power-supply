@@ -131,10 +131,10 @@ VH2 = ("Connector_JST", "JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
 VH6 = ("Connector_JST", "JST_VH_B6P-VH_1x06_P3.96mm_Vertical")
 HDR = ("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical")
 
-# --- output row along the front edge (y = H), JST VH 2-pin.  Left to right: 5V, 54V x2, 12V x4.
+# --- output row along the front edge (y = H), JST VH 2-pin.  Left to right: 54V x2, 5V, 12V x4.
 #     C = connector centre; pin 1 = C - 1.98, pin 2 = C + 1.98
 JY = H - 5.8
-C = {"J8": 11.98, "J2": 21.0, "J3": 31.3, "J4": 40.5, "J5": 49.8, "J6": 59.1, "J7": 68.3}
+C = {"J2": 11.98, "J3": 22.28, "J8": 31.3, "J4": 40.4, "J5": 50.6, "J6": 60.8, "J7": 71.0}
 JX = {k: v - 1.98 for k, v in C.items()}
 JNET = {"J2": ("OUT54_1", "GND54"), "J3": ("OUT54_2", "GND54"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
@@ -149,11 +149,12 @@ for ref, x in JX.items():
     m.Reference().SetVisible(False)
     J[ref] = m
 
-# --- right edge: J1 54 V input (top) and J10 12 V input (below), JST VH 6-pin, pins 1-3 = +, 4-6 = -
-RX = W - 5.8
-J1Y, J10Y = 10.0, 35.0
-J1 = place(*VH6, "J1", RX, J1Y, 270, "JST B6P-VH")
-J10 = place(*VH6, "J10", RX, J10Y, 270, "JST B6P-VH")
+# --- inputs, JST VH 6-pin, pins 1-3 = +, 4-6 = -, pin 1 at the top:
+#     J1 54 V on the left edge (top end, just below J9), J10 12 V on the right edge (top end)
+J1X, J1Y = 6.1, 15.3
+J10X, J10Y = W - 5.8, 10.0
+J1 = place(*VH6, "J1", J1X, J1Y, 270, "JST B6P-VH")
+J10 = place(*VH6, "J10", J10X, J10Y, 270, "JST B6P-VH")
 for n in (1, 2, 3): setnet(J1, n, "+54V"); setnet(J10, n, "+12V")
 for n in (4, 5, 6): setnet(J1, n, "GND54"); setnet(J10, n, "GND")
 J1.Reference().SetVisible(False); J10.Reference().SetVisible(False)
@@ -172,19 +173,19 @@ for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", ref, C[jref] + 1.7, Fy, 270, "ATM 5A")
     setnet(m, 1, "+12V"); setnet(m, 2, JNET[jref][0])
     F[ref] = m
-# Pololu feed fuse, top edge (pad 1 = 12 V from J10 on the bottom layer, pad 2 -> P1)
+# Pololu feed fuse, top edge next to J10 (pad 1 right = +12V, pad 2 left -> P1)
 F8X, F8Y = 67.5, 9.5
 m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", "F8", F8X, F8Y, 180, "ATM 5A")
 setnet(m, 1, "+12V"); setnet(m, 2, "12V_PL"); F["F8"] = m
 
-# --- 12 V bulk caps
-C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 74.5, 63.5, 0, "470uF 16V polymer")
-C6 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C6", 42.5, 48.5, 0, "470uF 16V polymer")
+# --- 12 V bulk caps below J10
+C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 75.0, 38.0, 0, "470uF 16V polymer")
+C6 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C6", 75.0, 47.0, 0, "470uF 16V polymer")
 for c in (C5, C6):
     setnet(c, 1, "+12V"); setnet(c, 2, "GND")
 
-# --- Pololu D24V90F5 on M2 standoffs, horizontal, under the Molex
-PX0, PY0 = 8.0, 13.5
+# --- Pololu D24V90F5 on M2 standoffs, horizontal, between the two inputs
+PX0, PY0 = 31.0, 14.5
 pcx, pcy = PX0 + 20.3, PY0 + 10.15
 for i, (dx, dy) in enumerate(((-17.78, -7.62), (17.78, -7.62), (-17.78, 7.62), (17.78, 7.62))):
     place("MountingHole", "MountingHole_2.2mm_M2", "H%d" % (5 + i), pcx + dx, pcy + dy, 0, "M2 standoff").Reference().SetVisible(False)
@@ -192,12 +193,13 @@ U2 = custom_fp("U2", "Pololu_D24V90F5_outline", [], outline=(PX0, PY0, PX0 + 40.
 text("POLOLU D24V90F5", pcx, pcy, 1.2)
 text("on M2 x10mm", pcx, pcy + 2, 0.9)
 WP = 3.6; WD = 1.8
-PADS = {"P1": (52.0, 19.0, "12V_PL", "VIN"), "P2": (52.0, 26.0, "GND", "GND"),
-        "P3": (4.5, 19.0, "+5V", "VOUT"), "P4": (4.5, 26.0, "GND", "GND")}
+PY = PY0 + 20.3 + 3.7
+PADS = {"P1": (64.0, PY, "12V_PL", "VIN"), "P2": (69.0, PY, "GND", "GND"),
+        "P3": (33.0, PY, "+5V", "VOUT"), "P4": (38.0, PY, "GND", "GND")}
 for ref, (x, y, nm, lab) in PADS.items():
     p = custom_fp(ref, "WIREPAD", [(1, x, y, WP, WD)], silk_label=(x, y + 3.0))
     setnet(p, 1, nm); p.Reference().SetVisible(False)
-    text(lab, x, y + 3.0, 0.9)
+    text(lab, x, y + 2.9, 0.9)
 
 # --- J9: 4-pin Molex 8981 on the top edge, far left (right-angle tab holes towards the edge)
 MX, MY = 15.28, 8.0
@@ -211,18 +213,19 @@ setnet(J9, "MP", "GND")
 text("5V AUX", MX + 7.62, MY + 3.0, 1.1, bold=True)
 
 # --- LED headers (Dupont 2.54 mm): pin 1 = LED anode via resistor, pin 2 = cathode
-R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 19.5, 40.0, 0, "47k")
-D2 = place(*HDR, "D2", 23.6, 40.0, 90, "LED 54V header")
+R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 16.5, 40.5, 0, "47k")
+D2 = place(*HDR, "D2", 20.6, 40.5, 90, "LED 54V header")
 setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 1, "LED54"); setnet(D2, 2, "GND54")
-R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 54.0, 48.5, 0, "4.7k")
-D3 = place(*HDR, "D3", 58.5, 48.5, 90, "LED 12V header")
+R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 50.0, 47.0, 0, "4.7k")
+D3 = place(*HDR, "D3", 54.5, 47.0, 90, "LED 12V header")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3, 2, "GND")
-R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 7.0, 40.0, 270, "1k")
-D4 = place(*HDR, "D4", 7.0, 45.0, 0, "LED 5V header")
+R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 33.0, 45.0, 270, "1k")
+D4 = place(*HDR, "D4", 33.0, 49.5, 0, "LED 5V header")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
 
 # --- optional ground tie GND54 <-> GND (bottom, open = isolated)
-JP2 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP2", 37.75, 50.0, 0, "GND_TIE", layer_back=True)
+XG = 27.95                        # middle of the 1.5 mm gap between GND54 and GND
+JP2 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP2", XG, 57.0, 0, "GND_TIE", layer_back=True)
 _p = sorted(JP2.Pads(), key=lambda p: p.GetPosition().x)
 _p[0].SetNet(net("GND54")); _p[1].SetNet(net("GND"))
 
@@ -247,25 +250,11 @@ for fref in ("F4", "F5", "F6", "F7", "F8"):
     for num in (1, 2):
         ps = [padpos(F[fref], num, i) for i in range(len(pads(F[fref], num)))]
         track(ps, F[fref].FindPadByNumber(str(num)).GetNetname(), 2.0)
-
-# 54 V passthrough: two parallel top-layer tracks from J1 to the 54 V block.
-# The bottom layer stays GND underneath, so the 12 V feed of F8 can cross on the bottom.
-TW = 3.0
-track([padpos(J1, 1), padpos(J1, 3)], "+54V", TW)
-track([padpos(J1, 4), padpos(J1, 6)], "GND54", TW)
-YB54 = 37.0                      # +54V run below the Pololu
-track([padpos(J1, 3), (57.0, padpos(J1, 3)[1]), (57.0, YB54), (31.0, YB54)], "+54V", TW)
-YG54 = 41.0
-track([padpos(J1, 6), (63.0, padpos(J1, 6)[1]), (63.0, YG54), (35.5, YG54), (35.5, 46.0)], "GND54", TW)
-for vy in (41.0, 42.6, 44.2, 45.8):
-    via(35.5, vy, "GND54", 1.0, 0.5)
-
-# 12 V feed for the Pololu: J10 pin 1 -> bottom layer -> F8 pad 1 (crosses under the 54 V tracks)
-a = padpos(J10, 1); f1 = near(F["F8"], 1)
-track([a, (70.0, a[1]), (70.0, f1[1] + 2.5), f1], "+12V", 2.0, pcbnew.B_Cu)
-# F8 pad 2 -> P1 (VIN)
+# F8 pad 2 -> P1 (VIN), under the Pololu
 f2 = (F8X - 9.92, F8Y)
-track([f2, (52.0, 15.08), (52.0, 19.0)], "12V_PL", 2.0)
+track([f2, (f2[0], 12.5), (64.0, 18.9), (64.0, PY)], "12V_PL", 2.0)
+# 5 V: P3 (VOUT) straight down to J8 pin 1 (inside the +5V pour)
+track([(33.0, PY), (JX["J8"], PY + 3.7), (JX["J8"], JY)], "+5V", 3.0)
 
 # LED nets
 track([padpos(R1, 2), padpos(D2, 1)], "LED54", 0.4)
@@ -289,18 +278,19 @@ def zone(netname, layer, poly, prio=0):
     return z
 
 e = 0.6
-# top: +5V everywhere on the Pololu/Molex side (top strip, under the Pololu, left column down to J8)
-zone("+5V", pcbnew.F_Cu, [(e, e), (74.0, e), (74.0, 15.4), (54.5, 15.4), (54.5, 34.5),
-                         (13.5, 34.5), (13.5, H - e), (e, H - e)])
-# top: +12V from J10 to the 12 V fuses, F8 feed, C5/C6
-zone("+12V", pcbnew.F_Cu, [(38.5, 43.0), (65.0, 43.0), (65.0, 31.8), (W - e, 31.8), (W - e, 70.5),
-                          (72.3, 70.5), (72.3, 59.5), (38.5, 59.5)])
-# top: +54V around the 54 V fuse tops
-zone("+54V", pcbnew.F_Cu, [(15.0, 36.0), (33.5, 36.0), (33.5, 47.5), (15.0, 47.5)])
-# bottom: GND everywhere except the 54 V block (GND54), 1.5 mm gap
-zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (38.5, H - e), (38.5, 36.5),
-                         (15.0, 36.5), (15.0, H - e), (e, H - e)])
-zone("GND54", pcbnew.B_Cu, [(16.5, 38.0), (37.0, 38.0), (37.0, H - e), (16.5, H - e)])
+X54 = 27.2          # the 54 V block is x < X54, y > Y54 (left column, below J9)
+Y54 = 14.1
+XB = 46.0           # +5V / +12V split under the Pololu
+# top: +54V (J1 -> F2/F3 tops), +5V (J9, Pololu output side, J8 column), +12V (J10 -> F8, fuses, caps)
+zone("+54V", pcbnew.F_Cu, [(e, Y54), (X54, Y54), (X54, Ft + 2.0), (e, Ft + 2.0)])
+zone("+5V", pcbnew.F_Cu, [(e, e), (XB, e), (XB, 40.0), (37.2, 40.0), (37.2, H - e), (X54 + 1.5, H - e),
+                         (X54 + 1.5, Y54 - 1.5), (e, Y54 - 1.5)])
+zone("+12V", pcbnew.F_Cu, [(XB + 1.5, e), (W - e, e), (W - e, Fy + 3.0), (38.7, Fy + 3.0), (38.7, 41.5),
+                          (XB + 1.5, 41.5)])
+# bottom: GND54 under the 54 V block, GND everywhere else (1.5 mm gap)
+zone("GND54", pcbnew.B_Cu, [(e, Y54), (X54, Y54), (X54, H - e), (e, H - e)])
+zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (X54 + 1.5, H - e), (X54 + 1.5, Y54 - 1.5),
+                         (e, Y54 - 1.5)])
 
 # copper keep-out rings around the M3 mounting holes
 import math
@@ -323,32 +313,33 @@ for ref, x in JX.items():
     text("+", x - 2.2, JY, 1.0, layer=B, bold=True)
     text("-", x + 3.96 + 2.2, JY, 1.0, layer=B, bold=True)
     text(JVAL[ref], C[ref], JY + 3.4, 0.9, layer=B, bold=True)
-for conn, labs in ((J1, ("+54V", "+54V", "+54V", "GND", "GND", "GND")),
-                   (J10, ("+12V", "+12V", "+12V", "GND", "GND", "GND"))):
+for conn, labs, dx in ((J1, ("+54V", "+54V", "+54V", "GND", "GND", "GND"), 4.4),
+                       (J10, ("+12V", "+12V", "+12V", "GND", "GND", "GND"), -4.4)):
     for i, lab in enumerate(labs):
-        q = padpos(conn, i + 1); text(lab, q[0] - 4.4, q[1], 0.8)
-text("54V IN", 70.0, 24.0, 1.1, rot=90, bold=True)
-text("12V IN", 69.5, 47.0, 1.1, rot=90, bold=True)
+        q = padpos(conn, i + 1); text(lab, q[0] + dx, q[1], 0.8)
+text("54V IN", 14.0, 25.2, 1.1, rot=90, bold=True)
+text("12V IN", 76.6, 33.0, 0.9, bold=True)
+
 def refat(m, x, y, rot=0, size=0.8):
     r = m.Reference(); r.SetPosition(P(x, y)); r.SetTextAngleDegrees(rot)
     r.SetTextSize(VECTOR2I(MM(size), MM(size))); r.SetTextThickness(MM(size * 0.15))
-refat(R1, 19.5, 42.2); refat(D2, 26.6, 42.2)
-text("+", 23.6, 38.2, 1.0, bold=True); text("54V", 26.9, 38.2, 0.8)
-refat(R2, 54.0, 46.6); refat(D3, 59.8, 50.5)
-text("+", 58.5, 46.6, 1.0, bold=True); text("12V", 63.6, 48.5, 0.8)
-refat(R3, 9.2, 40.0, 90); refat(D4, 9.2, 46.3, 90)
-text("+", 5.1, 45.0, 1.0, bold=True); text("5V", 7.0, 49.4, 0.8)
+refat(R1, 16.5, 42.6); refat(D2, 23.6, 42.6)
+text("+", 20.6, 38.6, 1.0, bold=True); text("54V", 23.9, 38.6, 0.8)
+refat(R2, 50.0, 45.1); refat(D3, 55.8, 49.0)
+text("+", 54.5, 45.1, 1.0, bold=True); text("12V", 59.6, 47.0, 0.8)
+refat(R3, 35.2, 45.0, 90); refat(D4, 35.2, 50.8, 90)
+text("+", 31.1, 49.5, 1.0, bold=True); text("5V", 33.0, 53.9, 0.8)
 for ref, jref in (("F2", "J2"), ("F3", "J3")):
     text("2.5A", C[jref], Ft + 5.8, 1.0, rot=90); refat(F[ref], C[jref], Ft + 16.5, 90, 1.0)
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     text("5A", C[jref], Fy + 4.2, 0.9); refat(F[ref], C[jref], Fy + 6.4, 90, 0.8)
-refat(C5, 76.25, 58.4); refat(C6, 44.25, 53.4 - 9.9)
-text("5A", F8X - 5.0, 13.2, 0.9)
-text("RACK POWER BOARD v2", 30.0, 22.0, 1.6, layer=B, bold=True)
-text("12V + 54V in -> 12V x4 / 5V / 54V x2", 30.0, 24.6, 1.0, layer=B)
-text("2 layers, 2oz Cu, 1.6mm", 30.0, 26.6, 1.0, layer=B)
-text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 30.0, 28.6, 1.0, layer=B)
-text("JP2: bridge to tie GND54 to GND", 37.75, 55.0, 0.8, layer=B)
+text("5A", F8X - 5.0, 13.0, 0.9)
+refat(C5, 80.9, 34.6 + 0.0); refat(C6, 80.9, 52.6)
+text("RACK POWER BOARD v2", 51.0, 20.0, 1.6, layer=B, bold=True)
+text("12V + 54V in -> 12V x4 / 5V / 54V x2", 51.0, 22.6, 1.0, layer=B)
+text("2 layers, 2oz Cu, 1.6mm", 51.0, 24.6, 1.0, layer=B)
+text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 51.0, 26.6, 1.0, layer=B)
+text("JP2: bridge to tie GND54 to GND", XG, 59.6, 0.8, layer=B)
 
 b.Save(OUT)
 print("saved", OUT)

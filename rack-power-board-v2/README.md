@@ -6,34 +6,32 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
 
 | Output | Connector | Protection | Rating |
 |---|---|---|---|
-| 54 V IN | J1 (6-pin JST VH, right edge, top) | — (LOP-300-54's own protection) | from LOP-300-54 |
-| 12 V IN | J10 (6-pin JST VH, right edge, below J1) | — | from LOP-200-12 / LOP-300-12 |
-| 5 V OUT | J8 | F8 ATM 5 A on the Pololu's 12 V feed; Pololu current limit | 6 A, **shared with J9** |
+| 54 V IN | J1 (6-pin JST VH, left edge, top end) | — (LOP-300-54's own protection) | from LOP-300-54 |
+| 12 V IN | J10 (6-pin JST VH, right edge, top end) | — | from LOP-200-12 / LOP-300-12 |
 | 54 V OUT 1 / 2 | J2, J3 | F2, F3 5×20 T 2.5 A | 2 A each |
+| 5 V OUT | J8 | F8 ATM 5 A on the Pololu's 12 V feed; Pololu current limit | 6 A, **shared with J9** |
 | 12 V OUT 1–4 | J4–J7 | F4–F7 ATM mini blade (5 A, or 3 A per load) | 3–5 A each |
 | 5 V AUX | J9 (4-pin Molex 8981, top edge, far left) | same as J8 | pinout **+5V, GND, GND, +5V** |
 
 * **Board:** 83.2 × 80.0 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes, 9 mm Ø
   copper keep-out around each.
-* **Output row** (bottom edge, left to right): **5V, 54V 1, 54V 2, 12V 1, 12V 2, 12V 3,
+* **Output row** (bottom edge, left to right): **54V 1, 54V 2, 5V, 12V 1, 12V 2, 12V 3,
   12V 4**. All are straight JST VH 2-pin headers (B2P-VH), pin 1 (left, marked `+`) positive.
-  Putting 5 V on the far left keeps the whole 5 V side (Pololu, J8, J9) in the left half of
-  the board, so only the Pololu's small 12 V feed has to cross the 54 V wiring.
-* **Inputs (J1, J10):** B6P-VH headers on the right edge, plugs entering from above. On both,
+  With 5 V between the 54 V and 12 V outputs, no supply rail has to cross another one.
+* **Inputs:** J1 (54 V) on the left edge and J10 (12 V) on the right edge, both at the top
+  end, so each sits next to its own PSU. Both are B6P-VH headers, plugs entering from above. On both,
   pins 1–3 (top, next to the ▽ mark) are **+** and pins 4–6 are **GND**. Three contacts per
   pole give 30 A. Make both cables with a **VHR-6N** housing, SVH-41T-P1.1 contacts and
   1.25 mm² (AWG 16) wire, and use all six wires. Check each LOP's own output connector in
   its datasheet for the other end of the cable. Label the two cables: they use the same
   connector and swapping them would put 54 V on the 12 V side.
-* **54 V is a fused passthrough** with its **own ground (GND54)**. J1 feeds F2/F3 and J2/J3
-  only, over two 3 mm top-layer tracks that run left below the Pololu to the 54 V fuse
-  block. That block has its own GND54 copper on the bottom layer, with a 1.5 mm gap to the
-  12 V/5 V ground. Nothing on the 12 V/5 V side connects to it. See JP2 below if you want
-  the grounds tied.
-* **5 V:** the same Pololu D24V90F5 as v1, lying horizontally just below J9 on 4×
-  M2 × 10 mm standoffs. Wire it with 1 mm² leads to P1 (VIN, right) and P2 (GND), and to
-  P3 (VOUT, left) and P4 (GND). The left half of the top layer is a +5 V copper pour that
-  feeds J9 above and J8 down the left edge.
+* **54 V is a fused passthrough** with its **own ground (GND54)**. The whole left column
+  below J9 is the 54 V block: J1 feeds F2/F3 and J2/J3 through a +54 V copper pour on the
+  top layer, and the bottom layer there is GND54, with a 1.5 mm gap to the 12 V/5 V ground.
+  Nothing on the 12 V/5 V side connects to it. See JP2 below if you want the grounds tied.
+* **5 V:** the same Pololu D24V90F5 as v1, lying horizontally between the two inputs on 4×
+  M2 × 10 mm standoffs. Wire it with 1 mm² leads to P3 (VOUT, left) and P4 (GND), and to
+  P1 (VIN, right) and P2 (GND). A +5 V copper pour feeds J9 above and J8 below.
 * **J9** sits on the top edge as far left as the corner mounting hole allows (pin 1 at
   15.3 mm). The right-angle plug enters from the top edge.
 * **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
@@ -59,10 +57,10 @@ holes are unplated (NPTH).
 | H2 | board mount | 79.20 | 4.00 | 3.2 mm (M3) | same |
 | H3 | board mount | 4.00 | 75.50 | 3.2 mm (M3) | same |
 | H4 | board mount | 79.20 | 75.50 | 3.2 mm (M3) | same |
-| H5 | Pololu standoff | 10.52 | 16.03 | 2.2 mm (M2) | |
-| H6 | Pololu standoff | 46.08 | 16.03 | 2.2 mm (M2) | |
-| H7 | Pololu standoff | 10.52 | 31.27 | 2.2 mm (M2) | |
-| H8 | Pololu standoff | 46.08 | 31.27 | 2.2 mm (M2) | |
+| H5 | Pololu standoff | 33.52 | 17.03 | 2.2 mm (M2) | |
+| H6 | Pololu standoff | 69.08 | 17.03 | 2.2 mm (M2) | |
+| H7 | Pololu standoff | 33.52 | 32.27 | 2.2 mm (M2) | |
+| H8 | Pololu standoff | 69.08 | 32.27 | 2.2 mm (M2) | |
 
 * **Board outline:** 83.2 × 80.0 mm.
 * **M3 pattern:** 75.2 × 71.5 mm centre-to-centre, inset 4 mm from the top, left and
@@ -71,10 +69,10 @@ holes are unplated (NPTH).
 
 ## Layout and copper
 
-* **Top layer:** +5 V pour on the left and along the top; +12 V pour from J10 to the 12 V
-  fuses, C5/C6 and D3; +54 V pour around the F2/F3 tops; the two 54 V tracks between them.
-* **Bottom layer:** GND everywhere except the 54 V block (GND54). The 12 V feed for the
-  Pololu runs on the bottom layer from J10 pin 1 up to F8, crossing under the 54 V tracks.
+* **Top layer:** +54 V pour in the left column (J1 to F2/F3); +5 V pour along the top-left
+  (J9), under the left half of the Pololu and down to J8; +12 V pour from J10 to F8, C5/C6,
+  D3 and the 12 V fuses.
+* **Bottom layer:** GND everywhere except the 54 V block (GND54).
 * **Pad connections:** power pads join the pours solidly (no thermal reliefs). Use a hot
   iron (≥ 60 W) for J*, F* and the wire pads.
 
