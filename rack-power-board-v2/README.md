@@ -28,7 +28,8 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
 * **54 V is a fused passthrough** with its **own ground (GND54)**. The whole left column
   below J9 is the 54 V block: J1 feeds F2/F3 and J2/J3 through a +54 V copper pour on the
   top layer, and the bottom layer there is GND54, with a 1.5 mm gap to the 12 V/5 V ground.
-  Nothing on the 12 V/5 V side connects to it. See JP2 below if you want the grounds tied.
+  Nothing on the 12 V/5 V side connects to it, and there is no option to tie the two
+  grounds (the two LOP supplies have isolated outputs).
 * **5 V:** the same Pololu D24V90F5 as v1, lying horizontally between the two inputs on 4×
   M2 × 10 mm standoffs. Wire it with 1 mm² leads to P3 (VOUT, left) and P4 (GND), and to
   P1 (VIN, right) and P2 (GND). A +5 V copper pour feeds J9 above and J8 below.
@@ -57,10 +58,10 @@ holes are unplated (NPTH).
 | H2 | board mount | 79.20 | 4.00 | 3.2 mm (M3) | same |
 | H3 | board mount | 4.00 | 75.50 | 3.2 mm (M3) | same |
 | H4 | board mount | 79.20 | 75.50 | 3.2 mm (M3) | same |
-| H5 | Pololu standoff | 33.52 | 17.03 | 2.2 mm (M2) | |
-| H6 | Pololu standoff | 69.08 | 17.03 | 2.2 mm (M2) | |
-| H7 | Pololu standoff | 33.52 | 32.27 | 2.2 mm (M2) | |
-| H8 | Pololu standoff | 69.08 | 32.27 | 2.2 mm (M2) | |
+| H5 | Pololu standoff | 33.52 | 17.03 | 2.2 mm (M2) | 6 mm Ø copper-free area on both sides |
+| H6 | Pololu standoff | 69.08 | 17.03 | 2.2 mm (M2) | same |
+| H7 | Pololu standoff | 33.52 | 32.27 | 2.2 mm (M2) | same |
+| H8 | Pololu standoff | 69.08 | 32.27 | 2.2 mm (M2) | same |
 
 * **Board outline:** 83.2 × 80.0 mm.
 * **M3 pattern:** 75.2 × 71.5 mm centre-to-centre, inset 4 mm from the top, left and
@@ -76,17 +77,11 @@ holes are unplated (NPTH).
 * **Pad connections:** power pads join the pours solidly (no thermal reliefs). Use a hot
   iron (≥ 60 W) for J*, F* and the wire pads.
 
-## Jumpers
-
-| Jumper | Default | Meaning |
-|---|---|---|
-| **JP2** (bottom side, at the edge of the 54 V block) | open | Bridge it with solder to tie **GND54 to GND**. Leave it open to keep the 54 V side fully separate. The two LOP supplies have isolated outputs, so either choice is safe. |
-
 ## Bill of materials
 
 For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.md](BOM.md)**.
 Compared with v1, v2 drops U1, C1–C4, C7, C8, D1, F1 (and its fuse) and JP1, uses a 6-pin
-header for J1, and adds J10 and JP2.
+header for J1, and adds J10.
 
 ## Power budget
 

@@ -187,7 +187,9 @@ for c in (C5, C6):
 # --- Pololu D24V90F5 on M2 standoffs, horizontal, between the two inputs
 PX0, PY0 = 31.0, 14.5
 pcx, pcy = PX0 + 20.3, PY0 + 10.15
+M2H = []
 for i, (dx, dy) in enumerate(((-17.78, -7.62), (17.78, -7.62), (-17.78, 7.62), (17.78, 7.62))):
+    M2H.append((pcx + dx, pcy + dy))
     place("MountingHole", "MountingHole_2.2mm_M2", "H%d" % (5 + i), pcx + dx, pcy + dy, 0, "M2 standoff").Reference().SetVisible(False)
 U2 = custom_fp("U2", "Pololu_D24V90F5_outline", [], outline=(PX0, PY0, PX0 + 40.6, PY0 + 20.3), silk_label=(pcx, pcy - 3), crtyd=False)
 text("POLOLU D24V90F5", pcx, pcy, 1.2)
@@ -222,12 +224,6 @@ setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3
 R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 33.0, 45.0, 270, "1k")
 D4 = place(*HDR, "D4", 33.0, 49.5, 0, "LED 5V header")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
-
-# --- optional ground tie GND54 <-> GND (bottom, open = isolated)
-XG = 27.95                        # middle of the 1.5 mm gap between GND54 and GND
-JP2 = place("Jumper", "SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm", "JP2", XG, 57.0, 0, "GND_TIE", layer_back=True)
-_p = sorted(JP2.Pads(), key=lambda p: p.GetPosition().x)
-_p[0].SetNet(net("GND54")); _p[1].SetNet(net("GND"))
 
 # --- M3 mounting holes
 HOLES = ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))
@@ -292,9 +288,11 @@ zone("GND54", pcbnew.B_Cu, [(e, Y54), (X54, Y54), (X54, H - e), (e, H - e)])
 zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (X54 + 1.5, H - e), (X54 + 1.5, Y54 - 1.5),
                          (e, Y54 - 1.5)])
 
-# copper keep-out rings around the M3 mounting holes
+# copper keep-out rings around the mounting holes
 import math
-for (hx, hy) in HOLES:
+# M3: 9 mm dia (screw head / washer); M2 Pololu standoffs: 6 mm dia, so the metal
+# standoff (top) and screw head (bottom) can't bridge the pours on the two layers
+for (hx, hy, kr) in [(x, y, 4.5) for (x, y) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))] + [(x, y, 3.0) for (x, y) in M2H]:
     k = pcbnew.ZONE(b)
     k.SetIsRuleArea(True); k.SetDoNotAllowCopperPour(True); k.SetDoNotAllowTracks(True)
     k.SetDoNotAllowVias(True); k.SetDoNotAllowPads(False); k.SetDoNotAllowFootprints(False)
@@ -302,7 +300,7 @@ for (hx, hy) in HOLES:
     o = k.Outline(); o.NewOutline()
     for i in range(24):
         t = 2 * math.pi * i / 24
-        o.Append(MM(OX + hx + 4.5 * math.cos(t)), MM(OY + hy + 4.5 * math.sin(t)))
+        o.Append(MM(OX + hx + kr * math.cos(t)), MM(OY + hy + kr * math.sin(t)))
     b.Add(k)
 
 # ======================= SILKSCREEN =======================
@@ -339,7 +337,6 @@ text("RACK POWER BOARD v2", 51.0, 20.0, 1.6, layer=B, bold=True)
 text("12V + 54V in -> 12V x4 / 5V / 54V x2", 51.0, 22.6, 1.0, layer=B)
 text("2 layers, 2oz Cu, 1.6mm", 51.0, 24.6, 1.0, layer=B)
 text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 51.0, 26.6, 1.0, layer=B)
-text("JP2: bridge to tie GND54 to GND", XG, 59.6, 0.8, layer=B)
 
 b.Save(OUT)
 print("saved", OUT)

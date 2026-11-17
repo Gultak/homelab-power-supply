@@ -206,7 +206,9 @@ for c in (C7, C8):
 # --- Pololu D24V90F5 (on M2 standoffs), vertical, x 103..123.3, y 30..70.6
 PX0, PY0 = 103.0, 20.0
 pcx, pcy = PX0 + 10.15, PY0 + 20.3
+M2H = []
 for i, (dx, dy) in enumerate(((-7.62, -17.78), (7.62, -17.78), (-7.62, 17.78), (7.62, 17.78))):
+    M2H.append((pcx + dx, pcy + dy))
     place("MountingHole", "MountingHole_2.2mm_M2", "H%d" % (5 + i), pcx + dx, pcy + dy, 0, "M2 standoff")
 U2 = custom_fp("U2", "Pololu_D24V90F5_outline", [], outline=(PX0, PY0, PX0 + 20.3, PY0 + 40.6), silk_label=(pcx, pcy - 4), crtyd=False)
 U2.Reference().SetPosition(P(pcx, pcy - 4))
@@ -344,9 +346,11 @@ for x, y in ((BX - 21.5, BY - 11.0), (BX + 21.5, BY - 11.0), (BX + 21.5, BY + 11
     o.Append(MM(OX + x), MM(OY + y))
 b.Add(ko)
 
-# copper keep-out rings around the M3 mounting holes (screw heads / washers)
+# copper keep-out rings around the mounting holes
 import math
-for (hx, hy) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)):
+# M3: 9 mm dia (screw head / washer); M2 Pololu standoffs: 6 mm dia, so the metal
+# standoff (top) and screw head (bottom) can't bridge the pours on the two layers
+for (hx, hy, kr) in [(x, y, 4.5) for (x, y) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))] + [(x, y, 3.0) for (x, y) in M2H]:
     k = pcbnew.ZONE(b)
     k.SetIsRuleArea(True); k.SetDoNotAllowCopperPour(True); k.SetDoNotAllowTracks(True)
     k.SetDoNotAllowVias(True); k.SetDoNotAllowPads(False); k.SetDoNotAllowFootprints(False)
@@ -354,7 +358,7 @@ for (hx, hy) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)):
     o = k.Outline(); o.NewOutline()
     for i in range(24):
         t = 2 * math.pi * i / 24
-        o.Append(MM(OX + hx + 4.5 * math.cos(t)), MM(OY + hy + 4.5 * math.sin(t)))
+        o.Append(MM(OX + hx + kr * math.cos(t)), MM(OY + hy + kr * math.sin(t)))
     b.Add(k)
 
 # ======================= SILKSCREEN =======================
