@@ -30,13 +30,12 @@ Same sourcing as [v1](../rack-power-board/BOM.md): almost everything from **Digi
 | R1 | 1 | 47 kΩ 1 %, 1206 | Yageo **RC1206FR-0747KL** | 54 V LED (about 1.1 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-0747KL) | |
 | R2 | 1 | 4.7 kΩ 1 %, 1206 | Yageo **RC1206FR-074K7L** | 12 V LED (about 2 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-074K7L) | |
 | R3 | 1 | 1 kΩ 1 %, 1206 | Yageo **RC1206FR-071KL** | 5 V LED (about 3 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-071KL) | |
-| JP2 | — | Solder jumper (on the PCB) | — | Open by default; bridge to tie GND54 to GND | — | |
 | — | 4 | M3 mounting (board to case) | printed bosses + M3 heat-set inserts | **On hand** | — | |
 | — | 4 | M2 standoff, 10 mm (Pololu) + screws | — | **On hand** | — | |
 | PCB | 1 | 83.2 × 80 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-v2-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
 
 **Not needed on v2** (compared with v1): U1 (12 V brick), C1–C4, C7, C8, D1 (TVS), F1 and
-its 8 A fuse, JP1.
+its 8 A fuse, JP1 (and there is no ground-tie jumper).
 
 ## Spare fuses (recommended)
 

@@ -49,10 +49,10 @@ unplated (NPTH).
 | H2 | board mount | 130.00 | 4.00 | 3.2 mm (M3) | same |
 | H3 | board mount | 4.00 | 74.00 | 3.2 mm (M3) | same |
 | H4 | board mount | 130.00 | 74.00 | 3.2 mm (M3) | same |
-| H5 | Pololu standoff | 105.53 | 22.52 | 2.2 mm (M2) | |
-| H6 | Pololu standoff | 120.77 | 22.52 | 2.2 mm (M2) | |
-| H7 | Pololu standoff | 105.53 | 58.08 | 2.2 mm (M2) | |
-| H8 | Pololu standoff | 120.77 | 58.08 | 2.2 mm (M2) | |
+| H5 | Pololu standoff | 105.53 | 22.52 | 2.2 mm (M2) | 6 mm Ø copper-free area on both sides |
+| H6 | Pololu standoff | 120.77 | 22.52 | 2.2 mm (M2) | same |
+| H7 | Pololu standoff | 105.53 | 58.08 | 2.2 mm (M2) | same |
+| H8 | Pololu standoff | 120.77 | 58.08 | 2.2 mm (M2) | same |
 
 * **Board outline:** 134.0 × 78.5 mm.
 * **M3 pattern:** 126.0 × 70.0 mm centre-to-centre, inset 4 mm from the top, left and
