@@ -226,14 +226,14 @@ text("VOUT", 123.3, 64.0, 1.0); text("GND", 106.6, 64.0, 1.0)
 
 # --- LEDs
 R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 17.0, 35.5, 0, "47k")
-D2 = place("LED_SMD", "LED_0805_2012Metric", "D2", 22.5, 35.5, 180, "LED 54V")
-setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 2, "LED54"); setnet(D2, 1, "GND")
+D2 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D2", 21.6, 35.5, 90, "LED 54V header")
+setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 1, "LED54"); setnet(D2, 2, "GND")
 R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 60.0, 46.0, 0, "4.7k")
-D3 = place("LED_SMD", "LED_0805_2012Metric", "D3", 65.5, 46.0, 180, "LED 12V")
-setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 2, "LED12"); setnet(D3, 1, "GND")
+D3 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D3", 64.6, 46.0, 90, "LED 12V header")
+setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3, 2, "GND")
 R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 129.5, 41.5, 90, "1k")
-D4 = place("LED_SMD", "LED_0805_2012Metric", "D4", 129.5, 36.0, 270, "LED 5V")
-setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 2, "LED5"); setnet(D4, 1, "GND")
+D4 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D4", 129.5, 36.8, 180, "LED 5V header")
+setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
 
 # --- M3 mounting holes
 for i, (x, y) in enumerate(((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))):
@@ -280,16 +280,18 @@ c = padpos(J["J8"], 1)
 track([(118.5, 64.0), (118.5, 66.0), (c[0], 68.5), c], "+5V", 3.0)
 q = padpos(R3, 1); track([q, (126.0, q[1])], "+5V", 0.6); via(126.0, q[1], "+5V")
 # LED nets
-track([padpos(R1, 2), padpos(D2, 2)], "LED54", 0.4)
-track([padpos(R2, 2), padpos(D3, 2)], "LED12", 0.4)
-track([padpos(R3, 2), padpos(D4, 2)], "LED5", 0.4)
+track([padpos(R1, 2), padpos(D2, 1)], "LED54", 0.4)
+track([padpos(R2, 2), padpos(D3, 1)], "LED12", 0.4)
+track([padpos(R3, 2), padpos(D4, 1)], "LED5", 0.4)
 def away_via(m, num, other, nm, dist=1.9, w=0.5, d=0.8, dr=0.4):
     q = padpos(m, num); o = padpos(m, other)
     dx, dy = q[0] - o[0], q[1] - o[1]; L = (dx * dx + dy * dy) ** 0.5
     v = (q[0] + dx / L * dist, q[1] + dy / L * dist)
     track([q, v], nm, w); via(v[0], v[1], nm, d, dr)
 # LED cathodes -> vias to bottom ground planes
-away_via(D2, 1, 2, "GND"); away_via(D3, 1, 2, "GND"); away_via(D4, 1, 2, "GND")
+# LED headers: pin 1 = anode (+, via resistor), pin 2 = cathode (GND, through-hole into the bottom pour)
+for _d in (D2, D3, D4):
+    _q = padpos(_d, 1); text("+", _q[0] + (1.6 if _d is D4 else 0), _q[1] + (0 if _d is D4 else -1.9), 1.0, bold=True)
 # RC jumper
 track([padpos(U1, 2), (33.5, BY), (33.5, padpos(JP1, 1)[1]), padpos(JP1, 1)], "RC", 0.5)
 away_via(JP1, 2, 1, "GND", 1.9, 0.6)

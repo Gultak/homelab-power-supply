@@ -28,6 +28,14 @@ Mean Well LOP-300-54 and provides:
 * **5 V:** a Pololu D24V90F5 (12 V → 5 V, about 9 A) on 4× M2 × 10 mm standoffs above the
   board. It is wired with 1 mm² leads to pads P1 (VIN), P2 (GND), P3 (VOUT) and P4 (GND),
   using its own 5 mm terminal blocks.
+* **Status LEDs:** D2 (54 V), D3 (12 V) and D4 (5 V) are 2-pin 2.54 mm headers, so the LEDs
+  can sit in the case front panel and connect with female Dupont leads. Pin 1 (marked `+`)
+  is the LED anode, already behind its series resistor (R1–R3 stay on the board); pin 2 is
+  GND. Use plain LEDs without a built-in resistor. A header with a Dupont housing on it is
+  about 14 mm tall.
+
+> A **v2** of this board, for a separate 12 V supply (LOP-200-12 / LOP-300-12), is in
+> [`../rack-power-board-v2`](../rack-power-board-v2/README.md).
 
 ## Mounting holes
 
@@ -97,10 +105,10 @@ For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.m
 | C5, C6 | 2 | 470 µF 16 V aluminium polymer, Ø8 mm, 3.5 mm pitch | brick output load 100–10 000 µF |
 | C7, C8 | 2 | 22 µF 25 V X5R 1210 | |
 | D1 | 1 | **SMBJ58A** TVS (SMB) | |
-| D2–D4 | 3 | LED 0805 | 54 V / 12 V / 5 V indicators |
+| D2–D4 | 3 | 2-pin 2.54 mm pin header (LED connectors for 54 V / 12 V / 5 V) | LEDs go in the case, see above |
 | R1 | 1 | 47 kΩ 1206 | 54 V LED (~1 mA, 60 mW) |
-| R2 | 1 | 4.7 kΩ 1206 | 12 V LED |
-| R3 | 1 | 1 kΩ 1206 | 5 V LED |
+| R2 | 1 | 4.7 kΩ 1206 | 12 V LED (~2 mA) |
+| R3 | 1 | 1 kΩ 1206 | 5 V LED (~3 mA) |
 | — | 4 | Printed M3 bosses + M3 heat-set inserts (case), M2 × 10 mm standoffs (Pololu) | on hand |
 
 ## Power budget

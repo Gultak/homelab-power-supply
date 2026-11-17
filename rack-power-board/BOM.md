@@ -30,10 +30,11 @@ EU), because DigiKey's Marketplace listing for it can't be ordered to Ireland. C
 | C5, C6 | 2 | 470 µF 16 V aluminium polymer, Ø8 × 9 mm, 3.5 mm pitch | Panasonic **16SEPG470M** | 8 mΩ ESR | [🔗 DigiKey](https://www.digikey.ie/en/products/detail/panasonic-industry/16SEPG470M/8020032) | [🔗 Chemi-Con APSG160ELL471MH08J](https://www.digikey.ie/en/products/detail/chemi-con/APSG160ELL471MH08J/21805635) |
 | C7, C8 | 2 | 22 µF 25 V X5R, 1210 | Murata **GRM32ER61E226KE15L** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=GRM32ER61E226KE15L) | |
 | D1 | 1 | TVS diode 58 V, SMB | Littelfuse **SMBJ58A** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=SMBJ58A%20Littelfuse) | |
-| D2–D4 | 3 | LED, green, 0805 | Kingbright **APT2012SGC** | Any 0805 LED will do | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=APT2012SGC) | |
-| R1 | 1 | 47 kΩ 1 %, 1206 | Yageo **RC1206FR-0747KL** | 54 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-0747KL) | |
-| R2 | 1 | 4.7 kΩ 1 %, 1206 | Yageo **RC1206FR-074K7L** | 12 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-074K7L) | |
-| R3 | 1 | 1 kΩ 1 %, 1206 | Yageo **RC1206FR-071KL** | 5 V LED | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-071KL) | |
+| D2–D4 | 3 | Pin header, 1×2, 2.54 mm, straight (LED connector) | Sullins **PREC002SAAN-RC** | Or snap 2-pin pieces off any 2.54 mm header strip. Pin 1 (marked "+") = LED anode, pin 2 = GND. The LEDs sit in the case front and connect with female–female Dupont leads. | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=PREC002SAAN-RC) | |
+| (case LEDs) | 3 | 3 mm or 5 mm LED + Dupont lead | — | User-supplied. The series resistors are on the board, so use bare LEDs (not ones with a built-in resistor). | — | |
+| R1 | 1 | 47 kΩ 1 %, 1206 | Yageo **RC1206FR-0747KL** | 54 V LED (about 1.1 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-0747KL) | |
+| R2 | 1 | 4.7 kΩ 1 %, 1206 | Yageo **RC1206FR-074K7L** | 12 V LED (about 2 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-074K7L) | |
+| R3 | 1 | 1 kΩ 1 %, 1206 | Yageo **RC1206FR-071KL** | 5 V LED (about 3 mA) | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=RC1206FR-071KL) | |
 | — | 4 | M3 mounting (board to case) | printed bosses + M3 heat-set inserts | **On hand** | — | |
 | — | 4 | M2 standoff, 10 mm (Pololu) + screws | — | **On hand** | — | |
 | PCB | 1 | 134 × 78.5 mm, 2 layers, **2 oz copper**, 1.6 mm | — | Upload `rack-power-board-gerbers.zip`. | [JLCPCB](https://jlcpcb.com/) | |
