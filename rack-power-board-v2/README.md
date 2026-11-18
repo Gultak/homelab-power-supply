@@ -48,12 +48,12 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
 * **Status LEDs** are 2-pin 2.54 mm headers (D2 = 54 V, D3 = 12 V, D4 = 5 V), so the LEDs
   can sit in the case front and connect with female Dupont leads. Pin 1 (marked `+`) is
   the LED anode, already behind its series resistor (R1–R3 stay on the board); pin 2 is
-  GND (GND54 for D2). Use plain LEDs without a built-in resistor. A header with a Dupont
+  GND (GND54 for D2). The resistors set about 10 mA for a plain red LED without a built-in resistor (Lumex SSI-LXMP059ID panel-mount LEDs). A header with a Dupont
   housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
   terminals about 10 mm.
 
-![top](docs/top-r3.png)
-![bottom (mirrored)](docs/bottom-r3.png)
+![top](docs/top-r4.png)
+![bottom (mirrored)](docs/bottom-r4.png)
 
 ## Mounting holes
 

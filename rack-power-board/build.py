@@ -241,13 +241,13 @@ for _p in (P1, P2, P3, P4): _p.Reference().SetVisible(False)
 text("VOUT", 123.3, 64.0, 1.0); text("GND", 106.6, 64.0, 1.0)
 
 # --- LEDs
-R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 17.0, 35.5, 0, "47k")
-D2 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D2", 21.6, 35.5, 90, "LED 54V header")
+R1 = place("Resistor_SMD", "R_2512_6332Metric", "R1", 16.6, 35.5, 0, "5.1k 1W")
+D2 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D2", 22.6, 35.5, 90, "LED 54V header")
 setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 1, "LED54"); setnet(D2, 2, "GND")
-R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 60.0, 46.0, 0, "4.7k")
+R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 60.0, 46.0, 0, "1k")
 D3 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D3", 64.6, 46.0, 90, "LED 12V header")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3, 2, "GND")
-R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 129.5, 41.5, 90, "1k")
+R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 129.5, 41.5, 90, "300R")
 D4 = place("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical", "D4", 129.5, 36.8, 180, "LED 5V header")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
 
