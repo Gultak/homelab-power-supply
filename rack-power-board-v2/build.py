@@ -131,23 +131,48 @@ VH2 = ("Connector_JST", "JST_VH_B2P-VH_1x02_P3.96mm_Vertical")
 VH6 = ("Connector_JST", "JST_VH_B6P-VH_1x06_P3.96mm_Vertical")
 HDR = ("Connector_PinHeader_2.54mm", "PinHeader_1x02_P2.54mm_Vertical")
 
-# --- output row along the front edge (y = H), JST VH 2-pin.  Left to right: 54V x2, 5V, 12V x4.
-#     C = connector centre; pin 1 = C - 1.98, pin 2 = C + 1.98
-JY = H - 5.8
-C = {"J2": 11.98, "J3": 22.28, "J8": 31.3, "J4": 40.4, "J5": 50.6, "J6": 60.8, "J7": 71.0}
-JX = {k: v - 1.98 for k, v in C.items()}
+# --- outputs: 2-pin 5.08 mm screw terminals (Phoenix MKDS-1,5 footprint), wire entry at the board edge.
+#     Bottom edge, left to right: 5V, 12V x4.  Left edge, as low as the corner hole allows: 54V 1, 54V 2.
+TB2 = ("TerminalBlock_Phoenix", "TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal")
+JY = 75.3                         # bottom row pin line: body front flush with the board edge
+TP = 10.3                         # block pitch (bodies are 10.16 wide)
+JX = {"J8": 26.8}
+for i, ref in enumerate(("J4", "J5", "J6", "J7")):
+    JX[ref] = 26.8 + TP * (i + 1)
+C = {k: v + 2.54 for k, v in JX.items()}       # block centre
+LX = 5.0                          # left-edge column: pin line (body front flush with the left edge)
+LY = {"J2": 53.8, "J3": 64.1}     # pin 1 (top) of each left-edge block; pin 2 is 5.08 below
 JNET = {"J2": ("OUT54_1", "GND54"), "J3": ("OUT54_2", "GND54"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
         "J7": ("OUT12_4", "GND"), "J8": ("+5V", "GND")}
-JSHORT = {"J2": "54V 1", "J3": "54V 2", "J4": "12V 1", "J5": "12V 2", "J6": "12V 3", "J7": "12V 4", "J8": "5V"}
+JSHORT = {"J2": "54V1", "J3": "54V2", "J4": "12V1", "J5": "12V2", "J6": "12V3", "J7": "12V4", "J8": "5V"}
 JVAL = {"J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J5": "12V OUT2",
         "J6": "12V OUT3", "J7": "12V OUT4", "J8": "5V OUT"}
+
+def tight_courtyard(m):
+    """Library courtyard is 11.2 mm wide; blocks sit side by side at 10.3 mm (bodies 10.16 mm),
+    so replace it with one hugging the body."""
+    for g in list(m.GraphicalItems()):
+        if g.GetLayer() == pcbnew.F_CrtYd:
+            m.Remove(g)
+    pts = [(-2.6, -5.3), (7.68, -5.3), (7.68, 4.7), (-2.6, 4.7)]
+    for i in range(4):
+        (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % 4]
+        sh = pcbnew.FP_SHAPE(m); sh.SetShape(pcbnew.SHAPE_T_SEGMENT); sh.SetLayer(pcbnew.F_CrtYd)
+        sh.SetWidth(MM(0.05)); sh.SetStart0(VECTOR2I(MM(x0), MM(y0))); sh.SetEnd0(VECTOR2I(MM(x1), MM(y1)))
+        m.Add(sh); sh.SetDrawCoord()
+
 J = {}
 for ref, x in JX.items():
-    m = place(*VH2, ref, x, JY, 0, "JST B2P-VH")
+    m = place(*TB2, ref, x, JY, 0, "5.08mm screw terminal 2p")
+    J[ref] = m
+for ref, y in LY.items():
+    m = place(*TB2, ref, LX, y, 270, "5.08mm screw terminal 2p")
+    J[ref] = m
+for ref, m in J.items():
     setnet(m, 1, JNET[ref][0]); setnet(m, 2, JNET[ref][1])
     m.Reference().SetVisible(False)
-    J[ref] = m
+    tight_courtyard(m)
 
 # --- inputs, JST VH 6-pin, pins 1-3 = +, 4-6 = -, pin 1 at the top:
 #     J1 54 V on the left edge (top end, just below J9), J10 12 V on the right edge (top end)
@@ -160,15 +185,16 @@ for n in (4, 5, 6): setnet(J1, n, "GND54"); setnet(J10, n, "GND")
 J1.Reference().SetVisible(False); J10.Reference().SetVisible(False)
 
 # --- 54 V output fuses (5x20, vertical, centred over their connector)
-Ft = 45.5
+Ft = 42.0
+FX54 = {"F3": 16.5, "F2": 26.8}   # F3 (left) feeds J3 (lower), F2 (right) feeds J2 (upper)
 F = {}
 for ref, jref in (("F2", "J2"), ("F3", "J3")):
-    m = place("Fuse", "Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open", ref, C[jref], Ft, 270, "5x20 T 2.5A")
+    m = place("Fuse", "Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open", ref, FX54[ref], Ft, 270, "5x20 T 2.5A")
     setnet(m, 1, "+54V"); setnet(m, 2, JNET[jref][0])
     F[ref] = m
 
 # --- 12 V output fuses (ATM mini blade, vertical, centred over their connector)
-Fy = 56.5
+Fy = 56.0
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", ref, C[jref] + 1.7, Fy, 270, "ATM 5A")
     setnet(m, 1, "+12V"); setnet(m, 2, JNET[jref][0])
@@ -215,14 +241,14 @@ setnet(J9, "MP", "GND")
 text("5V AUX", MX + 7.62, MY + 3.0, 1.1, bold=True)
 
 # --- LED headers (Dupont 2.54 mm): pin 1 = LED anode via resistor, pin 2 = cathode
-R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 16.5, 40.5, 0, "47k")
-D2 = place(*HDR, "D2", 20.6, 40.5, 90, "LED 54V header")
+R1 = place("Resistor_SMD", "R_1206_3216Metric", "R1", 4.5, 40.4, 270, "47k")
+D2 = place(*HDR, "D2", 4.5, 44.6, 0, "LED 54V header")
 setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 1, "LED54"); setnet(D2, 2, "GND54")
 R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 50.0, 47.0, 0, "4.7k")
 D3 = place(*HDR, "D3", 54.5, 47.0, 90, "LED 12V header")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3, 2, "GND")
-R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 33.0, 45.0, 270, "1k")
-D4 = place(*HDR, "D4", 33.0, 49.5, 0, "LED 5V header")
+R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 35.3, 43.0, 270, "1k")
+D4 = place(*HDR, "D4", 35.3, 47.6, 0, "LED 5V header")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
 
 # --- M3 mounting holes
@@ -238,9 +264,13 @@ def near(m, num, target_x=None):
     return min(ps, key=lambda q: abs(q[0] - target_x))
 
 # fuse -> connector
-for fref, jref in (("F2", "J2"), ("F3", "J3"), ("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
+for fref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     a = near(F[fref], 2, JX[jref]); c = padpos(J[jref], 1)
     track([a, c], JNET[jref][0], 3.0)
+# 54 V: F3 (left) straight across to J3; F2 (right) up between the two holders and over to J2
+track([padpos(F["F3"], 2), padpos(J["J3"], 1)], "OUT54_2", 2.0)
+_a = padpos(F["F2"], 2); _x = (FX54["F3"] + FX54["F2"]) / 2
+track([_a, (_x, _a[1] - (FX54["F2"] - _x)), (_x, 50.5), (7.5, 50.5), padpos(J["J2"], 1)], "OUT54_1", 2.0)
 # blade holders: both pins of each clip are one contact
 for fref in ("F4", "F5", "F6", "F7", "F8"):
     for num in (1, 2):
@@ -250,7 +280,7 @@ for fref in ("F4", "F5", "F6", "F7", "F8"):
 f2 = (F8X - 9.92, F8Y)
 track([f2, (f2[0], 12.5), (64.0, 18.9), (64.0, PY)], "12V_PL", 2.0)
 # 5 V: P3 (VOUT) straight down to J8 pin 1 (inside the +5V pour)
-track([(33.0, PY), (JX["J8"], PY + 3.7), (JX["J8"], JY)], "+5V", 3.0)
+track([(33.0, PY), (32.0, PY + 2.5), (32.0, 68.5), (JX["J8"], JY)], "+5V", 3.0)
 
 # LED nets
 track([padpos(R1, 2), padpos(D2, 1)], "LED54", 0.4)
@@ -274,7 +304,7 @@ def zone(netname, layer, poly, prio=0):
     return z
 
 e = 0.6
-X54 = 27.2          # the 54 V block is x < X54, y > Y54 (left column, below J9)
+X54 = 28.8          # the 54 V block is x < X54, y > Y54 (left column, below J9)
 Y54 = 14.1
 XB = 46.0           # +5V / +12V split under the Pololu
 # top: +54V (J1 -> F2/F3 tops), +5V (J9, Pololu output side, J8 column), +12V (J10 -> F8, fuses, caps)
@@ -284,8 +314,8 @@ zone("+5V", pcbnew.F_Cu, [(e, e), (XB, e), (XB, 40.0), (37.2, 40.0), (37.2, H - 
 zone("+12V", pcbnew.F_Cu, [(XB + 1.5, e), (W - e, e), (W - e, Fy + 3.0), (38.7, Fy + 3.0), (38.7, 41.5),
                           (XB + 1.5, 41.5)])
 # bottom: GND54 under the 54 V block, GND everywhere else (1.5 mm gap)
-zone("GND54", pcbnew.B_Cu, [(e, Y54), (X54, Y54), (X54, H - e), (e, H - e)])
-zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (X54 + 1.5, H - e), (X54 + 1.5, Y54 - 1.5),
+zone("GND54", pcbnew.B_Cu, [(e, Y54), (X54, Y54), (X54, 71.5), (e, 71.5)])
+zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (e, H - e), (e, 73.0), (X54 + 1.5, 73.0), (X54 + 1.5, Y54 - 1.5),
                          (e, Y54 - 1.5)])
 
 # copper keep-out rings around the mounting holes
@@ -305,12 +335,19 @@ for (hx, hy, kr) in [(x, y, 4.5) for (x, y) in ((4, 4), (W - 4, 4), (4, H - 4.5)
 
 # ======================= SILKSCREEN =======================
 B = pcbnew.B_SilkS
+# terminal labels go in the strip just behind the blocks (bodies hide anything under them)
 for ref, x in JX.items():
-    text(JSHORT[ref], C[ref], JY + 3.1, 0.8, bold=True)
-    text("+", x - 2.0, JY - 2.9, 0.9, bold=True)
-    text("+", x - 2.2, JY, 1.0, layer=B, bold=True)
-    text("-", x + 3.96 + 2.2, JY, 1.0, layer=B, bold=True)
-    text(JVAL[ref], C[ref], JY + 3.4, 0.9, layer=B, bold=True)
+    ly = JY - 6.2
+    text("+", x, ly, 0.9, bold=True); text("-", x + 5.08, ly, 0.9, bold=True)
+    text(JSHORT[ref], C[ref], ly, 0.8, bold=True)
+    text("+", x, JY - 6.2, 1.0, layer=B, bold=True); text("-", x + 5.08, JY - 6.2, 1.0, layer=B, bold=True)
+    text(JVAL[ref], C[ref], JY + 2.4, 0.9, layer=B, bold=True)
+for ref, y in LY.items():
+    lx = LX + 6.0
+    text("+", lx, y, 0.9, bold=True); text("-", lx, y + 5.08, 0.9, bold=True)
+    text(JSHORT[ref], lx, y + 2.54, 0.8, rot=90, bold=True)
+    text("+", lx, y, 1.0, layer=B, bold=True); text("-", lx, y + 5.08, 1.0, layer=B, bold=True)
+    text(JVAL[ref], lx + 1.6, y + 2.54, 0.9, rot=90, layer=B, bold=True)
 for conn, labs, dx in ((J1, ("+54V", "+54V", "+54V", "GND", "GND", "GND"), 4.4),
                        (J10, ("+12V", "+12V", "+12V", "GND", "GND", "GND"), -4.4)):
     for i, lab in enumerate(labs):
@@ -321,14 +358,14 @@ text("12V IN", 76.6, 33.0, 0.9, bold=True)
 def refat(m, x, y, rot=0, size=0.8):
     r = m.Reference(); r.SetPosition(P(x, y)); r.SetTextAngleDegrees(rot)
     r.SetTextSize(VECTOR2I(MM(size), MM(size))); r.SetTextThickness(MM(size * 0.15))
-refat(R1, 16.5, 42.6); refat(D2, 23.6, 42.6)
-text("+", 20.6, 38.6, 1.0, bold=True); text("54V", 23.9, 38.6, 0.8)
+refat(R1, 6.8, 40.4, 90); refat(D2, 6.6, 46.0, 90)
+text("+", 2.6, 44.6, 1.0, bold=True); text("54V", 2.4, 47.4, 0.8, rot=90)
 refat(R2, 50.0, 45.1); refat(D3, 55.8, 49.0)
 text("+", 54.5, 45.1, 1.0, bold=True); text("12V", 59.6, 47.0, 0.8)
-refat(R3, 35.2, 45.0, 90); refat(D4, 35.2, 50.8, 90)
-text("+", 31.1, 49.5, 1.0, bold=True); text("5V", 33.0, 53.9, 0.8)
-for ref, jref in (("F2", "J2"), ("F3", "J3")):
-    text("2.5A", C[jref], Ft + 5.8, 1.0, rot=90); refat(F[ref], C[jref], Ft + 16.5, 90, 1.0)
+refat(R3, 37.5, 43.0, 90); refat(D4, 37.5, 48.9, 90)
+text("+", 33.6, 47.6, 1.0, bold=True); text("5V", 35.3, 51.7, 0.8)
+for ref in ("F2", "F3"):
+    text("2.5A", FX54[ref], Ft + 5.8, 1.0, rot=90); refat(F[ref], FX54[ref], Ft + 16.5, 90, 1.0)
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     text("5A", C[jref], Fy + 4.2, 0.9); refat(F[ref], C[jref], Fy + 6.4, 90, 0.8)
 text("5A", F8X - 5.0, 13.0, 0.9)

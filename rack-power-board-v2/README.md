@@ -8,16 +8,24 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
 |---|---|---|---|
 | 54 V IN | J1 (6-pin JST VH, left edge, top end) | — (LOP-300-54's own protection) | from LOP-300-54 |
 | 12 V IN | J10 (6-pin JST VH, right edge, top end) | — | from LOP-200-12 / LOP-300-12 |
-| 54 V OUT 1 / 2 | J2, J3 | F2, F3 5×20 T 2.5 A | 2 A each |
-| 5 V OUT | J8 | F8 ATM 5 A on the Pololu's 12 V feed; Pololu current limit | 6 A, **shared with J9** |
-| 12 V OUT 1–4 | J4–J7 | F4–F7 ATM mini blade (5 A, or 3 A per load) | 3–5 A each |
+| 54 V OUT 1 / 2 | J2, J3 (screw terminals, left edge, bottom end) | F2, F3 5×20 T 2.5 A | 2 A each |
+| 5 V OUT | J8 (screw terminal, bottom edge) | F8 ATM 5 A on the Pololu's 12 V feed; Pololu current limit | 6 A, **shared with J9** |
+| 12 V OUT 1–4 | J4–J7 (screw terminals, bottom edge) | F4–F7 ATM mini blade (5 A, or 3 A per load) | 3–5 A each |
 | 5 V AUX | J9 (4-pin Molex 8981, top edge, far left) | same as J8 | pinout **+5V, GND, GND, +5V** |
 
 * **Board:** 83.2 × 80.0 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes, 9 mm Ø
   copper keep-out around each.
-* **Output row** (bottom edge, left to right): **54V 1, 54V 2, 5V, 12V 1, 12V 2, 12V 3,
-  12V 4**. All are straight JST VH 2-pin headers (B2P-VH), pin 1 (left, marked `+`) positive.
-  With 5 V between the 54 V and 12 V outputs, no supply rail has to cross another one.
+* **Outputs** are 2-pin 5.08 mm screw terminals (YE0001XC321 or any 5.08 mm block that fits
+  the Phoenix MKDS-1,5 footprint: 1.3 mm holes, body 10.16 × 9.8 mm), with the wire entry
+  flush with the board edge. Each output has its own + and GND screw (no shared grounds).
+  * **Bottom edge**, left to right: **5V, 12V 1, 12V 2, 12V 3, 12V 4**, side by side at
+    10.3 mm pitch. The left screw of each block (marked `+`) is positive.
+  * **Left edge**, as low as the corner mounting hole allows: **54V 1** (upper) and **54V 2**
+    (lower), wires entering from the left. The upper screw of each block (marked `+`) is
+    positive.
+  * Screw terminals have no polarity keying: go by the `+`/`−` marks next to each block
+    (also printed on the bottom). Use ferrules on stranded wire.
+  * With 5 V next to the 54 V block, no supply rail has to cross another one.
 * **Inputs:** J1 (54 V) on the left edge and J10 (12 V) on the right edge, both at the top
   end, so each sits next to its own PSU. Both are B6P-VH headers, plugs entering from above. On both,
   pins 1–3 (top, next to the ▽ mark) are **+** and pins 4–6 are **GND**. Three contacts per
@@ -41,10 +49,11 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   can sit in the case front and connect with female Dupont leads. Pin 1 (marked `+`) is
   the LED anode, already behind its series resistor (R1–R3 stay on the board); pin 2 is
   GND (GND54 for D2). Use plain LEDs without a built-in resistor. A header with a Dupont
-  housing on it is about 14 mm tall; a mated VH plug about 17 mm.
+  housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
+  terminals about 10 mm.
 
-![top](docs/top-r2.png)
-![bottom (mirrored)](docs/bottom-r2.png)
+![top](docs/top-r3.png)
+![bottom (mirrored)](docs/bottom-r3.png)
 
 ## Mounting holes
 
@@ -97,7 +106,9 @@ header for J1, and adds J10.
    match. Keep the order (pins 1–3 +, 4–6 −) and mark which cable is 54 V.
 2. **Pololu wiring:** check its VIN/GND/VOUT labels and wire it to P1–P4.
 3. **J9 footprint:** the right-angle tab holes come from measurements of your own headers.
-4. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
+4. **Screw terminals:** check that your blocks fit the 1.3 mm holes at 5.08 mm pitch and are
+   no wider than 10.3 mm, so the five on the bottom edge sit side by side.
+5. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
    0031.8201, Keystone 3568). Compare them against the parts you actually buy.
 
 ## Files

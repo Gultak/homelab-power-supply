@@ -15,8 +15,8 @@ Same sourcing as [v1](../rack-power-board/BOM.md): almost everything from **Digi
 | J1, J10 | 2 | PCB header, 6-pos, 3.96 mm, straight | JST **B6P-VH** | 54 V and 12 V inputs, 10 A per contact | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=B6P-VH) | |
 | (J1, J10 plugs) | 2 | Crimp housing, 6-pos, 3.96 mm | JST **VHR-6N** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=VHR-6N) | |
 | (J1, J10 contacts) | 12 (+4 spare) | Crimp contact, AWG 18–16 | JST **SVH-41T-P1.1** | Use 1.25 mm² (AWG 16) wire | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=SVH-41T-P1.1) | |
-| J2–J8 | 7 | PCB header, 2-pos, 3.96 mm, straight | JST **B2P-VH** | **On hand** (8 on hand, one spare) | — | |
-| (J2–J8 plugs) | 7 | Crimp housing, 2-pos + contacts | JST **VHR-2N** + SVH contacts | **On hand** | — | |
+| J2–J8 | 7 | Screw terminal block, 2-pos, 5.08 mm, horizontal wire entry | **YE0001XC321** (fits the Phoenix MKDS-1,5-2-5.08 footprint) | **On hand** | — | [🔎 Phoenix 1715721 (MKDS 1,5/2-5,08) on DigiKey](https://www.digikey.ie/en/products/result?keywords=1715721) |
+| (wire ferrules) | 14+ | Ferrules for 0.75–1.5 mm² wire | — | Recommended for stranded wire in the screw terminals | — | |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight or right-angle | — | **On hand.** Tab holes for the right-angle version. | — | |
 | (J9 plug) | 1 | 4-pos Mate-N-Lok plug + cable | — | **On hand** | — | |
 | F2, F3 | 2 | 5×20 mm PCB fuse holder, open | Schurter **0031.8201** | | [🔎 DigiKey](https://www.digikey.ie/en/products/result?keywords=0031.8201) | |
