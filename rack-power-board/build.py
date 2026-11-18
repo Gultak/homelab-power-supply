@@ -126,8 +126,9 @@ def custom_fp(ref, value, padlist, outline=None, silk_label=None, crtyd=True):
     return m
 
 # ======================= PLACEMENT =======================
-# --- connectors: Phoenix MSTBA 5.08mm horizontal, opening facing the board edge (y=H)
-JY = H - 5.8            # JST VH: body edge 0.5 mm inside the board edge
+# --- connectors: 2-pin 5.08 mm screw terminals (Phoenix MKDS-1,5 footprint), wire entry at the board edge (y=H)
+TB2 = ("TerminalBlock_Phoenix", "TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal")
+JY = H - 5.0            # pin line: body front 0.35 mm inside the board edge
 JX = {"J1": 12, "J2": 26, "J3": 40, "J4": 56, "J5": 70, "J6": 84, "J7": 98, "J8": 116}
 JNET = {"J1": ("VIN_RAW", "GND"), "J2": ("OUT54_1", "GND"), "J3": ("OUT54_2", "GND"),
         "J4": ("OUT12_1", "GND"), "J5": ("OUT12_2", "GND"), "J6": ("OUT12_3", "GND"),
@@ -135,12 +136,25 @@ JNET = {"J1": ("VIN_RAW", "GND"), "J2": ("OUT54_1", "GND"), "J3": ("OUT54_2", "G
 JSHORT = {"J1": "54V IN", "J2": "54V 1", "J3": "54V 2", "J4": "12V 1", "J5": "12V 2", "J6": "12V 3", "J7": "12V 4", "J8": "5V"}
 JVAL = {"J1": "54V IN", "J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J5": "12V OUT2",
         "J6": "12V OUT3", "J7": "12V OUT4", "J8": "5V OUT"}
+def tight_courtyard(m):
+    """Library courtyard is 11.2 mm wide; blocks sit side by side at 10.3 mm (bodies 10.16 mm),
+    so replace it with one hugging the body."""
+    for g in list(m.GraphicalItems()):
+        if g.GetLayer() == pcbnew.F_CrtYd:
+            m.Remove(g)
+    pts = [(-2.6, -5.3), (7.68, -5.3), (7.68, 4.7), (-2.6, 4.7)]
+    for i in range(4):
+        (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % 4]
+        sh = pcbnew.FP_SHAPE(m); sh.SetShape(pcbnew.SHAPE_T_SEGMENT); sh.SetLayer(pcbnew.F_CrtYd)
+        sh.SetWidth(MM(0.05)); sh.SetStart0(VECTOR2I(MM(x0), MM(y0))); sh.SetEnd0(VECTOR2I(MM(x1), MM(y1)))
+        m.Add(sh); sh.SetDrawCoord()
+
 J = {}
 for ref, x in JX.items():
-    m = place("Connector_JST", "JST_VH_B2P-VH_1x02_P3.96mm_Vertical",
-              ref, x, JY, 0, "JST B2P-VH")
+    m = place(*TB2, ref, x, JY, 0, "5.08mm screw terminal 2p")
     setnet(m, 1, JNET[ref][0]); setnet(m, 2, JNET[ref][1])
     m.Reference().SetVisible(False)
+    tight_courtyard(m)
     J[ref] = m
 
 # --- 54V fuses (5x20 holders, vertical): upper pad = bus side
@@ -362,12 +376,16 @@ for (hx, hy, kr) in [(x, y, 4.5) for (x, y) in ((4, 4), (W - 4, 4), (4, H - 4.5)
     b.Add(k)
 
 # ======================= SILKSCREEN =======================
+# terminal labels go in the strip just behind the blocks (bodies hide anything under them)
 for ref, x in JX.items():
-    text(JSHORT[ref], x + 6.9, JY - 6.0, 1.0, bold=True)
-    text("+", x - 2.4, JY, 1.0, bold=True)
+    ly = JY - 6.2
+    wide = len(JSHORT[ref]) > 5          # "54V IN": push the +/- marks out a little
+    text("+", x - (1.8 if wide else 0), ly, 0.9, bold=True)
+    text("-", x + 5.08 + (1.8 if wide else 0), ly, 0.9, bold=True)
+    text(JSHORT[ref], x + 2.54, ly, 0.8, bold=True)
     text("+", x - 2.4, JY, 1.0, layer=pcbnew.B_SilkS, bold=True)
-    text("-", x + 3.96 + 2.4, JY, 1.0, layer=pcbnew.B_SilkS, bold=True)
-    text(JVAL[ref], x + 1.98, JY + 3.6, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text("-", x + 5.08 + 2.4, JY, 1.0, layer=pcbnew.B_SilkS, bold=True)
+    text(JVAL[ref], x + 2.54, JY + 3.2, 1.0, layer=pcbnew.B_SilkS, bold=True)
 B = pcbnew.B_SilkS
 text("RACK POWER BOARD", 72, 39.5, 2.5, layer=B, bold=True)
 text("54V -> 54V x2 / 12V x4 / 5V", 72, 43, 1.6, layer=B)

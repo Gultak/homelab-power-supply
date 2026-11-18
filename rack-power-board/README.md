@@ -13,10 +13,12 @@ Mean Well LOP-300-54 and provides:
 
 * **Board:** 134 × 78.5 mm, 2 layers, **2 oz copper**, 1.6 mm. 4× M3 holes 4 mm in from the
   corners, with a 4.5 mm copper keep-out around each. It fits the 140 × 150 × 30 mm space.
-* **Connectors:** J1–J8 are straight JST VH 2-pin headers (B2P-VH, 3.96 mm pitch, 10 A per
-  contact) along the long board edge. The crimp plugs (VHR-2N) go in from above. Pin 1 (left,
-  marked `+`) is positive. A mated VH plug stands roughly 17 mm above the board, so check the
-  wire bend room under the lid with your standoff height. J9 is a
+* **Connectors:** J1–J8 are 2-pin 5.08 mm screw terminals (YE0001XC321 or any 5.08 mm block
+  that fits the Phoenix MKDS-1,5 footprint: 1.3 mm holes, body 10.16 × 9.8 mm) along the long
+  board edge, with the wire entry flush with the edge. The left screw of each block (marked
+  `+`) is positive. Screw terminals have no polarity keying, so go by the `+`/`−` marks
+  printed just in front of each block (and on the bottom). Use ferrules on stranded wire.
+  The blocks are about 10 mm tall. J9 is a
   right-angle 4-pin "disk drive" Molex header on the left edge, with its plug entering from
   the left.
 * **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
@@ -61,8 +63,8 @@ unplated (NPTH).
 * **M2 pattern (Pololu):** 15.24 × 35.56 mm, matching the D24V90F5's own holes. Use 10 mm
   M2 standoffs.
 
-![top](docs/top-r2.png)
-![bottom (mirrored)](docs/bottom-r2.png)
+![top](docs/top-r3.png)
+![bottom (mirrored)](docs/bottom-r3.png)
 
 ## Layout and copper
 
@@ -91,10 +93,10 @@ For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.m
 |---|---|---|---|
 | U1 | 1 | Murata **DVE0125V2NBC**, or any DOSA 1/8-brick 36–75 V → 12 V ≥ 200 W (e.g. Flex PKB4313DPI, Delta E48SC12025NRFH) | The Murata is negative logic, so bridge JP1. 5-pin and 8-pin bricks both fit (sense pins are tied locally). See [BOM.md](BOM.md). |
 | U2 | 1 | Pololu **D24V90F5** (#2866) + 4× M2 × 10 mm standoffs and screws | about US$37 direct |
-| J1–J8 | 8 | JST **B2P-VH** 2-pin header, 3.96 mm, straight | on hand |
+| J1–J8 | 8 | 2-pin 5.08 mm screw terminal, horizontal wire entry (YE0001XC321) | on hand |
 | J9 | 1 | 4-pin 5.08 mm "Molex" (8981-style) header, straight **or** right-angle | 1.7 mm pin holes. The footprint also has two plated 1.7 mm tab holes (GND) for the right-angle version: one pitch beyond each end pin, one pitch towards the board edge. They stay empty when a straight header is fitted. |
 | (J9 plug) | 1 | 4-pin 8981 / Mate-N-Lok plug + cable | on hand |
-| (plugs) | 8 | JST **VHR-2N** housing + SVH crimp contacts | on hand |
+| (ferrules) | 16+ | wire ferrules for 0.75–1.5 mm² | recommended for stranded wire |
 | F1–F3 | 3 | Schurter **0031.8201** 5×20 PCB fuse holder (open) | add the 0853.0551 cover if you want touch protection |
 | F1 fuse | 1 | 5×20 T **8 A** 250 V (Littelfuse 218 series) | |
 | F2, F3 fuse | 2 | 5×20 T **2.5 A** 250 V (Littelfuse 218 series) | |
@@ -127,7 +129,8 @@ goes over, the LOP's overload protection trips first, and F1 (8 A) protects the 
 2. **Pololu wiring:** the Pololu has no fixed footprint because its pin positions aren't
    published. Check its VIN/GND/VOUT labels and wire it to P1–P4.
 3. **J9 footprint:** the right-angle tab holes come from measurements of your own headers. A straight header with its plug fitted may be too tall for the 30 mm case.
-4. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
+4. **Screw terminals:** check that your blocks fit the 1.3 mm holes at 5.08 mm pitch.
+5. **Fuse holders and blade holders:** they use the KiCad library footprints (Schurter
    0031.8201, Keystone 3568). Compare them against the parts you actually buy.
 
 ## Files
