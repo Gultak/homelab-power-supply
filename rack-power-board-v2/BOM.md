@@ -33,7 +33,7 @@ including VAT, as checked in November 2026.
 | 🛒 | (F4–F8 fuses) | 10 | ATM fuse, 5 A, 32 V (5 + 5 spare) | Littelfuse | 0297005.WXNV | [F989-ND](https://www.digikey.ie/en/products/detail/littelfuse-inc/0297005-WXNV/146583) | 3.28 |
 | 🏠 | (optional fuses) | 5 | ATM fuse, 3 A, 32 V | Littelfuse | 0297003.WXNV | | |
 | 🛒 | C5, C6 | 2 | 470 µF 16 V aluminium polymer, Ø8 mm, 3.5 mm pitch | Panasonic | 16SEPG470M | [P122605-ND](https://www.digikey.ie/en/products/detail/panasonic-industry/16SEPG470M/8020032) | 3.76 |
-| 🛒 | R1 | 1 | 5.1 kΩ 1 %, 2512, 1 W | Yageo | RC2512FK-075K1L | [13-RC2512FK-075K1LCT-ND](https://www.digikey.ie/en/products/detail/yageo/RC2512FK-075K1L/5922310) | 0.20 |
+| 🛒 | R1 | 1 | 5.1 kΩ 1 %, 2512, 1 W | Yageo | RC2512FK-075K1L | [13-RC2512FK-075K1LCT-ND](https://www.digikey.ie/en/products/detail/yageo/RC2512FK-075K1L/5922310) | 0.38 |
 | 🛒 | R2 | 1 | 1 kΩ 1 %, 1206 | Yageo | RC1206FR-071KL | [311-1.00KFRCT-ND](https://www.digikey.ie/en/products/detail/yageo/RC1206FR-071KL/728387) | 0.11 |
 | 🛒 | R3 | 1 | 300 Ω 1 %, 1206 | Yageo | RC1206FR-07300RL | [311-300FRCT-ND](https://www.digikey.ie/en/products/detail/yageo/RC1206FR-07300RL/728804) | 0.11 |
 | 🏠 | D2–D4 | 3 | Pin header 1×2, 2.54 mm, vertical | Sullins | PREC002SAAN-RC | | |
@@ -46,7 +46,7 @@ including VAT, as checked in November 2026.
 | 🛒 | — | 14+ | Wire ferrule, 1.0 mm² × 8 mm, red (DIN 46228-4) | Phoenix Contact | 3200030 (AI 1-8 RD) | [277-2188-ND](https://www.digikey.ie/en/products/detail/phoenix-contact/3200030/349907) | 2.76 |
 | 🏠 | — | ~2 m | Wire 1.25 mm² (AWG 16) | generic | H05V-K 1.5 mm² or AWG 16 silicone | | |
 | 🏠 | — | ~0.5 m | Wire 1 mm² (AWG 18) | generic | H05V-K 1.0 mm² or AWG 18 silicone | | |
-| | **Total** | | **DigiKey order (🛒)** | | | | **78.33** |
+| | **Total** | | **DigiKey order (🛒)** | | | | **78.51** |
 
 ## Notes
 
