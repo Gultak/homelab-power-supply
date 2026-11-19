@@ -88,7 +88,7 @@ holes are unplated (NPTH).
 
 ## Bill of materials
 
-For manufacturer part numbers and ordering links (DigiKey Ireland), see **[BOM.md](BOM.md)**.
+For part numbers, order status and DigiKey Ireland part numbers and prices, see **[BOM.md](BOM.md)**.
 Compared with v1, v2 drops U1, C1–C4, C7, C8, D1, F1 (and its fuse) and JP1, uses a 6-pin
 header for J1, and adds J10.
 
