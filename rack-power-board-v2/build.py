@@ -212,16 +212,18 @@ for c in (C5, C6):
 
 # --- Pololu D24V90F5, horizontal between the two inputs, soldered flat on 0.1" header pins
 #     (end rows of 4 small holes) plus solid wire links through the large terminal-block holes.
-#     Positions from Pololu's D24VxF5 dimension drawing (top view: u across 0..20.3, v along 0..40.6,
-#     v = 0 at the VOUT end; the FB/PG/EN column is at u = 19.03).  Rotated so the VOUT end is on
-#     the left: board x = PX0 + v, board y = PY0 + (20.3 - u).
+#     Positions from Pololu's D24VxF5 dimension drawing (top view: u across 0..20.3, v along 0..40.6).
+#     The FB/PG/EN column is at u = 19.03, v = 12.7..20.3, i.e. nearer the VIN end, so v = 0 is the
+#     VIN end; GND is the large hole on the column side (u = 12.70) at both ends.
+#     Rotated so the VOUT end is on the left and the FB/PG/EN column faces the front edge:
+#     board x = PX0 + 40.6 - v, board y = PY0 + u.
 PX0, PY0 = 31.0, 14.5
 pcx, pcy = PX0 + 20.3, PY0 + 10.15
 M2H = []                       # no standoffs any more
 def pol(u, v):
-    return (PX0 + v, PY0 + 20.3 - u)
+    return (PX0 + 40.6 - v, PY0 + u)
 POL = []                       # (net, u, v, pad, drill)
-for vend, small_v, live in ((2.54, 5.08, "+5V"), (38.06, 35.52, "12V_PL")):
+for vend, small_v, live in ((2.54, 5.08, "12V_PL"), (38.06, 35.52, "+5V")):
     POL += [(live, 7.62, vend, 2.8, 1.6), ("GND", 12.70, vend, 2.8, 1.6)]
     POL += [(live, 6.35, small_v, 1.8, 1.0), (live, 8.89, small_v, 1.8, 1.0),
             ("GND", 11.43, small_v, 1.8, 1.0), ("GND", 13.97, small_v, 1.8, 1.0)]
@@ -232,8 +234,9 @@ for i, (nm, u, v, pd, dr) in enumerate(POL):
     setnet(U2, i + 1, nm)
 text("POLOLU D24V90F5", pcx, pcy, 1.2)
 text("on 0.1in headers + wire links", pcx, pcy + 2, 0.9)
-VOUT_L = pol(7.62, 2.54); VIN_L = pol(7.62, 38.06)
-text("VOUT", VOUT_L[0] + 5.0, VOUT_L[1] + 3.6, 0.8); text("VIN", VIN_L[0] - 5.0, VIN_L[1] + 3.6, 0.8)
+VOUT_L = pol(7.62, 38.06); VIN_L = pol(7.62, 2.54)
+text("VOUT", VOUT_L[0] + 5.0, VOUT_L[1] - 3.2, 0.8); text("VIN", VIN_L[0] - 5.0, VIN_L[1] - 3.2, 0.8)
+_c = pol(19.03, 16.5); text("FB PG EN pins this side", _c[0], _c[1] - 2.0, 0.8)
 PY = PY0 + 20.3 + 3.7
 
 # --- J9: 4-pin Molex 8981 on the top edge, far left (right-angle tab holes towards the edge)
@@ -285,11 +288,11 @@ for fref in ("F4", "F5", "F6", "F7", "F8"):
         track(ps, F[fref].FindPadByNumber(str(num)).GetNetname(), 2.0)
 # F8 pad 2 -> Pololu VIN (large hole + two header pins), under the Pololu
 f2 = (F8X - 9.92, F8Y)
-_vs1, _vs2 = pol(6.35, 35.52), pol(8.89, 35.52)
+_vs1, _vs2 = pol(6.35, 5.08), pol(8.89, 5.08)
 track([f2, (f2[0], 12.5), (63.0, 17.9), (63.0, VIN_L[1]), VIN_L], "12V_PL", 2.0)
 track([_vs1, _vs2], "12V_PL", 1.2)
 # 5 V: Pololu VOUT large hole down to J8 pin 1 (inside the +5V pour)
-track([VOUT_L, (32.0, VOUT_L[1] + 1.5), (32.0, 68.5), (JX["J8"], JY)], "+5V", 3.0)
+track([(32.0, 42.0), (32.0, 68.5), (JX["J8"], JY)], "+5V", 3.0)   # VOUT reaches this through the +5V pour
 
 # LED nets
 track([padpos(R1, 2), padpos(D2, 1)], "LED54", 0.4)

@@ -51,9 +51,12 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   * **Gap:** at least 2.5 mm, which is one standard header spacer. About 5 mm (two
     spacers, extra-long header pins) gives better airflow underneath. There are no
     components under the Pololu, only copper under solder mask.
-  * **Pinout:** the pin assignment comes from Pololu's drawing. Before soldering, check it
-    against the labels on the back of your Pololu: VOUT/GND at one end, VIN/GND at the
-    other, with GND on the side of the FB/PG/EN pin column.
+  * **Orientation:** component side up, with the VOUT end on the left and the FB/PG/EN pin
+    column towards the front (output) edge of this board. The silkscreen marks the VIN and
+    VOUT ends and the FB/PG/EN side.
+  * **Pinout:** taken from Pololu's dimension drawing. The FB/PG/EN column sits nearer the
+    VIN end, and at both ends the large GND hole is on the column side. Check this against
+    the labels on the back of your Pololu before soldering.
 * **J9** sits on the top edge as far left as the corner mounting hole allows (pin 1 at
   15.3 mm). The right-angle plug enters from the top edge.
 * **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
@@ -65,8 +68,8 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
   terminals about 10 mm.
 
-![top](docs/top-r5.png)
-![bottom (mirrored)](docs/bottom-r5.png)
+![top](docs/top-r6.png)
+![bottom (mirrored)](docs/bottom-r6.png)
 
 ## Mounting holes
 
