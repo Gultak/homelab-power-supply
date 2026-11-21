@@ -39,8 +39,8 @@ including VAT, as checked in November 2026.
 | 🏠 | D2–D4 | 3 | Pin header 1×2, 2.54 mm, vertical | Sullins | PREC002SAAN-RC | | |
 | 🛒 | (case LEDs) | 3 | Panel-mount LED, 2 × 5 mm, red diffused, snap-in, no built-in resistor | Lumex | SSI-LXMP059ID | [67-1179-ND](https://www.digikey.ie/en/products/detail/lumex-opto-components-inc/SSI-LXMP059ID/144717) | 3.14 |
 | 🏠 | (LED leads) | 3 | Dupont jumper, female–female, 2-pin | generic | 2.54 mm Dupont F-F | | |
-| 🏠 | — | 4 | M2 hex standoff, 10 mm, female–female | generic | M2 × 10 F-F hex standoff | | |
-| 🏠 | — | 8 | M2 screw, pan head, 5 mm | generic | ISO 7045 M2 × 5 | | |
+| 🏠 | (U2 mount) | 2 | Pin header 1×4, 2.54 mm, straight (extra-long for a 5 mm gap) | generic | 0.1" male header | | |
+| 🏠 | (U2 links) | ~10 cm | Solid copper wire, as thick as fits the Pololu's large holes | generic | e.g. 1.5 mm² solid | | |
 | 🏠 | — | 4 | M3 heat-set insert | generic | M3 × 5.7 mm, OD 4.6 mm | | |
 | 🏠 | — | 4 | M3 screw, pan head | generic | ISO 7045 M3 × 8 | | |
 | 🛒 | — | 14+ | Wire ferrule, 1.0 mm² × 8 mm, red (DIN 46228-4) | Phoenix Contact | 3200030 (AI 1-8 RD) | [277-2188-ND](https://www.digikey.ie/en/products/detail/phoenix-contact/3200030/349907) | 2.76 |

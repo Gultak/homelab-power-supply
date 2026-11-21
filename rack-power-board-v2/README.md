@@ -38,9 +38,22 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   top layer, and the bottom layer there is GND54, with a 1.5 mm gap to the 12 V/5 V ground.
   Nothing on the 12 V/5 V side connects to it, and there is no option to tie the two
   grounds (the two LOP supplies have isolated outputs).
-* **5 V:** the same Pololu D24V90F5 as v1, lying horizontally between the two inputs on 4×
-  M2 × 10 mm standoffs. Wire it with 1 mm² leads to P3 (VOUT, left) and P4 (GND), and to
-  P1 (VIN, right) and P2 (GND). A +5 V copper pour feeds J9 above and J8 below.
+* **5 V:** the same Pololu D24V90F5 as v1, lying horizontally between the two inputs and
+  soldered flat to the board, with no standoffs and no wires (VOUT end left, VIN end right). A
+  +5 V copper pour feeds J9 above and J8 below.
+  * **Header pins (mechanical):** at each end, a 4-pin straight 0.1" male header goes
+    through the Pololu's row of 4 small holes and the matching holes in this board. Per
+    Pololu's drawing the small holes are Ø1.02 mm; this board has Ø1.0 mm holes.
+  * **Wire links (current):** at each end, a short piece of solid copper wire goes through
+    each of the two large terminal-block holes (VIN or VOUT, and GND) into this board's
+    Ø1.6 mm holes. Use the thickest solid wire that fits the Pololu's holes. These links
+    carry the 6 A; the 0.1" pins alone are not meant for it.
+  * **Gap:** at least 2.5 mm, which is one standard header spacer. About 5 mm (two
+    spacers, extra-long header pins) gives better airflow underneath. There are no
+    components under the Pololu, only copper under solder mask.
+  * **Pinout:** the pin assignment comes from Pololu's drawing. Before soldering, check it
+    against the labels on the back of your Pololu: VOUT/GND at one end, VIN/GND at the
+    other, with GND on the side of the FB/PG/EN pin column.
 * **J9** sits on the top edge as far left as the corner mounting hole allows (pin 1 at
   15.3 mm). The right-angle plug enters from the top edge.
 * **J9 warning:** its pinout (+5V, GND, GND, +5V) is **not** the PC standard (+12V, GND,
@@ -52,8 +65,8 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
   terminals about 10 mm.
 
-![top](docs/top-r4.png)
-![bottom (mirrored)](docs/bottom-r4.png)
+![top](docs/top-r5.png)
+![bottom (mirrored)](docs/bottom-r5.png)
 
 ## Mounting holes
 
@@ -67,15 +80,10 @@ holes are unplated (NPTH).
 | H2 | board mount | 79.20 | 4.00 | 3.2 mm (M3) | same |
 | H3 | board mount | 4.00 | 75.50 | 3.2 mm (M3) | same |
 | H4 | board mount | 79.20 | 75.50 | 3.2 mm (M3) | same |
-| H5 | Pololu standoff | 33.52 | 17.03 | 2.2 mm (M2) | 6 mm Ø copper-free area on both sides |
-| H6 | Pololu standoff | 69.08 | 17.03 | 2.2 mm (M2) | same |
-| H7 | Pololu standoff | 33.52 | 32.27 | 2.2 mm (M2) | same |
-| H8 | Pololu standoff | 69.08 | 32.27 | 2.2 mm (M2) | same |
 
 * **Board outline:** 83.2 × 80.0 mm.
 * **M3 pattern:** 75.2 × 71.5 mm centre-to-centre, inset 4 mm from the top, left and
   right edges and 4.5 mm from the output connector edge.
-* **M2 pattern (Pololu):** 35.56 × 15.24 mm (the D24V90F5's own holes).
 
 ## Layout and copper
 
@@ -84,7 +92,7 @@ holes are unplated (NPTH).
   D3 and the 12 V fuses.
 * **Bottom layer:** GND everywhere except the 54 V block (GND54).
 * **Pad connections:** power pads join the pours solidly (no thermal reliefs). Use a hot
-  iron (≥ 60 W) for J*, F* and the wire pads.
+  iron (≥ 60 W) for J*, F* and the Pololu wire links.
 
 ## Bill of materials
 
@@ -104,7 +112,8 @@ header for J1, and adds J10.
 
 1. **J1/J10 cables:** confirm the output connector on both LOPs and make the cables to
    match. Keep the order (pins 1–3 +, 4–6 −) and mark which cable is 54 V.
-2. **Pololu wiring:** check its VIN/GND/VOUT labels and wire it to P1–P4.
+2. **Pololu pinout:** check the VIN/GND/VOUT labels on the back of your Pololu against the VIN/VOUT
+   marks on this board.
 3. **J9 footprint:** the right-angle tab holes come from measurements of your own headers.
 4. **Screw terminals:** check that your blocks fit the 1.3 mm holes at 5.08 mm pitch and are
    no wider than 10.3 mm, so the five on the bottom edge sit side by side.
