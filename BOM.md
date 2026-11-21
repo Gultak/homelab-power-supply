@@ -57,5 +57,3 @@ including VAT, as checked in November 2026.
   a female–female Dupont lead to each LED.
 * **J9:** fit one of the two headers, right-angle or vertical. The board has holes for both.
 * **Delivery:** DigiKey Ireland delivers free from €92.25 inc. VAT; below that, delivery is about €25.
-* **Not on v2** (compared with v1): U1 (12 V brick), C1–C4, C7, C8, D1 (TVS), F1 and its 8 A fuse, JP1. There is no
-  ground-tie jumper.

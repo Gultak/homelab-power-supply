@@ -1,8 +1,8 @@
 # Rack power board v2: separate 12 V and 54 V supplies
 
-Variant of the [v1 board](../rack-power-board/README.md) for a case with **two** Mean Well
-supplies: a LOP-300-54 for 54 V and a **LOP-200-12 or LOP-300-12** for 12 V. There is no
-DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the second PSU.
+Power distribution board for a 3D-printed 1U 10" rack case with **two** Mean Well supplies:
+a LOP-300-54 for 54 V and a **LOP-200-12 or LOP-300-12** for 12 V. There is no DC-DC brick;
+5 V comes from a Pololu D24V90F5 step-down module fed from the 12 V supply.
 
 | Output | Connector | Protection | Rating |
 |---|---|---|---|
@@ -38,7 +38,7 @@ DC-DC brick. The board is 50.8 mm (2") narrower than v1, to leave room for the s
   top layer, and the bottom layer there is GND54, with a 1.5 mm gap to the 12 V/5 V ground.
   Nothing on the 12 V/5 V side connects to it, and there is no option to tie the two
   grounds (the two LOP supplies have isolated outputs).
-* **5 V:** the same Pololu D24V90F5 as v1, lying horizontally between the two inputs and
+* **5 V:** a Pololu D24V90F5, lying horizontally between the two inputs and
   soldered flat to the board, with no standoffs and no wires (VOUT end left, VIN end right). A
   +5 V copper pour feeds J9 above and J8 below.
   * **Header pins (mechanical):** at each end, a 4-pin straight 0.1" male header goes
@@ -100,8 +100,6 @@ holes are unplated (NPTH).
 ## Bill of materials
 
 For part numbers, order status and DigiKey Ireland part numbers and prices, see **[BOM.md](BOM.md)**.
-Compared with v1, v2 drops U1, C1–C4, C7, C8, D1, F1 (and its fuse) and JP1, uses a 6-pin
-header for J1, and adds J10.
 
 ## Power budget
 

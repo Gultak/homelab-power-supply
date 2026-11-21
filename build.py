@@ -7,7 +7,7 @@ import os
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board-v2.kicad_pcb")
 LIB = "/usr/share/kicad/footprints/"
 OX, OY = 30.0, 30.0          # sheet offset
-W, H = 83.2, 80.0           # board size (mm): v1 width minus 2"
+W, H = 83.2, 80.0           # board size (mm)
 
 b = pcbnew.BOARD()
 b.SetCopperLayerCount(2)
