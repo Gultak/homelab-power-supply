@@ -1,19 +1,31 @@
-** Drc report for /home/claude/homelab-power-supply/rack-power-board-v2/rack-power-board-v2.kicad_pcb **
-** Created on 2026-11-21 23:01:40 **
+** Drc report for /home/claude/homelab-power-supply/rack-power-board.kicad_pcb **
+** Created on 2026-11-21 23:09:32 **
 
-** Found 171 DRC violations **
+** Found 170 DRC violations **
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(103.0000 mm, 51.8800 mm): PCB Text 'GND' on F.Silkscreen
+    @(40.5000 mm, 65.1000 mm): PCB Text 'GND' on F.Silkscreen
+    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.5000 mm, 61.1400 mm): PCB Text 'GND' on F.Silkscreen
+    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.5000 mm, 57.1800 mm): PCB Text 'GND' on F.Silkscreen
+    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
+    @(103.0000 mm, 59.8000 mm): PCB Text 'GND' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
+    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
     @(103.0000 mm, 55.8400 mm): PCB Text 'GND' on F.Silkscreen
-    @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(103.0000 mm, 47.9200 mm): PCB Text '+12V' on F.Silkscreen
+    @(103.0000 mm, 51.8800 mm): PCB Text 'GND' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
@@ -21,23 +33,203 @@
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(103.0000 mm, 40.0000 mm): PCB Text '+12V' on F.Silkscreen
+    @(103.0000 mm, 47.9200 mm): PCB Text '+12V' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(102.4900 mm, 61.8600 mm): Line on F.Silkscreen
-    @(103.0000 mm, 59.8000 mm): PCB Text 'GND' on F.Silkscreen
+    @(103.0000 mm, 40.0000 mm): PCB Text '+12V' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(103.0000 mm, 47.9200 mm): PCB Text '+12V' on F.Silkscreen
+    @(40.2610 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.2610 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(37.3010 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(37.3010 mm, 81.2000 mm): Line on F.Silkscreen
+    @(37.3010 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(32.4000 mm, 81.2000 mm): Line on F.Silkscreen
+    @(32.4000 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(32.4000 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
+    @(30.9000 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
+    @(30.8400 mm, 91.2600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
+    @(30.3400 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
+    @(30.8400 mm, 91.2600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(32.4000 mm, 91.5000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.9000 mm, 91.5000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(30.3400 mm, 91.5000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
+    @(37.3010 mm, 91.5000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(101.6000 mm, 44.5000 mm): Line on F.Silkscreen
+    @(103.0000 mm, 47.9200 mm): PCB Text '+12V' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(92.5000 mm, 43.0000 mm): PCB Text '5A' on F.Silkscreen
     @(92.5400 mm, 42.1700 mm): Reference 'F8'
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(67.1000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
-    @(66.1700 mm, 99.0600 mm): Line on F.Silkscreen
+    @(85.8000 mm, 79.0000 mm): Reference 'D3'
+    @(85.7700 mm, 78.3300 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.8000 mm, 79.0000 mm): Reference 'D3'
+    @(85.7700 mm, 78.3300 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(87.7000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
+    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(79.9400 mm, 99.1000 mm): PCB Text '12V2' on F.Silkscreen
+    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(82.4800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
+    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
+    @(77.4000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(69.6400 mm, 99.1000 mm): PCB Text '12V1' on F.Silkscreen
@@ -48,152 +240,100 @@
     @(66.1700 mm, 99.0600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(77.4000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
-    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.5600 mm, 109.4600 mm): Line on F.Silkscreen
-    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.5600 mm, 109.4600 mm): Line on F.Silkscreen
-    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
     @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(54.2000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(54.2000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(54.2000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(74.5600 mm, 109.4600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
     @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(54.2000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(74.5600 mm, 109.4600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
     @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(54.2000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(66.1700 mm, 99.0600 mm): Line on F.Silkscreen
+    @(67.1000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
     @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(54.2000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
     @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(54.2000 mm, 102.9990 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(54.2000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
     @(54.2000 mm, 109.4000 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
     @(54.2000 mm, 109.9600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.3010 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(37.3010 mm, 91.5000 mm): Line on F.Silkscreen
-    @(37.3010 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.9000 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.9000 mm, 91.5000 mm): Line on F.Silkscreen
-    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.3400 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.3400 mm, 91.5000 mm): Line on F.Silkscreen
-    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(32.4000 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(32.4000 mm, 91.5000 mm): Line on F.Silkscreen
-    @(32.4000 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
     @(54.2000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
     @(54.2000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
@@ -208,12 +348,120 @@
     @(54.2000 mm, 109.9600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(54.2000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
+    @(100.5400 mm, 99.1000 mm): PCB Text '12V4' on F.Silkscreen
+    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
-    @(54.2000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
+    @(90.2400 mm, 99.1000 mm): PCB Text '12V3' on F.Silkscreen
+    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(103.0800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
+    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(98.0000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
+    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 102.9990 mm): Line on F.Silkscreen
+    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 107.9000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(92.7800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
+    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
+    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
+    @(95.1600 mm, 109.4600 mm): Line on F.Silkscreen
+[silk_overlap]: Silkscreen overlap
+    Rule: board setup constraints silk; Severity: warning
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+    @(95.1600 mm, 109.4600 mm): Line on F.Silkscreen
 [silk_overlap]: Silkscreen overlap
     Rule: board setup constraints silk; Severity: warning
     @(65.3000 mm, 81.7000 mm): PCB Text '5V' on F.Silkscreen
@@ -222,260 +470,9 @@
     Rule: board setup constraints silk; Severity: warning
     @(63.6000 mm, 77.6000 mm): PCB Text '+' on F.Silkscreen
     @(63.9700 mm, 77.6000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.5000 mm, 57.1800 mm): PCB Text 'GND' on F.Silkscreen
-    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
-    @(40.5000 mm, 61.1400 mm): PCB Text 'GND' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(39.9100 mm, 44.4400 mm): Line on F.Silkscreen
-    @(40.5000 mm, 65.1000 mm): PCB Text 'GND' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.8400 mm, 91.2600 mm): Line on F.Silkscreen
-    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(30.8400 mm, 91.2600 mm): Line on F.Silkscreen
-    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 91.4800 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(40.2610 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(37.3010 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(32.4000 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(30.9000 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(40.2610 mm, 91.5000 mm): Line on F.Silkscreen
-    @(30.3400 mm, 81.2000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(90.2400 mm, 99.1000 mm): PCB Text '12V3' on F.Silkscreen
-    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(92.7800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
-    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(98.0000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
-    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(86.7700 mm, 99.0600 mm): Line on F.Silkscreen
-    @(87.7000 mm, 99.1000 mm): PCB Text '+' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(100.5400 mm, 99.1000 mm): PCB Text '12V4' on F.Silkscreen
-    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(103.0800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
-    @(97.0700 mm, 99.0600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.1600 mm, 109.4600 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.1600 mm, 109.4600 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(95.4000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 107.9000 mm): Line on F.Silkscreen
-    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
-    @(79.9400 mm, 99.1000 mm): PCB Text '12V2' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(76.4700 mm, 99.0600 mm): Line on F.Silkscreen
-    @(82.4800 mm, 99.1000 mm): PCB Text '-' on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 102.9990 mm): Line on F.Silkscreen
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.4000 mm): Line on F.Silkscreen
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.8000 mm, 109.9600 mm): Line on F.Silkscreen
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.0800 mm, 100.0390 mm): Line on F.Silkscreen
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-    @(74.8000 mm, 107.9000 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.8000 mm, 79.0000 mm): Reference 'D3'
-    @(85.7700 mm, 78.3300 mm): Line on F.Silkscreen
-[silk_overlap]: Silkscreen overlap
-    Rule: board setup constraints silk; Severity: warning
-    @(85.7700 mm, 78.3300 mm): Line on F.Silkscreen
-    @(85.8000 mm, 79.0000 mm): Reference 'D3'
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(81.0000 mm, 52.6000 mm): PCB Text '12V + 54V in -> 12V x4 / 5V / 54V x2' on B.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; Severity: warning
-    @(81.0000 mm, 50.0000 mm): PCB Text 'RACK POWER BOARD v2' on B.Silkscreen
 [silk_over_copper]: Silkscreen clipped by solder mask
     Local override; Severity: warning
     @(38.6800 mm, 42.5000 mm): Line on F.Silkscreen
@@ -484,85 +481,55 @@
     @(67.1200 mm, 30.4000 mm): Line on F.Silkscreen
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(105.0000 mm, 77.0000 mm): Footprint C6
+    @(35.0000 mm, 94.1000 mm): Footprint J3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(34.5000 mm, 74.6000 mm): Footprint D2
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
     @(34.0000 mm, 105.5000 mm): Footprint H3
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(97.5000 mm, 39.5000 mm): Footprint F8
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(35.0000 mm, 94.1000 mm): Footprint J3
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(109.2000 mm, 105.5000 mm): Footprint H4
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(65.3000 mm, 73.0000 mm): Footprint R3
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(107.4000 mm, 40.0000 mm): Footprint J10
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(81.6400 mm, 86.0000 mm): Footprint F5
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(84.5000 mm, 77.0000 mm): Footprint D3
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(35.0000 mm, 83.8000 mm): Footprint J2
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(98.0000 mm, 105.3000 mm): Footprint J7
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(77.4000 mm, 105.3000 mm): Footprint J5
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(109.2000 mm, 34.0000 mm): Footprint H2
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(91.9400 mm, 86.0000 mm): Footprint F6
+    @(105.0000 mm, 68.0000 mm): Footprint C5
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
     @(36.1000 mm, 45.3000 mm): Footprint J1
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(35.5000 mm, 70.5000 mm): Footprint R1
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(46.5000 mm, 72.0000 mm): Footprint F3
-[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
-    Local override; Severity: warning
-    @(0.0000 mm, 0.0000 mm): Footprint J9
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(56.8000 mm, 105.3000 mm): Footprint J8
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(34.0000 mm, 34.0000 mm): Footprint H1
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(105.0000 mm, 68.0000 mm): Footprint C5
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
-    @(67.1000 mm, 105.3000 mm): Footprint J4
+    @(98.0000 mm, 105.3000 mm): Footprint J7
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
     @(87.7000 mm, 105.3000 mm): Footprint J6
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(80.0000 mm, 77.0000 mm): Footprint R2
-[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
-    Local override; Severity: warning
-    @(0.0000 mm, 0.0000 mm): Footprint U2
-[lib_footprint_issues]: The current configuration does not include the library ''.
-    Local override; Severity: warning
     @(102.2400 mm, 86.0000 mm): Footprint F7
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(65.3000 mm, 77.6000 mm): Footprint D4
+    @(84.5000 mm, 77.0000 mm): Footprint D3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(67.1000 mm, 105.3000 mm): Footprint J4
+[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
+    Local override; Severity: warning
+    @(0.0000 mm, 0.0000 mm): Footprint J9
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(80.0000 mm, 77.0000 mm): Footprint R2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(35.5000 mm, 70.5000 mm): Footprint R1
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(77.4000 mm, 105.3000 mm): Footprint J5
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(105.0000 mm, 77.0000 mm): Footprint C6
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(109.2000 mm, 34.0000 mm): Footprint H2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(97.5000 mm, 39.5000 mm): Footprint F8
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
     @(56.8000 mm, 72.0000 mm): Footprint F2
@@ -571,7 +538,37 @@
     @(71.3400 mm, 86.0000 mm): Footprint F4
 [lib_footprint_issues]: The current configuration does not include the library ''.
     Local override; Severity: warning
-    @(34.5000 mm, 74.6000 mm): Footprint D2
+    @(107.4000 mm, 40.0000 mm): Footprint J10
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(46.5000 mm, 72.0000 mm): Footprint F3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(91.9400 mm, 86.0000 mm): Footprint F6
+[lib_footprint_issues]: The current configuration does not include the library 'rack_power'.
+    Local override; Severity: warning
+    @(0.0000 mm, 0.0000 mm): Footprint U2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(35.0000 mm, 83.8000 mm): Footprint J2
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(34.0000 mm, 34.0000 mm): Footprint H1
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(109.2000 mm, 105.5000 mm): Footprint H4
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(65.3000 mm, 77.6000 mm): Footprint D4
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(65.3000 mm, 73.0000 mm): Footprint R3
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(81.6400 mm, 86.0000 mm): Footprint F5
+[lib_footprint_issues]: The current configuration does not include the library ''.
+    Local override; Severity: warning
+    @(56.8000 mm, 105.3000 mm): Footprint J8
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
     @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
@@ -588,6 +585,38 @@
     Rule: board setup constraints silk; Severity: warning
     @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
     @(105.6800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; Severity: warning
+    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
+    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
 [silk_edge_clearance]: Silkscreen clipped by board edge
     Rule: board setup constraints silk; Severity: warning
     @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
@@ -620,38 +649,6 @@
     Rule: board setup constraints silk; Severity: warning
     @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
     @(64.4800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(64.2600 mm, 109.4600 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(64.5000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(64.5000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(74.7800 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(84.8600 mm, 109.4600 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(85.1000 mm, 100.0390 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(85.1000 mm, 109.9600 mm): Line on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: board setup constraints silk; Severity: warning
-    @(113.2000 mm, 110.0000 mm): Line on Edge.Cuts
-    @(95.3800 mm, 100.0390 mm): Line on F.Silkscreen
 
 ** Found 0 unconnected pads **
 

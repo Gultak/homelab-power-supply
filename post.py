@@ -1,7 +1,7 @@
 import pcbnew, sys
 import os
 HERE = os.path.dirname(os.path.abspath(__file__))
-f = os.path.join(HERE, "rack-power-board-v2.kicad_pcb")
+f = os.path.join(HERE, "rack-power-board.kicad_pcb")
 b=pcbnew.LoadBoard(f)
 b.BuildConnectivity()
 pcbnew.ZONE_FILLER(b).Fill(b.Zones())

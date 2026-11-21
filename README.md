@@ -1,4 +1,4 @@
-# Rack power board v2: separate 12 V and 54 V supplies
+# Rack power board: separate 12 V and 54 V supplies
 
 Power distribution board for a 3D-printed 1U 10" rack case with **two** Mean Well supplies:
 a LOP-300-54 for 54 V and a **LOP-200-12 or LOP-300-12** for 12 V. There is no DC-DC brick;
@@ -68,8 +68,8 @@ a LOP-300-54 for 54 V and a **LOP-200-12 or LOP-300-12** for 12 V. There is no D
   housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
   terminals about 10 mm.
 
-![top](docs/top-r6.png)
-![bottom (mirrored)](docs/bottom-r6.png)
+![top](docs/top-r7.png)
+![bottom (mirrored)](docs/bottom-r7.png)
 
 ## Mounting holes
 
@@ -123,8 +123,8 @@ For part numbers, order status and DigiKey Ireland part numbers and prices, see 
 
 ## Files
 
-* `rack-power-board-v2.kicad_pcb`: KiCad 7 board (board-only, nets assigned, no schematic).
-* `rack-power-board-v2-gerbers.zip`: gerbers and drill files. Upload as-is to JLCPCB/PCBWay
+* `rack-power-board.kicad_pcb`: KiCad 7 board (board-only, nets assigned, no schematic).
+* `rack-power-board-gerbers.zip`: gerbers and drill files. Upload as-is to JLCPCB/PCBWay
   and pick 2 oz copper.
 * `docs/`: top and bottom renders, a top assembly PDF and the DRC report. The report has 0
   electrical violations and 0 unconnected items; the remaining entries are silkscreen
