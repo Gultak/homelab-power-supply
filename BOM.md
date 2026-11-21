@@ -50,6 +50,7 @@ including VAT, as checked in November 2026.
 
 ## Notes
 
+* **DigiKey upload:** [`digikey-bom.csv`](digikey-bom.csv) has the 🛒 lines with quantities and DigiKey part numbers, ready for the DigiKey cart or BOM Manager upload.
 * **Use the cut-tape DigiKey numbers (`…CT-ND`)**, not tape and reel (`…TR-ND`). Tape and reel is sold only as full
   reels (4,000 pieces for the 2512).
 * **R1 is a 1 W 2512.** A 1206 at that value would overheat: R1 dissipates about 0.53 W.
