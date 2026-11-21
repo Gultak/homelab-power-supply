@@ -1,4 +1,4 @@
-# Bill of materials: rack power board v2
+# Bill of materials: rack power board
 
 Quantities are for one board and include spare fuses. Prices are DigiKey Ireland line totals in EUR
 including VAT, as checked in November 2026.
@@ -16,7 +16,7 @@ including VAT, as checked in November 2026.
 |---|---|---|---|---|---|---|---|
 | 🏠 | — | 1 | PSU 54 V, 300 W | Mean Well | LOP-300-54 | | |
 | 🛒 | — | 1 | PSU 12 V, 300 W | Mean Well | LOP-300-12 | [1866-LOP-300-12-ND](https://www.digikey.ie/en/products/detail/mean-well-usa-inc/LOP-300-12/22040911) | 44.65 |
-| 🟩 | PCB | 1 | 83.2 × 80 mm, 2 layers, 2 oz Cu, 1.6 mm | JLCPCB | `rack-power-board-v2-gerbers.zip` | | |
+| 🟩 | PCB | 1 | 83.2 × 80 mm, 2 layers, 2 oz Cu, 1.6 mm | JLCPCB | `rack-power-board-gerbers.zip` | | |
 | 🚚 | U2 | 1 | 5 V / 9 A step-down module | Pololu | D24V90F5 (#2866) | | |
 | 🏠 | J1, J10 | 2 | Header, 6-pos, 3.96 mm, vertical | JST | B6P-VH | | |
 | 🏠 | (J1/J10 plugs) | 2 | Crimp housing, 6-pos, 3.96 mm | JST | VHR-6N | | |

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Generate rack-power-board-v2.kicad_pcb (KiCad 7): 12V and 54V from separate PSUs -> 4x fused 12V + 5V (Pololu), plus fused 54V passthrough."""
+"""Generate rack-power-board.kicad_pcb (KiCad 7): 12V and 54V from separate PSUs -> 4x fused 12V + 5V (Pololu), plus fused 54V passthrough."""
 import pcbnew
 from pcbnew import VECTOR2I, FromMM as MM
 
 import os
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board-v2.kicad_pcb")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board.kicad_pcb")
 LIB = "/usr/share/kicad/footprints/"
 OX, OY = 30.0, 30.0          # sheet offset
 W, H = 83.2, 80.0           # board size (mm)
@@ -382,7 +382,7 @@ for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     text("5A", C[jref], Fy + 4.2, 0.9); refat(F[ref], C[jref], Fy + 6.4, 90, 0.8)
 text("5A", F8X - 5.0, 13.0, 0.9)
 refat(C5, 80.9, 34.6 + 0.0); refat(C6, 80.9, 52.6)
-text("RACK POWER BOARD v2", 51.0, 20.0, 1.6, layer=B, bold=True)
+text("RACK POWER BOARD", 51.0, 20.0, 1.6, layer=B, bold=True)
 text("12V + 54V in -> 12V x4 / 5V / 54V x2", 51.0, 22.6, 1.0, layer=B)
 text("2 layers, 2oz Cu, 1.6mm", 51.0, 24.6, 1.0, layer=B)
 text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 51.0, 26.6, 1.0, layer=B)
