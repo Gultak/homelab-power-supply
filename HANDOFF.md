@@ -25,11 +25,7 @@ left, paste this file (or a link to it) into the new chat.
   - Merged PRs: #1–#19.
   - When the board images change, bump the render file names (`-r7` → `-r8`), because
     GitHub caches README images by file name.
-- **Toolchain:**
-  - Board generation: KiCad 7 `pcbnew` Python. Run `python3 build.py && python3 post.py`.
-  - Exports: `kicad-cli` makes the SVGs, gerbers, drill files and PDF; `rsvg-convert` and PIL
-    turn the SVGs into PNG renders on a black background, with the bottom-side silkscreen drawn
-    in white.
+- **Toolchain:** see "How to work on the board" below.
 
 ## The board, as it stands
 
@@ -116,6 +112,146 @@ left, paste this file (or a link to it) into the new chat.
   - Glue or a hook for pull-out retention.
 - **Leads:** 20 cm, crimped yourself (cheap PP15/30/45 ratchet crimper) or soldered.
   Red = +54 V, black = GND.
+
+## How to work on the board
+
+Needs KiCad 7 (`pcbnew` Python module and `kicad-cli`), `rsvg-convert` (librsvg2-bin), Pillow, zip.
+
+```bash
+python3 build.py          # writes rack-power-board.kicad_pcb (no zone fill)
+python3 post.py           # fills zones, runs DRC -> docs/drc-report.txt
+tools/export.sh r8        # renders docs/top-r8.png, docs/bottom-r8.png, PDF, gerbers zip
+```
+
+Then point `README.md` at the new `-r8` images, delete the old `-r7` ones, and check the DRC report
+(goal: 0 electrical violations, 0 unconnected).
+
+- **Coordinates in `build.py`:** mm from the board's top-left corner (y down). `P(x, y)` adds the
+  sheet offset OX = OY = 30.
+- **Key positions:**
+  - J1 54 V in: VH6 at (6.1, 15.3) rot 270. J10 12 V in: (W−5.8, 10.0) rot 270.
+  - Bottom terminal row: y = 75.3; J8 (5 V) at x = 26.8, J4–J7 at 26.8 + 10.3·i.
+  - Left-edge terminals: x = 5.0, J2 at y = 53.8, J3 at y = 64.1, rot 270.
+  - F2/F3 at x = 26.8 / 16.5, y = 42.0 (F3 feeds J3, F2 feeds J2). F4–F7 at y = 56.0 above their
+    terminals (x + 1.7). F8 at (67.5, 9.5) rot 180.
+  - C5/C6 at (75, 38) and (75, 47).
+  - R1 (5.5, 40.5) / D2 (4.5, 44.6); R2/D3 at x 50 / 54.5, y 47; R3 (35.3, 43) / D4 (35.3, 47.6).
+  - Pololu U2: custom footprint, origin PX0, PY0 = 31.0, 14.5, outline 40.6 × 20.3.
+    Pololu drawing coords (u across the short side, v along the long side) map to the board via
+    `pol(u, v) = (PX0 + 40.6 − v, PY0 + u)`.
+    - Large holes (2.8 mm pad, 1.6 mm drill): u = 7.62 (VIN or VOUT) and u = 12.70 (GND), at
+      v = 2.54 (VIN end) and v = 38.06 (VOUT end).
+    - Header rows (1.8 mm pad, 1.0 mm drill): u = 6.35, 8.89 (live) and 11.43, 13.97 (GND), at
+      v = 5.08 and v = 35.52.
+- **Zones:** +54V top (x < X54 = 28.8, y 14.1–44); +5V top; +12V top; GND54 bottom (x < 28.8,
+  y 14.1–71.5); GND bottom everywhere else. 4.5 mm radius copper keep-out rings at the M3 holes.
+
+## Decisions and why
+
+**Architecture**
+- **Two separate PSUs (LOP-300-54 + LOP-300-12) instead of one 54 V supply plus a DC-DC brick.**
+  v1 used one LOP-300-54 and a 54→12 V DOSA brick (Murata DVE0125V2NBC). The bricks were the
+  problem: Flex PKB4313DPI backordered to June 2027, Delta E48SC12025NRFH not stocked, TDK twice the
+  price. A second Mean Well is cheaper, available and simpler. v1 has been deleted from the repo.
+- **5 V from a Pololu D24V90F5** off the 12 V rail (fused by F8), not a third PSU.
+- **54 V side is an isolated passthrough with its own GND54.** The LOP outputs are isolated, and
+  keeping the grounds apart avoids loops through the PoE switches. A bond jumper (JP2) existed
+  briefly; the owner removed it ("we don't need ground bonding here").
+- **No input fuses.** The Mean Well PSUs have their own short-circuit/overload protection; only
+  outputs are fused.
+
+**Layout**
+- **Board 83.2 mm wide** (narrowed twice, by 1" each time) so a PSU fits on each side of it in the
+  10" 1U case. That's why the inputs are on the **side edges at the top ends**: 54 V top-left (the
+  54 V PSU is on the left), 12 V top-right.
+- **Outputs at the bottom edge, 5 V leftmost then 12 V 1–4,** so no rails cross. **54 V outputs on
+  the left edge, bottom end:** seven 2-pin blocks didn't fit between the corner screw holes.
+- **J9 Molex as far left as possible on the top edge** (owner's wish).
+
+**Connectors**
+- **Inputs: 6-pin JST VH**, 3 contacts per pole: 3 × 10 A = 30 A, covers the LOP-300-12's 25 A.
+  Same connector on both inputs.
+- **Outputs: 5.08 mm screw terminals (YE0001XC321)** instead of JST, chosen by the owner; no shared
+  GND terminals. Ferrules (Phoenix 3200030, 1.0 mm²) on the wire ends.
+- **Status LEDs are case-mounted** on Dupont 2-pin headers, so they can sit in the front panel.
+- **J9's footprint** has extra tab holes one pitch beyond the end pins and one pitch towards the
+  edge, for the owner's right-angle Molex.
+
+**Parts**
+- **54 V fuses are 5×20 mm T 2.5 A, not ATM blades:** ATM fuses are rated 32 V.
+- **12 V fuses: ATM 5 A** in Keystone 3568 holders.
+- **LEDs at about 10 mA** (owner wanted them brighter). From 54 V that's 0.53 W in R1, hence a
+  2512 1 W resistor.
+- **Pololu: mounted flat on 0.1" headers in the end rows plus solid wire links through the large
+  holes, no standoffs.** The owner's idea. The small pins can't carry 9 A, so the links carry the
+  current. The 2.5–5 mm gap lets air under it. The M2 standoff holes and their keep-outs went with it.
+- **No stencil:** only R1–R3 are SMD; hand-solder them.
+
+**Sourcing**
+- **DigiKey Ireland**, pooled with friends for free delivery (€92.25). Mouser was about €3
+  cheaper; the owner declined because of the pooled order.
+- **Pololu from Opencircuit** (backordered, about 1 Dec 2026): DigiKey Marketplace won't ship it to
+  Ireland, Botland ships domestically only.
+- **PCB from JLCPCB**, 2 oz copper (already ordered).
+- Ferrules are sold singly at DigiKey: quantity 14 = 7 terminals × 2. Fuses: 4 × 2.5 A (2 spare),
+  8 × 5 A (3 spare).
+
+**54 V distribution: Powerpole PP15.**
+- Rejected **GX12/GX16** aviation plugs: pins short while mating, not hot-plug safe.
+- Rejected **5.5/2.5 barrels vs the 12 V 5.5/2.1** as a keying trick: a 2.5 plug still fits a
+  2.1 jack loosely.
+- **XT30** was the runner-up. Powerpole won: genderless (same plug both ends), panel-mountable,
+  colour-codable.
+
+## Gotchas
+
+**KiCad 7 Python**
+- Zone fill segfaults inside `build.py`; that's why it's in `post.py`, after `BuildConnectivity()`.
+- Footprint text angles are relative to the footprint's rotation.
+- Custom footprints built in code need `SetPos0`, `SetStart0`/`SetEnd0` and `SetDrawCoord()`,
+  or the shapes land in the wrong place.
+- The mini-blade holder footprint has duplicate pads per contact; tie them with tracks or DRC
+  reports unconnected pads.
+- Library courtyards of the MKDS terminals overlap their neighbours at 10.3 mm pitch:
+  `tight_courtyard()` replaces them with a rectangle (−2.6..7.68, −5.3..4.7).
+- Hole-to-courtyard clashes were fixed by shifting rows 0.2–0.4 mm; check DRC after any move.
+- Earlier track clashes: the 5 V track hit R3/D4 and the Pololu GND hole; it now starts at (32, 42)
+  inside the +5V pour.
+- `kicad-cli … --page-size-mode 2` still leaves margins: `tools/render.py` crops to Edge.Cuts.
+
+**GitHub**
+- README images are cached by file name: always bump `-rN`.
+- PRs got merged while I was still pushing to the branch, so late commits missed main (e.g. the
+  wire-label commit had to be cherry-picked). Before pushing, check the PR is still open:
+  `gh api repos/Gultak/homelab-power-supply/pulls/<n> --jq .merged`.
+- Commits use `git -c user.name="Gultak" -c user.email="claude@gultak.de" commit …` and
+  `git -c push.negotiate=true push`.
+
+**Pololu D24V90F5 drawing**
+- The isometric views in Pololu's dimension drawing are flipped end-over-end; the first reading had
+  VIN and VOUT swapped. Correct: the FB/PG/EN pin column is nearer the **VIN** end, and **GND is the
+  large hole on the column side**. Verify on the real module.
+
+**Spreadsheets**
+- Google Sheets and the Claude Sheet turn part numbers like `0031.8201` into numbers: write them
+  with a leading `'`.
+- Google Sheet: tab "Parts" (sheetId 100429677). Column F is the Include checkbox, G–J DigiKey
+  (part no., unit price, qty, line total), then Farnell, RS, Mouser, Conrad. Rows 34–36 hold
+  total formulas; don't overwrite them.
+- Claude Sheet: artifact slug 8efb6948-436f-4310-aa2e-a0fa898d39e8, tab "Parts"; the Status column
+  is a dropdown (🛒 Order, 🏠 At hand, ⚠️ Check, 🟩 PCB (JLCPCB), 🚚 On the way).
+
+**DigiKey part numbers**
+- `311-…FRCT-ND` is Yageo **1206**; for R1 (2512) use `13-RC2512FK-075K1LCT-ND`. A `…TR-ND`
+  suffix is a full reel; `CT` is cut tape.
+- The 2.5 A 5×20 fuse is 021802.5MXP (Littelfuse 218 series, time-lag).
+- The BOM total (€77.85) is inc. VAT; R1 is €0.31 + VAT.
+
+**Powerpole**
+- Standard and finger-proof housings don't mate with each other.
+- Two contact types exist: closed-barrel (1332, for crimping) and open-barrel; take closed-barrel.
+- A generic crimper works poorly; a cheap PP15/30/45 ratchet crimper or soldering is fine.
+- One retainer plate holds a whole pair (two housings dovetailed together), not one plate per housing.
 
 ## Open items
 
