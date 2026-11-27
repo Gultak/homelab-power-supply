@@ -68,8 +68,8 @@ a LOP-300-54 for 54 V and a **LOP-200-12 or LOP-300-12** for 12 V. There is no D
   housing on it is about 14 mm tall, a mated VH input plug about 17 mm, and the screw
   terminals about 10 mm.
 
-![top](docs/top-r7.png)
-![bottom (mirrored)](docs/bottom-r7.png)
+![top](docs/top.png)
+![bottom (mirrored)](docs/bottom.png)
 
 ## Mounting holes
 
@@ -123,11 +123,11 @@ For part numbers, order status and DigiKey Ireland part numbers and prices, see 
 
 ## Files
 
-* `rack-power-board.kicad_pcb`: KiCad 7 board (board-only, nets assigned, no schematic).
+* `rack-power-board.kicad_pcb`: KiCad 9 board (board-only, nets assigned, no schematic).
 * `rack-power-board-gerbers.zip`: gerbers and drill files. Upload as-is to JLCPCB/PCBWay
   and pick 2 oz copper.
 * `docs/`: top and bottom renders, a top assembly PDF and the DRC report. The report has 0
   electrical violations and 0 unconnected items; the remaining entries are silkscreen
   overlaps and "library not configured" notices from generating the board by script.
-* `build.py` / `post.py`: the generator scripts (KiCad 7 `pcbnew` Python). Run
+* `build.py` / `post.py`: the generator scripts (KiCad 9 `pcbnew` Python). Run
   `python3 build.py && python3 post.py` to regenerate, fill zones and run DRC.

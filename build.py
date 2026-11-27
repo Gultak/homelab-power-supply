@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate rack-power-board.kicad_pcb (KiCad 7): 12V and 54V from separate PSUs -> 4x fused 12V + 5V (Pololu), plus fused 54V passthrough."""
+"""Generate rack-power-board.kicad_pcb (KiCad 9): 12V and 54V from separate PSUs -> 4x fused 12V + 5V (Pololu), plus fused 54V passthrough."""
 import pcbnew
 from pcbnew import VECTOR2I, FromMM as MM
 
@@ -29,7 +29,7 @@ def net(name):
     return nets[name]
 
 # netclasses: power default wide
-nc = ds.m_NetSettings.m_DefaultNetClass
+nc = ds.m_NetSettings.GetDefaultNetclass()
 nc.SetClearance(MM(0.3))
 nc.SetTrackWidth(MM(0.5))
 
@@ -108,19 +108,18 @@ def custom_fp(ref, value, padlist, outline=None, silk_label=None, crtyd=True):
         p.SetSize(VECTOR2I(MM(pd), MM(pd)))
         p.SetDrillSize(VECTOR2I(MM(dr), MM(dr)))
         m.Add(p)
-        p.SetPos0(P(x, y))
-        p.SetPosition(P(x, y))
+        p.SetPosition(P(x, y))          # footprint sits at the origin, so board coords = local coords
     if outline:
         (x0, y0, x1, y1) = outline
         for lay, w in ((pcbnew.F_Fab, 0.1), (pcbnew.F_SilkS, 0.15)) + (((pcbnew.F_CrtYd, 0.05),) if crtyd else ()):
             e = 0.25 if lay == pcbnew.F_CrtYd else 0
             pts = [(x0 - e, y0 - e), (x1 + e, y0 - e), (x1 + e, y1 + e), (x0 - e, y1 + e)]
             for i in range(4):
-                s = pcbnew.FP_SHAPE(m)
+                s = pcbnew.PCB_SHAPE(m)
                 s.SetShape(pcbnew.SHAPE_T_SEGMENT)
                 s.SetLayer(lay); s.SetWidth(MM(w))
+                s.SetStart(P(*pts[i])); s.SetEnd(P(*pts[(i + 1) % 4]))
                 m.Add(s)
-                s.SetStart0(P(*pts[i])); s.SetEnd0(P(*pts[(i + 1) % 4])); s.SetDrawCoord()
     m.Reference().SetPosition(P(*(silk_label or (padlist[0][1], padlist[0][2] - 3))))
     m.Value().SetVisible(False)
     return m
@@ -158,9 +157,14 @@ def tight_courtyard(m):
     pts = [(-2.6, -5.3), (7.68, -5.3), (7.68, 4.7), (-2.6, 4.7)]
     for i in range(4):
         (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % 4]
-        sh = pcbnew.FP_SHAPE(m); sh.SetShape(pcbnew.SHAPE_T_SEGMENT); sh.SetLayer(pcbnew.F_CrtYd)
-        sh.SetWidth(MM(0.05)); sh.SetStart0(VECTOR2I(MM(x0), MM(y0))); sh.SetEnd0(VECTOR2I(MM(x1), MM(y1)))
-        m.Add(sh); sh.SetDrawCoord()
+        # KiCad 9: footprint children live in board coordinates, so place in local coords
+        # relative to the footprint position, then rotate with the footprint.
+        o = m.GetPosition()
+        sh = pcbnew.PCB_SHAPE(m); sh.SetShape(pcbnew.SHAPE_T_SEGMENT); sh.SetLayer(pcbnew.F_CrtYd)
+        sh.SetWidth(MM(0.05))
+        sh.SetStart(VECTOR2I(o.x + MM(x0), o.y + MM(y0))); sh.SetEnd(VECTOR2I(o.x + MM(x1), o.y + MM(y1)))
+        sh.Rotate(o, m.GetOrientation())
+        m.Add(sh)
 
 J = {}
 for ref, x in JX.items():
