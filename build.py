@@ -95,7 +95,7 @@ for ref, jref in (("F2", "J2"), ("F3", "J3")):
     F[ref] = m
 
 # --- 12 V output fuses (ATM mini blade, vertical, centred over their connector)
-Fy = 56.0
+Fy = 53.0                         # 3 mm above the original 56.0, clear of the terminal labels
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", ref, C[jref] + 1.7, Fy, 270, "ATM 5A")
     setnet(m, 1, "+12V"); setnet(m, 2, JNET[jref][0])
@@ -107,7 +107,7 @@ setnet(m, 1, "+12V"); setnet(m, 2, "12V_PL"); F["F8"] = m
 
 # --- 12 V bulk caps below J10
 C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 75.0, 38.0, 0, "470uF 16V polymer")
-C6 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C6", 75.0, 47.0, 0, "470uF 16V polymer")
+C6 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C6", 76.5, 47.0, 0, "470uF 16V polymer")
 for c in (C5, C6):
     setnet(c, 1, "+12V"); setnet(c, 2, "GND")
 
@@ -157,8 +157,8 @@ setnet(R1, 1, "+54V"); setnet(R1, 2, "LED54"); setnet(D2, 1, "LED54"); setnet(D2
 R2 = place("Resistor_SMD", "R_1206_3216Metric", "R2", 50.0, 47.0, 0, "1k")
 D3 = place(*HDR, "D3", 54.5, 47.0, 90, "LED 12V header")
 setnet(R2, 1, "+12V"); setnet(R2, 2, "LED12"); setnet(D3, 1, "LED12"); setnet(D3, 2, "GND")
-R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 35.3, 43.0, 270, "300R")
-D4 = place(*HDR, "D4", 35.3, 47.6, 0, "LED 5V header")
+R3 = place("Resistor_SMD", "R_1206_3216Metric", "R3", 35.3, 40.5, 270, "300R")
+D4 = place(*HDR, "D4", 35.3, 45.1, 0, "LED 5V header")
 setnet(R3, 1, "+5V"); setnet(R3, 2, "LED5"); setnet(D4, 1, "LED5"); setnet(D4, 2, "GND")
 
 # --- M3 mounting holes
@@ -239,8 +239,8 @@ refat(R1, 10.6, 40.5, 90); refat(D2, 6.6, 46.0, 90)
 text("+", 2.6, 44.6, 1.0, bold=True); text("54V", 2.4, 47.4, 0.8, rot=90)
 refat(R2, 50.0, 45.1); refat(D3, 55.8, 49.0)
 text("+", 54.5, 45.1, 1.0, bold=True); text("12V", 59.6, 47.0, 0.8)
-refat(R3, 37.5, 43.0, 90); refat(D4, 37.5, 48.9, 90)
-text("+", 33.6, 47.6, 1.0, bold=True); text("5V", 35.3, 51.7, 0.8)
+refat(R3, 37.5, 40.5, 90); refat(D4, 37.5, 46.4, 90)
+text("+", 33.6, 45.1, 1.0, bold=True); text("5V", 33.0, 48.2, 0.8, rot=90)
 for ref in ("F2", "F3"):
     text("2.5A", FX54[ref], Ft + 5.8, 1.0, rot=90); refat(F[ref], FX54[ref], Ft + 16.5, 90, 1.0)
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
