@@ -131,3 +131,8 @@ For part numbers, order status and DigiKey Ireland part numbers and prices, see 
   overlaps and "library not configured" notices from generating the board by script.
 * `build.py` / `post.py`: the generator scripts (KiCad 9 `pcbnew` Python). Run
   `python3 build.py && python3 post.py` to regenerate, fill zones and run DRC.
+  They use the shared tools in the `tools/agent-tools` submodule
+  ([Gultak/agent-tools](https://github.com/Gultak/agent-tools)): run
+  `git submodule update --init` after cloning.
+* `tools/bom_data.py` / `tools/gen_bom.py`: the parts list and the script that writes `BOM.md`
+  and `digikey-bom.csv` from it.

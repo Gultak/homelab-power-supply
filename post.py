@@ -1,11 +1,6 @@
-import pcbnew, sys
-import os
+"""Fill zones and run DRC on rack-power-board.kicad_pcb -> docs/drc-report.txt (shared tool: agent-tools/pcbtools/post.py)."""
+import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
-f = os.path.join(HERE, "rack-power-board.kicad_pcb")
-b=pcbnew.LoadBoard(f)
-b.BuildConnectivity()
-pcbnew.ZONE_FILLER(b).Fill(b.Zones())
-b.BuildConnectivity()
-pcbnew.SaveBoard(f,b)
-pcbnew.WriteDRCReport(b,os.path.join(HERE, "docs", "drc-report.txt"),pcbnew.EDA_UNITS_MM,True)
-print(open(os.path.join(HERE, "docs", "drc-report.txt")).read()[:200])
+sys.path.insert(0, os.path.join(HERE, "tools", "agent-tools"))   # git submodule Gultak/agent-tools
+from pcbtools.post import post
+print(post(os.path.join(HERE, "rack-power-board.kicad_pcb"), os.path.join(HERE, "docs", "drc-report.txt"))[:200])

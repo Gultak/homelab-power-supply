@@ -3,9 +3,11 @@
 import pcbnew
 from pcbnew import VECTOR2I, FromMM as MM
 
-import os
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rack-power-board.kicad_pcb")
-LIB = "/usr/share/kicad/footprints/"
+import os, sys
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(HERE, "tools", "agent-tools"))   # git submodule Gultak/agent-tools
+from pcbtools.boardkit import BoardKit
+OUT = os.path.join(HERE, "rack-power-board.kicad_pcb")
 OX, OY = 30.0, 30.0          # sheet offset
 W, H = 83.2, 80.0           # board size (mm)
 
@@ -15,18 +17,9 @@ ds = b.GetDesignSettings()
 ds.m_TrackMinWidth = MM(0.25)
 ds.m_MinClearance = MM(0.3)
 ds.m_CopperEdgeClearance = MM(0.5)
+k = BoardKit(b, OX, OY, lib="rack_power")
+P, net = k.P, k.net
 
-def P(x, y):
-    return VECTOR2I(MM(OX + x), MM(OY + y))
-
-# ---------- nets ----------
-nets = {}
-def net(name):
-    if name not in nets:
-        n = pcbnew.NETINFO_ITEM(b, name)
-        b.Add(n)
-        nets[name] = n
-    return nets[name]
 
 # netclasses: power default wide
 nc = ds.m_NetSettings.GetDefaultNetclass()
@@ -34,95 +27,12 @@ nc.SetClearance(MM(0.3))
 nc.SetTrackWidth(MM(0.5))
 
 # ---------- outline ----------
-def seg(layer, a, c, w=0.15):
-    s = pcbnew.PCB_SHAPE(b)
-    s.SetShape(pcbnew.SHAPE_T_SEGMENT)
-    s.SetStart(a); s.SetEnd(c); s.SetLayer(layer); s.SetWidth(MM(w))
-    b.Add(s)
-
-corners = [(0, 0), (W, 0), (W, H), (0, H)]
-for i in range(4):
-    seg(pcbnew.Edge_Cuts, P(*corners[i]), P(*corners[(i + 1) % 4]), 0.1)
+k.outline(W, H, 0.1)
 
 # ---------- footprints ----------
-def place(lib, name, ref, x, y, rot=0, val="", layer_back=False):
-    m = pcbnew.FootprintLoad(LIB + lib + ".pretty", name)
-    assert m is not None, name
-    m.SetReference(ref)
-    m.SetValue(val or name)
-    b.Add(m)
-    m.SetPosition(P(x, y))
-    if rot:
-        m.SetOrientationDegrees(rot)
-    if layer_back:
-        m.Flip(m.GetPosition(), False)
-    return m
-
-def pads(m, num):
-    return [p for p in m.Pads() if p.GetNumber() == str(num)]
-
-def setnet(m, num, name):
-    for p in pads(m, num):
-        p.SetNet(net(name))
-
-def padpos(m, num, idx=0):
-    p = pads(m, num)[idx].GetPosition()
-    return (pcbnew.ToMM(p.x) - OX, pcbnew.ToMM(p.y) - OY)
-
-def track(pts, netname, w, layer=pcbnew.F_Cu):
-    for a, c in zip(pts, pts[1:]):
-        t = pcbnew.PCB_TRACK(b)
-        t.SetStart(P(*a)); t.SetEnd(P(*c))
-        t.SetWidth(MM(w)); t.SetLayer(layer); t.SetNet(net(netname))
-        b.Add(t)
-
-def via(x, y, netname, d=0.8, dr=0.4):
-    v = pcbnew.PCB_VIA(b)
-    v.SetPosition(P(x, y)); v.SetWidth(MM(d)); v.SetDrill(MM(dr))
-    v.SetNet(net(netname)); b.Add(v)
-
-def stitch(x, y, netname, n=3, step=1.4, horiz=True):
-    for i in range(n):
-        via(x + (i * step if horiz else 0), y + (0 if horiz else i * step), netname)
-
-def text(s, x, y, size=1.2, layer=pcbnew.F_SilkS, rot=0, bold=False):
-    t = pcbnew.PCB_TEXT(b)
-    t.SetText(s); t.SetPosition(P(x, y)); t.SetLayer(layer)
-    t.SetTextSize(VECTOR2I(MM(size), MM(size))); t.SetTextThickness(MM(size * (0.2 if bold else 0.15)))
-    if rot: t.SetTextAngleDegrees(rot)
-    if layer == pcbnew.B_SilkS: t.SetMirrored(True)
-    b.Add(t)
-
-def custom_fp(ref, value, padlist, outline=None, silk_label=None, crtyd=True):
-    """padlist: (num, x, y, pad_d, drill_d)"""
-    m = pcbnew.FOOTPRINT(b)
-    m.SetReference(ref); m.SetValue(value)
-    m.SetFPID(pcbnew.LIB_ID("rack_power", value))
-    b.Add(m)
-    for num, x, y, pd, dr in padlist:
-        p = pcbnew.PAD(m)
-        p.SetNumber(str(num))
-        p.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
-        p.SetAttribute(pcbnew.PAD_ATTRIB_PTH)
-        p.SetLayerSet(p.PTHMask())
-        p.SetSize(VECTOR2I(MM(pd), MM(pd)))
-        p.SetDrillSize(VECTOR2I(MM(dr), MM(dr)))
-        m.Add(p)
-        p.SetPosition(P(x, y))          # footprint sits at the origin, so board coords = local coords
-    if outline:
-        (x0, y0, x1, y1) = outline
-        for lay, w in ((pcbnew.F_Fab, 0.1), (pcbnew.F_SilkS, 0.15)) + (((pcbnew.F_CrtYd, 0.05),) if crtyd else ()):
-            e = 0.25 if lay == pcbnew.F_CrtYd else 0
-            pts = [(x0 - e, y0 - e), (x1 + e, y0 - e), (x1 + e, y1 + e), (x0 - e, y1 + e)]
-            for i in range(4):
-                s = pcbnew.PCB_SHAPE(m)
-                s.SetShape(pcbnew.SHAPE_T_SEGMENT)
-                s.SetLayer(lay); s.SetWidth(MM(w))
-                s.SetStart(P(*pts[i])); s.SetEnd(P(*pts[(i + 1) % 4]))
-                m.Add(s)
-    m.Reference().SetPosition(P(*(silk_label or (padlist[0][1], padlist[0][2] - 3))))
-    m.Value().SetVisible(False)
-    return m
+place, pads, setnet, padpos = k.place, k.pads, k.setnet, k.padpos
+track, via, stitch, text, custom_fp = k.track, k.via, k.stitch, k.text, k.custom_fp
+near, refat, zone = k.near, k.refat, k.zone
 
 
 # ======================= PLACEMENT =======================
@@ -151,20 +61,7 @@ JVAL = {"J2": "54V OUT1", "J3": "54V OUT2", "J4": "12V OUT1", "J5": "12V OUT2",
 def tight_courtyard(m):
     """Library courtyard is 11.2 mm wide; blocks sit side by side at 10.3 mm (bodies 10.16 mm),
     so replace it with one hugging the body."""
-    for g in list(m.GraphicalItems()):
-        if g.GetLayer() == pcbnew.F_CrtYd:
-            m.Remove(g)
-    pts = [(-2.6, -5.3), (7.68, -5.3), (7.68, 4.7), (-2.6, 4.7)]
-    for i in range(4):
-        (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % 4]
-        # KiCad 9: footprint children live in board coordinates, so place in local coords
-        # relative to the footprint position, then rotate with the footprint.
-        o = m.GetPosition()
-        sh = pcbnew.PCB_SHAPE(m); sh.SetShape(pcbnew.SHAPE_T_SEGMENT); sh.SetLayer(pcbnew.F_CrtYd)
-        sh.SetWidth(MM(0.05))
-        sh.SetStart(VECTOR2I(o.x + MM(x0), o.y + MM(y0))); sh.SetEnd(VECTOR2I(o.x + MM(x1), o.y + MM(y1)))
-        sh.Rotate(o, m.GetOrientation())
-        m.Add(sh)
+    k.replace_courtyard(m, (-2.6, -5.3, 7.68, 4.7))
 
 J = {}
 for ref, x in JX.items():
@@ -223,7 +120,6 @@ for c in (C5, C6):
 #     board x = PX0 + 40.6 - v, board y = PY0 + u.
 PX0, PY0 = 31.0, 14.5
 pcx, pcy = PX0 + 20.3, PY0 + 10.15
-M2H = []                       # no standoffs any more
 def pol(u, v):
     return (PX0 + 40.6 - v, PY0 + u)
 POL = []                       # (net, u, v, pad, drill)
@@ -271,12 +167,6 @@ for i, (x, y) in enumerate(HOLES):
     place("MountingHole", "MountingHole_3.2mm_M3", "H%d" % (1 + i), x, y, 0, "M3").Reference().SetVisible(False)
 
 # ======================= ROUTING =======================
-def near(m, num, target_x=None):
-    ps = [padpos(m, num, i) for i in range(len(pads(m, num)))]
-    if target_x is None:
-        return ps[0]
-    return min(ps, key=lambda q: abs(q[0] - target_x))
-
 # fuse -> connector
 for fref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     a = near(F[fref], 2, JX[jref]); c = padpos(J[jref], 1)
@@ -304,21 +194,6 @@ track([padpos(R2, 2), padpos(D3, 1)], "LED12", 0.4)
 track([padpos(R3, 2), padpos(D4, 1)], "LED5", 0.4)
 
 # ======================= ZONES =======================
-def zone(netname, layer, poly, prio=0):
-    z = pcbnew.ZONE(b)
-    z.SetLayer(layer)
-    if netname: z.SetNet(net(netname))
-    o = z.Outline(); o.NewOutline()
-    for x, y in poly:
-        o.Append(MM(OX + x), MM(OY + y))
-    z.SetLocalClearance(MM(0.5))
-    z.SetMinThickness(MM(0.3))
-    z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
-    z.SetAssignedPriority(prio)
-    z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
-    b.Add(z)
-    return z
-
 e = 0.6
 X54 = 28.8          # the 54 V block is x < X54, y > Y54 (left column, below J9)
 Y54 = 14.1
@@ -334,20 +209,9 @@ zone("GND54", pcbnew.B_Cu, [(e, Y54), (X54, Y54), (X54, 71.5), (e, 71.5)])
 zone("GND", pcbnew.B_Cu, [(e, e), (W - e, e), (W - e, H - e), (e, H - e), (e, 73.0), (X54 + 1.5, 73.0), (X54 + 1.5, Y54 - 1.5),
                          (e, Y54 - 1.5)])
 
-# copper keep-out rings around the mounting holes
-import math
-# M3: 9 mm dia (screw head / washer); M2 Pololu standoffs: 6 mm dia, so the metal
-# standoff (top) and screw head (bottom) can't bridge the pours on the two layers
-for (hx, hy, kr) in [(x, y, 4.5) for (x, y) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5))] + [(x, y, 3.0) for (x, y) in M2H]:
-    k = pcbnew.ZONE(b)
-    k.SetIsRuleArea(True); k.SetDoNotAllowCopperPour(True); k.SetDoNotAllowTracks(True)
-    k.SetDoNotAllowVias(True); k.SetDoNotAllowPads(False); k.SetDoNotAllowFootprints(False)
-    ls = pcbnew.LSET(); ls.AddLayer(pcbnew.F_Cu); ls.AddLayer(pcbnew.B_Cu); k.SetLayerSet(ls)
-    o = k.Outline(); o.NewOutline()
-    for i in range(24):
-        t = 2 * math.pi * i / 24
-        o.Append(MM(OX + hx + kr * math.cos(t)), MM(OY + hy + kr * math.sin(t)))
-    b.Add(k)
+# copper keep-out rings around the mounting holes: 9 mm dia (screw head / washer)
+for (hx, hy) in ((4, 4), (W - 4, 4), (4, H - 4.5), (W - 4, H - 4.5)):
+    k.keepout_circle(hx, hy, 4.5)
 
 # ======================= SILKSCREEN =======================
 B = pcbnew.B_SilkS
@@ -371,9 +235,6 @@ for conn, labs, dx in ((J1, ("+54V", "+54V", "+54V", "GND", "GND", "GND"), 4.4),
 text("54V IN", 14.0, 25.2, 1.1, rot=90, bold=True)
 text("12V IN", 76.6, 33.0, 0.9, bold=True)
 
-def refat(m, x, y, rot=0, size=0.8):
-    r = m.Reference(); r.SetPosition(P(x, y)); r.SetTextAngleDegrees(rot)
-    r.SetTextSize(VECTOR2I(MM(size), MM(size))); r.SetTextThickness(MM(size * 0.15))
 refat(R1, 10.6, 40.5, 90); refat(D2, 6.6, 46.0, 90)
 text("+", 2.6, 44.6, 1.0, bold=True); text("54V", 2.4, 47.4, 0.8, rot=90)
 refat(R2, 50.0, 45.1); refat(D3, 55.8, 49.0)

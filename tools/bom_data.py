@@ -1,0 +1,39 @@
+# Parts of the rack power board, one row per BOM.md line (tools/gen_bom.py writes BOM.md and
+# digikey-bom.csv from it). Edit here, then run: python3 tools/gen_bom.py
+# (status, ref, qty, part, manufacturer, part number, DigiKey #, DigiKey URL, € line total, order)
+# status: 🛒 order from DigiKey, 🏠 at hand, 🚚 on the way, 🟩 PCB.
+# order (🛒 rows only): (quantity, customer reference) for the DigiKey upload CSV.
+PARTS = [
+ ('🏠', '—', '1', 'PSU 54 V, 300 W', 'Mean Well', 'LOP-300-54', '', '', None, None),
+ ('🛒', '—', '1', 'PSU 12 V, 300 W', 'Mean Well', 'LOP-300-12', '1866-LOP-300-12-ND', 'https://www.digikey.ie/en/products/detail/mean-well-usa-inc/LOP-300-12/22040911', 44.65, (1, 'PSU 12V')),
+ ('🟩', 'PCB', '1', '83.2 × 80 mm, 2 layers, 2 oz Cu, 1.6 mm', 'JLCPCB', '`rack-power-board-gerbers.zip`', '', '', None, None),
+ ('🚚', 'U2', '1', '5 V / 9 A step-down module', 'Pololu', 'D24V90F5 (#2866)', '', '', None, None),
+ ('🏠', 'J1, J10', '2', 'Header, 6-pos, 3.96 mm, vertical', 'JST', 'B6P-VH', '', '', None, None),
+ ('🏠', '(J1/J10 plugs)', '2', 'Crimp housing, 6-pos, 3.96 mm', 'JST', 'VHR-6N', '', '', None, None),
+ ('🏠', '(J1/J10 contacts)', '16', 'Crimp contact, AWG 18–16 (12 + 4 spare)', 'JST', 'SVH-41T-P1.1', '', '', None, None),
+ ('🏠', 'J2–J8', '7', 'Screw terminal, 2-pos, 5.08 mm, horizontal entry', '—', 'YE0001XC321', '', '', None, None),
+ ('🏠', 'J9', '1', '4-pin 5.08 mm disk-drive header, right-angle', 'Molex', '0015244441 (A-8981-4R-1-LF)', '', '', None, None),
+ ('🏠', 'J9 (alternative)', '1', '4-pin 5.08 mm disk-drive header, vertical', 'Molex', '0015244745 (A-8981-4V5-LF)', '', '', None, None),
+ ('🏠', '(J9 plug)', '1', '4-pos disk-drive plug housing', 'Molex', '0015244048 (8981-04P)', '', '', None, None),
+ ('🏠', '(J9 plug contacts)', '4', 'Female crimp contact for 8981 plug', 'Molex', '0008500113 (08-50-0113)', '', '', None, None),
+ ('🛒', 'F2, F3', '2', '5×20 mm PCB fuse holder, open', 'Schurter', '0031.8201', '486-1258-ND', 'https://www.digikey.ie/en/products/detail/schurter-inc/0031-8201/669925', 2.98, (2, 'F2 F3 holder')),
+ ('🛒', '(F2/F3 covers)', '2', 'Cover for 0031.8201 (optional)', 'Schurter', '0853.0551', '486-1960-ND', 'https://www.digikey.ie/en/products/detail/schurter-inc/0853-0551/669930', 2.36, (2, 'F2 F3 cover')),
+ ('🛒', '(F2/F3 fuses)', '4', 'Fuse 5×20 mm, 2.5 A time-lag, 250 V (2 + 2 spare)', 'Littelfuse', '021802.5MXP', 'F1751-ND', 'https://www.digikey.ie/en/products/detail/littelfuse-inc/021802-5MXP/777614', 6.74, (4, 'F2 F3 fuse 2.5A T (2 spare)')),
+ ('🛒', 'F4–F8', '5', 'Mini blade (ATM) fuse holder, PCB', 'Keystone', '3568', '36-3568-ND', 'https://www.digikey.ie/en/products/detail/keystone-electronics/3568/2137306', 8.24, (5, 'F4-F8 holder')),
+ ('🛒', '(F4–F8 fuses)', '8', 'ATM fuse, 5 A, 32 V (5 + 3 spare)', 'Littelfuse', '0297005.WXNV', 'F989-ND', 'https://www.digikey.ie/en/products/detail/littelfuse-inc/0297005-WXNV/146583', 2.62, (8, 'F4-F8 fuse 5A (3 spare)')),
+ ('🏠', '(optional fuses)', '5', 'ATM fuse, 3 A, 32 V', 'Littelfuse', '0297003.WXNV', '', '', None, None),
+ ('🛒', 'C5, C6', '2', '470 µF 16 V aluminium polymer, Ø8 mm, 3.5 mm pitch', 'Panasonic', '16SEPG470M', 'P122605-ND', 'https://www.digikey.ie/en/products/detail/panasonic-industry/16SEPG470M/8020032', 3.76, (2, 'C5 C6')),
+ ('🛒', 'R1', '1', '5.1 kΩ 1 %, 2512, 1 W', 'Yageo', 'RC2512FK-075K1L', '13-RC2512FK-075K1LCT-ND', 'https://www.digikey.ie/en/products/detail/yageo/RC2512FK-075K1L/5922310', 0.38, (1, 'R1')),
+ ('🛒', 'R2', '1', '1 kΩ 1 %, 1206', 'Yageo', 'RC1206FR-071KL', '311-1.00KFRCT-ND', 'https://www.digikey.ie/en/products/detail/yageo/RC1206FR-071KL/728387', 0.11, (1, 'R2')),
+ ('🛒', 'R3', '1', '300 Ω 1 %, 1206', 'Yageo', 'RC1206FR-07300RL', '311-300FRCT-ND', 'https://www.digikey.ie/en/products/detail/yageo/RC1206FR-07300RL/728804', 0.11, (1, 'R3')),
+ ('🏠', 'D2–D4', '3', 'Pin header 1×2, 2.54 mm, vertical', 'Sullins', 'PREC002SAAN-RC', '', '', None, None),
+ ('🛒', '(case LEDs)', '3', 'Panel-mount LED, 2 × 5 mm, red diffused, snap-in, no built-in resistor', 'Lumex', 'SSI-LXMP059ID', '67-1179-ND', 'https://www.digikey.ie/en/products/detail/lumex-opto-components-inc/SSI-LXMP059ID/144717', 3.14, (3, 'Case LEDs')),
+ ('🏠', '(LED leads)', '3', 'Dupont jumper, female–female, 2-pin', 'generic', '2.54 mm Dupont F-F', '', '', None, None),
+ ('🏠', '(U2 mount)', '2', 'Pin header 1×4, 2.54 mm, straight (extra-long for a 5 mm gap)', 'generic', '0.1" male header', '', '', None, None),
+ ('🏠', '(U2 links)', '~10 cm', "Solid copper wire, as thick as fits the Pololu's large holes", 'generic', 'e.g. 1.5 mm² solid', '', '', None, None),
+ ('🏠', '—', '4', 'M3 heat-set insert', 'generic', 'M3 × 5.7 mm, OD 4.6 mm', '', '', None, None),
+ ('🏠', '—', '4', 'M3 screw, pan head', 'generic', 'ISO 7045 M3 × 8', '', '', None, None),
+ ('🛒', '—', '14+', 'Wire ferrule, 1.0 mm² × 8 mm, red (DIN 46228-4)', 'Phoenix Contact', '3200030 (AI 1-8 RD)', '277-2188-ND', 'https://www.digikey.ie/en/products/detail/phoenix-contact/3200030/349907', 2.76, (14, 'Ferrules 1.0mm2')),
+ ('🏠', '—', '~2 m', 'Wire 1.25 mm² (AWG 16): J1/J10 input cables from the PSUs', 'generic', 'H05V-K 1.5 mm² or AWG 16 silicone', '', '', None, None),
+ ('🏠', '—', 'as needed', 'Wire 1 mm² (AWG 18), red + black: output leads (12 V, 5 V) and 54 V Powerpole leads', 'generic', 'H05V-K 1.0 mm² or AWG 18 silicone', '', '', None, None),
+]

@@ -17,6 +17,11 @@ left, paste this file (or a link to it) into the new chat.
   - gerbers
   - `README.md` and `BOM.md`
   - `digikey-bom.csv`
+  - `tools/bom_data.py` (the parts list) and `tools/gen_bom.py`, which writes `BOM.md` and
+    `digikey-bom.csv` from it
+  - `tools/agent-tools/`: git submodule [Gultak/agent-tools](https://github.com/Gultak/agent-tools)
+    with the shared KiCad and BOM tooling (`pcbtools/boardkit.py`, `post.py`, `export.sh`,
+    `render.py`, `boardsig.py`, `bom/bomgen.py`), also used by parkside-charger
   - `docs/`: renders `top.png` and `bottom.png`, assembly PDF, DRC report
 
   The old v1 board (DC-DC brick) has been removed, and there is no "v2" naming any more.
@@ -25,7 +30,9 @@ left, paste this file (or a link to it) into the new chat.
     (same as parkside-charger). Commit as `Gultak <claude@gultak.de>`.
   - History: PRs #1–#20 were merged before the switch to direct pushes (2026-11-27).
   - Render file names are fixed (`docs/top.png`, `docs/bottom.png`), no `-rN` suffix.
-  - Keep README, BOM.md, digikey-bom.csv and both parts sheets in sync with every change.
+  - Keep README, BOM.md, digikey-bom.csv and both parts sheets in sync with every change. Edit
+    the parts in `tools/bom_data.py` and run `python3 tools/gen_bom.py`; don't edit BOM.md or
+    the CSV by hand.
 - **Toolchain:** see "How to work on the board" below.
 
 ## The board, as it stands
@@ -118,16 +125,27 @@ left, paste this file (or a link to it) into the new chat.
 
 Needs KiCad 9 (`pcbnew` Python module and `kicad-cli`; tested with 9.0.9), `rsvg-convert`
 (librsvg2-bin), Pillow, zip. Ubuntu's own apt only has KiCad 7, so install from the KiCad PPA
-(`ppa:kicad/kicad-9.0-releases`), as the parkside-charger handoff describes.
+(`ppa:kicad/kicad-9.0-releases`): `tools/agent-tools/env/setup-kicad9.sh` does all of it.
+
+The shared tools come in as a git submodule, pinned to a commit. After cloning, run
+`git submodule update --init` (or clone with `--recurse-submodules`). To use a newer
+agent-tools: `git -C tools/agent-tools pull origin main`, then commit `tools/agent-tools`.
+Changes to the tools themselves are made and pushed in Gultak/agent-tools first.
 
 ```bash
 python3 build.py          # writes rack-power-board.kicad_pcb (no zone fill)
 python3 post.py           # fills zones, runs DRC -> docs/drc-report.txt
 tools/export.sh           # renders docs/top.png, docs/bottom.png, PDF, gerbers zip
+python3 tools/gen_bom.py  # BOM.md + digikey-bom.csv from tools/bom_data.py
 ```
 
 Then check the DRC report (goal: 0 electrical violations, 0 unconnected).
 
+- **Helpers:** `build.py` uses `BoardKit` from `tools/agent-tools/pcbtools/boardkit.py` (`place`,
+  `setnet`, `padpos`, `track`, `zone`, `custom_fp`, …), bound to short names at the top of the script.
+- **Checking a refactor:** `python3 tools/agent-tools/pcbtools/boardsig.py old.kicad_pcb
+  rack-power-board.kicad_pcb` compares two boards by content (UUIDs and item order differ on
+  every run, so a plain diff of the file is useless).
 - **Coordinates in `build.py`:** mm from the board's top-left corner (y down). `P(x, y)` adds the
   sheet offset OX = OY = 30.
 - **Key positions:**
@@ -223,7 +241,7 @@ Then check the DRC report (goal: 0 electrical violations, 0 unconnected).
 - Hole-to-courtyard clashes were fixed by shifting rows 0.2–0.4 mm; check DRC after any move.
 - Earlier track clashes: the 5 V track hit R3/D4 and the Pololu GND hole; it now starts at (32, 42)
   inside the +5V pour.
-- `kicad-cli … --page-size-mode 2` still leaves margins: `tools/render.py` crops to Edge.Cuts.
+- `kicad-cli … --page-size-mode 2` still leaves margins: `pcbtools/render.py` in agent-tools crops to Edge.Cuts.
 
 **GitHub**
 - README images keep fixed names; GitHub's image cache can show an old render for a while after
