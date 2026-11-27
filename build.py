@@ -247,10 +247,12 @@ for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     text("5A", C[jref], Fy + 4.2, 0.9); refat(F[ref], C[jref], Fy + 6.4, 90, 0.8)
 text("5A", F8X - 5.0, 13.0, 0.9)
 refat(C5, 80.9, 34.6 + 0.0); refat(C6, 80.9, 52.6)
-text("RACK POWER BOARD", 51.0, 20.0, 1.6, layer=B, bold=True)
-text("12V + 54V in -> 12V x4 / 5V / 54V x2", 51.0, 22.6, 1.0, layer=B)
-text("2 layers, 2oz Cu, 1.6mm", 51.0, 24.6, 1.0, layer=B)
-text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 51.0, 26.6, 1.0, layer=B)
+# back-side title block: below the Pololu pads (they end at y ~29.4)
+TY = 31.0
+text("RACK POWER BOARD", 51.0, TY, 1.6, layer=B, bold=True)
+text("12V + 54V in -> 12V x4 / 5V / 54V x2", 51.0, TY + 2.6, 1.0, layer=B)
+text("2 layers, 2oz Cu, 1.6mm", 51.0, TY + 4.6, 1.0, layer=B)
+text("F2/F3 2.5A T 5x20, F4-F8 ATM 5A", 51.0, TY + 6.6, 1.0, layer=B)
 
 b.Save(OUT)
 print("saved", OUT)
