@@ -106,7 +106,7 @@ m = place("Fuse", "Fuseholder_Blade_Mini_Keystone_3568", "F8", F8X, F8Y, 180, "A
 setnet(m, 1, "+12V"); setnet(m, 2, "12V_PL"); F["F8"] = m
 
 # --- 12 V bulk caps below J10
-C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 75.0, 38.0, 0, "470uF 16V polymer")
+C5 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C5", 76.5, 38.0, 0, "470uF 16V polymer")
 C6 = place("Capacitor_THT", "CP_Radial_D8.0mm_P3.50mm", "C6", 76.5, 47.0, 0, "470uF 16V polymer")
 for c in (C5, C6):
     setnet(c, 1, "+12V"); setnet(c, 2, "GND")
@@ -246,7 +246,7 @@ for ref in ("F2", "F3"):
 for ref, jref in (("F4", "J4"), ("F5", "J5"), ("F6", "J6"), ("F7", "J7")):
     text("5A", C[jref], Fy + 4.2, 0.9); refat(F[ref], C[jref], Fy + 6.4, 90, 0.8)
 text("5A", F8X - 5.0, 13.0, 0.9)
-refat(C5, 80.9, 34.6 + 0.0); refat(C6, 80.9, 52.6)
+refat(C5, 72.6, 42.6); refat(C6, 80.9, 52.6)
 # back-side title block: below the Pololu pads (they end at y ~29.4)
 TY = 31.0
 text("RACK POWER BOARD", 51.0, TY, 1.6, layer=B, bold=True)

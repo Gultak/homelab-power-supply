@@ -91,7 +91,7 @@ left, paste this file (or a link to it) into the new chat.
   - wire
 - **On the way:** the Pololu (Opencircuit).
 - **PCB:** ordered from JLCPCB, 2 oz copper. That order predates 2026-11-27 (layout of commit 6ba7b27); since
-  then the repo moved the back-side title, F4–F7 (3 mm up), D4/R3 and C6, so the ordered boards differ
+  then the repo moved the back-side title, F4–F7 (3 mm up), D4/R3 and C5/C6, so the ordered boards differ
   from the repo files.
 - **No stencil needed:** only R1–R3 are SMD.
 - **Wire:**
@@ -156,7 +156,7 @@ Then check the DRC report (goal: 0 electrical violations, 0 unconnected).
   - Left-edge terminals: x = 5.0, J2 at y = 53.8, J3 at y = 64.1, rot 270.
   - F2/F3 at x = 26.8 / 16.5, y = 42.0 (F3 feeds J3, F2 feeds J2). F4–F7 at y = 53.0 above their
     terminals (x + 1.7). F8 at (67.5, 9.5) rot 180.
-  - C5/C6 at (75, 38) and (76.5, 47) (C6 nudged right to clear F7).
+  - C5/C6 at (76.5, 38) and (76.5, 47), one column (moved right 1.5 mm to clear F7); C5 label left of the caps.
   - R1 (5.5, 40.5) / D2 (4.5, 44.6); R2/D3 at x 50 / 54.5, y 47; R3 (35.3, 40.5) / D4 (35.3, 45.1).
   - Pololu U2: custom footprint, origin PX0, PY0 = 31.0, 14.5, outline 40.6 × 20.3.
     Pololu drawing coords (u across the short side, v along the long side) map to the board via
