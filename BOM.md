@@ -44,8 +44,8 @@ including VAT, as checked in November 2026.
 | 🏠 | — | 4 | M3 heat-set insert | generic | M3 × 5.7 mm, OD 4.6 mm | | |
 | 🏠 | — | 4 | M3 screw, pan head | generic | ISO 7045 M3 × 8 | | |
 | 🛒 | — | 14+ | Wire ferrule, 1.0 mm² × 8 mm, red (DIN 46228-4) | Phoenix Contact | 3200030 (AI 1-8 RD) | [277-2188-ND](https://www.digikey.ie/en/products/detail/phoenix-contact/3200030/349907) | 2.76 |
-| 🏠 | — | ~2 m | Wire 1.25 mm² (AWG 16) | generic | H05V-K 1.5 mm² or AWG 16 silicone | | |
-| 🏠 | — | ~0.5 m | Wire 1 mm² (AWG 18) | generic | H05V-K 1.0 mm² or AWG 18 silicone | | |
+| 🏠 | — | ~2 m | Wire 1.25 mm² (AWG 16): J1/J10 input cables from the PSUs | generic | H05V-K 1.5 mm² or AWG 16 silicone | | |
+| 🏠 | — | as needed | Wire 1 mm² (AWG 18), red + black: output leads (12 V, 5 V) and 54 V Powerpole leads | generic | H05V-K 1.0 mm² or AWG 18 silicone | | |
 | | **Total** | | **DigiKey order (🛒)** | | | | **77.85** |
 
 ## Notes
